@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :echipatala, Echipatala.Repo,
   username: "postgres",
-  password: "Qwerty12",
+  password: "Qwerty12", 
   database: "echipatala_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
