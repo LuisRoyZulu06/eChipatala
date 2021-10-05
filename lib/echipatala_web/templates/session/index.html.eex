@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>eChipatala</title>
+        <meta name="description" content="Login">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-tap-highlight" content="no">
+        <!-- base css -->
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/vendors.bundle.css") %>" />
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/app.bundle.css") %>" />
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/page-login.css") %>" />
+        <link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/img/favicon/apple-touch-icon.png") %>" />
+        <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/favicon-32x32.png") %>" />
+        <link rel="mask-icon" color="#5bbad5" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" color="#5bbad5"/>
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/w3.css") %>">
+        <style>
+            .form-control {
+                display: block;
+                width: 100%;
+                height: calc(1em + 1rem + 1px);
+                padding: 25px;
+                font-size: 0.8125rem;
+                font-weight: 400;
+                line-height: 1.47;
+                color: #553fd1;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #553fd1;
+                border-radius: 31px;
+
+            }
+            .btn-primary {
+                color: #fff;
+                background-color: #5138ed;
+                border-color: #553fd1;
+                padding: 13px;
+                width: 100%;
+                border-radius:30px;
+                font-size: 16px;
+                font-weight:250px;
+            }
+            .btn-primary:hover {
+                color: #fff;
+                background-color:#5138ed;
+                border-color: #553fd1;
+            }
+            .btn-primary {
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+
+            .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+                color: #fff;
+                background-color: #5138ed;
+                border-color: #553fd1;
+            }
+
+            .blankpage-footer {
+                padding: 10px 0;
+                font-size: 0.75rem;
+                color: #B92225;
+            }
+
+
+
+            div.flex-1 {
+                    padding: none;
+                    }
+
+            @media (min-width: 1024px) and (max-width: 1920px)
+                {
+            div.flex-1{
+                font-size: 10px;
+
+            }
+
+
+            }
+
+            @media only screen and (min-width: 601px) {
+            div.flex-1 {
+                font-size: 10px;
+            }
+
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="page-wrapper">
+            <div class="page-inner bg-brand-gradient" id="background-img">
+                <div class="page-content-wrapper bg-transparent m-0">
+                    <div class="flex-1" style="margin-top: 7em;">
+                        <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
+                            <div class="row">
+                                <div class="col-md-12 ml-auto">
+                                    <!-- To Handle Flashes -->
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-offset-2">
+                                            <div class="form-group">
+                                                <%= if get_flash(@conn, :info) do %>
+                                                    <div class="alert alert-success alert-styled-left">
+                                                    <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                                                    <%= get_flash(@conn, :info) %>
+                                                    </div>
+                                                <% end %>
+                                                <%= if get_flash(@conn, :error) do %>
+                                                    <div class="alert alert-danger alert-styled-left">
+                                                    <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                                                    <%= get_flash(@conn, :error) %>
+                                                    </div>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Form & Carousel-->
+                                    <div class="row">
+                                        <!-- Form -->
+                                        <div class="col-md-4 card p-4 border-top-left-radius-0 border-top-right-radius-0">
+                                            <div style="background-color: #ffffff; text-align: center; margin-top: 5em; margin-bottom: 5em;">
+                                                <i class="fal fa-users fa-7x"></i><br>
+                                                
+                                                <strong style="font-size: 20px; color: #1c33a1; text-align: center;">
+                                                    Welcome to eChipatala
+                                                </strong>
+                                            </div>
+
+
+                                            <form id="js-login" novalidate="" action="<%= Routes.session_path(@conn, :create)%>" method="POST">
+                                                <div class="form-group">
+                                                    <input type="text" name="username" class="form-control" placeholder="Username" autocomplete="off" autofocus>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                                    <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                                                </div>
+
+                                                <div class="blankpage-footer">
+                                                    <button type="submit" class="btn btn-primary" style="background-color: #08152b;">
+                                                        <i class="fal fa-sign-in"></i> Sign-in
+                                                    </button>
+                                                </div>
+
+                                                <div class="text-center text-black">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <a href="<%= Routes.user_path(@conn, :forgot_password)%>">
+                                                                Register
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <a href="<%= Routes.user_path(@conn, :forgot_password)%>">
+                                                                Forgot password?
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <!-- Carousel -->
+                                        <div class="col-md-8 card p-4 border-top-left-radius-0 border-top-right-radius-0 hidden-sm-down" style="background-color: #14346c;">
+                                            <div class="hidden-sm-down" style="margin-top:8%;">
+                                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active">
+                                                            <span class="color-white">
+                                                                <p style="font-size:40px;"> 
+                                                                    Ease access to <strong>Professional Medical Personnel.<br></strong>
+                                                                </p>
+
+                                                                <p style="font-size:18px;"> 
+                                                                    Make consultations on various health problems you might be experiencing with professional
+                                                                    certified medical personnels.
+                                                                </p>
+                                                            </span>
+                                                        </div>
+                                                        
+                                                        <div class="carousel-item">
+                                                            <span class="color-white">
+                                                                <p style="font-size:40px;"> 
+                                                                    Access to <strong>Self Medical Assessment.</strong><br>
+                                                                </p>
+
+                                                                <p style="font-size:18px;"> 
+                                                                    Assess yourself for common ailments, by providing the system with symptoms you 
+                                                                    might be experiencing for a diagnosis and recommendations.
+                                                                </p>
+                                                            </span>
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <span class="color-white">
+                                                                <p style="font-size:40px;"> 
+                                                                    No more <strong>Queues, Make an Appointment!</strong><br>
+                                                                </p>
+
+                                                                <p style="font-size:18px;"> 
+                                                                    Save time, no more queuing at the clinic or hospital, make an appointment with your
+                                                                    doctor.
+                                                                </p>
+                                                            </span>
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <p style="font-size:40px; color: white;"> 
+                                                                <strong>Reach out to us!</strong><br>
+                                                            </p>
+                                                            <span class="color-white"style="font-size:18px;">
+                                                                <p><i class="fal fa-phone"></i> +260 979 797 337</p>
+                                                                <p><i class="fal fa-envelope"></i> eChipatala@mail.com</p>
+                                                                <p><i class="fal fa-map-pin"></i> ZCCM - IH office Park, 16806, Alick Nkhata Road, Lusaka.</p>
+                                                                <span class="float-center" style="text-align: center;">
+                                                                    <%= Timex.today.year %> © eChipatala
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="float-center" style="text-align: center;">
+                        <img alt="Logo" aria-roledescription="logo" width="240" src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>">
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="<%= Routes.static_path(@conn, "/js/vendors.bundle.js") %>"></script>
+        <script src="<%= Routes.static_path(@conn, "/js/app.bundle.js") %>"></script>
+    </body>
+</html>
