@@ -79,7 +79,7 @@
             </div>
 
             <nav id="js-info-nav" class="info-nav app-fonts" role="navigation">
-              <div class="info-card">
+              <div class="info-card" style="background-color: #aa2224;">
                 
                 <img src="<%= Routes.static_path(@conn, "/images/avatar/3.png") %>" class="cover" alt="cover" width="250">
               </div>
@@ -235,10 +235,7 @@
             <footer class="page-footer" role="contentinfo">
               <div class="d-flex align-items-center flex-1 text-muted">
                 <span class="hidden-md-down fw-700">
-                  2021 © eChipatala Powered By&nbsp;
-                  <a href='http://www.probasegroup.com/' class='text-info fw-500' title='proBASE' target='_blank'>
-                    <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" width="100">
-                  </a>
+                  2021 © <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" width="100">
                   </span>
               </div>
 

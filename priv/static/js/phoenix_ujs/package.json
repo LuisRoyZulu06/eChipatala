@@ -1,0 +1,49 @@
+{
+  "_from": "phoenix_ujs",
+  "_id": "phoenix_ujs@0.4.1",
+  "_inBundle": false,
+  "_integrity": "sha512-HFPq9aSNOJWr7uTYRuT3/oH+FVzAQlA2g2f5GKW6cqvTAKu18Uf3UfVlF01qOv/tnvMEgrqSByVtsTqPeIuoYw==",
+  "_location": "/phoenix_ujs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "phoenix_ujs",
+    "name": "phoenix_ujs",
+    "escapedName": "phoenix_ujs",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/phoenix_ujs/-/phoenix_ujs-0.4.1.tgz",
+  "_shasum": "edbaac141e742432008dad78f1a75be9cfa4befe",
+  "_spec": "phoenix_ujs",
+  "_where": "E:\\Elixir\\smartpay",
+  "author": {
+    "name": "Sergey Pchelintsev"
+  },
+  "bugs": {
+    "url": "https://github.com/jalkoby/phoenix_ujs/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Unobtrusive JS toolset for Phoenix framework",
+  "homepage": "https://github.com/jalkoby/phoenix_ujs#readme",
+  "keywords": [
+    "ujs",
+    "phoenix"
+  ],
+  "license": "MIT",
+  "main": "ujs.cjs.js",
+  "name": "phoenix_ujs",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jalkoby/phoenix_ujs.git"
+  },
+  "version": "0.4.1"
+}
