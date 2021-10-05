@@ -13,7 +13,7 @@ defmodule EchipatalaWeb.Endpoint do
     at: "/",
     from: :echipatala,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js favicon.ico robots.txt webfonts)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

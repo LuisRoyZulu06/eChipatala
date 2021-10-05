@@ -2,9 +2,11 @@ use Mix.Config
 
 # Configure your database
 config :echipatala, Echipatala.Repo,
-  username: "postgres",
-  password: "Qwerty12", 
-  database: "echipatala_dev",
+
+  username: "SA",
+  password: "Qwerty@12",
+  database: "echipatala",
+
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -16,7 +18,7 @@ config :echipatala, Echipatala.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :echipatala, EchipatalaWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: 4001],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
