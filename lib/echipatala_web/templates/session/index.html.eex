@@ -129,7 +129,6 @@
                                                 </strong>
                                             </div>
 
-
                                             <form id="js-login" novalidate="" action="<%= Routes.session_path(@conn, :create)%>" method="POST">
                                                 <div class="form-group">
                                                     <input type="text" name="username" class="form-control" placeholder="Username" autocomplete="off" autofocus>
@@ -149,7 +148,7 @@
                                                 <div class="text-center text-black">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <a href="<%= Routes.user_path(@conn, :forgot_password)%>">
+                                                            <a href="#" data-toggle="modal" data-target="#eChipatala-reg">
                                                                 Register
                                                             </a>
                                                         </div>
@@ -234,6 +233,77 @@
                     <span class="float-center" style="text-align: center;">
                         <img alt="Logo" aria-roledescription="logo" width="240" src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>">
                     </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="eChipatala-reg" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: rgba(102, 102, 102, 1)">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">
+                                Close window<i class="fal fa-times"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="POST">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="username">Name</label>
+                                        <input type="text" name="name" class="form-control form-control-md" placeholder="Name" required>
+                                        <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                                        <input type="hidden" name="user_role" value="PATIENT">
+                                        <input type="hidden" name="user_type" value="3">
+                                        <input type="hidden" name="creator_id" value="SELF REGISTRATION">
+                                        <input type="hidden" name="status" value="1">
+                                        <div class="help-block">Enter your name.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Phone</label>
+                                        <input type="text" name="phone" class="form-control form-control-md" placeholder="Phone" required>
+                                        <div class="help-block">Enter your phone number.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Gender</label>
+                                        <select class="custom-select form-control" name="gender" require>
+                                            <option value selected disabled>Select your gender</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                        <div class="help-block">Select your gender.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Username</label>
+                                        <input type="text" name="username" class="form-control form-control-md" placeholder="Username" required>
+                                        <div class="help-block">Enter your username.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="text" name="email" class="form-control form-control-md" placeholder="Email Address" required>
+                                        <div class="help-block">Enter your email address.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary" style="background-color: #08152b;">
+                                                <i class="fal fa-user-plus"></i> Register
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

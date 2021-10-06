@@ -4,3 +4,6 @@ mix phx.gen.context Logs UserLogs tbl_user_logs activity user_id:integer
 ---------------------------------------------Notifications context
 mix phx.gen.context Notifications Email tbl_email subject sender_email_address sender_name email_body receipient_email_address status attempts
 mix phx.gen.context Notifications Sms tbl_sms type mobile sms status msg_count date_sent 
+
+---------------------------------------------Institution context
+mix phx.gen.context Institutions InstitutionDetails tbl_institutions name institution_type tel email address system_user_id creator_id
