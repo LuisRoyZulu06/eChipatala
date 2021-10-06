@@ -52,4 +52,4 @@ defmodule Echipatala.Accounts.User do
   def encrypt_password(password), do: Base.encode16(:crypto.hash(:sha512, password))
 end
 
-#Echipatala.Accounts.create_user(%{name: "Luis Roy", username: "Luis", email: "luis@probasegroup.com", password: "password06", user_type: 1, user_role: "ADMIN", status: "1", phone: "260979797337", gender: "M", auto_password: "N",  inserted_at: NaiveDateTime.utc_now, updated_at: NaiveDateTime.utc_now})
+#Echipatala.Accounts.create_user(%{name: "Phin Sams", username: "phin", email: "phin@probasegroup.com", password: "password06", user_type: 1, user_role: "ADMIN", status: "1", phone: "260979797337", gender: "M", auto_password: "N",  inserted_at: NaiveDateTime.utc_now, updated_at: NaiveDateTime.utc_now})
