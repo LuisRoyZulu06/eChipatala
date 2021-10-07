@@ -74,6 +74,17 @@ defmodule EchipatalaWeb.UserController do
     render(conn, "user_profile.html")
   end
 
+  def system_users(conn, _params) do
+    system_users = Accounts.system_users()
+    branches = Settings.branches()
+    roles = Accounts.list_user_roles()
+    render(conn, "system_users.html",
+      system_users: system_users,
+      branches: branches,
+      roles: roles
+    )
+  end
+
   def activity_logs(conn, _params) do
     results = Logs.get_all_activity_logs()
     page = %{first: "Users", last: "Activity logs"}

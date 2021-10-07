@@ -1,4 +1,4 @@
-defmodule EchipatalaWeb.StudentController do
+defmodule EchipatalaWeb.ClientController do
   use EchipatalaWeb, :controller
   import Ecto.Query, warn: false
   alias Echipatala.{Logs, Repo, Logs.UserLogs, Auth}

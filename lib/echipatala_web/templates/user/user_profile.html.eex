@@ -1,75 +1,170 @@
-<main id="js-page-content" role="main" class="page-content">
-    <div class="row">
-        <div class="col-md-1"></div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Echipatala
+        </title>
+        <meta name="description" content="Basic">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+        <!-- Call App Mode on ios devices -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <!-- Remove Tap Highlight on Windows Phone IE -->
+        <meta name="msapplication-tap-highlight" content="no">
 
-        <div class="col-md-10">
-            <div class="subheader">
-                <h1 class="subheader-title">
-                    <small style="color: #0d0d0d; font-size: 14px;">
-                        Hello <%= "#{String.capitalize(@conn.assigns.user.username)}"%>, welcome to eChipatala.
-                    </small>
-                </h1>
+        <!-- base css -->
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/vendors.bundle.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/app.bundle.css") %>">
+
+
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/img/favicon/apple-touch-icon.png") %>" />
+        <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/favicon-32x32.png") %>" />
+        <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" />
+        <link rel="mask-icon" color="#5bbad5" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" color="#5bbad5"/>
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/notifications/sweetalert2/sweetalert2.bundle.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/datagrid/datatables/datatables.bundle.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/page-invoice.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/default.css") %>" />
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/select2/select2.bundle.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/fullcalendar/fullcalendar.bundle.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/reactions/reactions.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/jqvmap/jqvmap.bundle.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/smartwizard/smartwizard.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/page-invoice.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/statistics/chartjs/chartjs.css") %>">
+        <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/select2/select2.bundle.css") %>">
+
+        <style>
+            .dataTables_empty {
+                color: #fd3995;
+                font-size: 14px;
+                padding-top: 15px !important;
+                padding-bottom: 15px !important;
+            },
+            /*Loader*/
+            #loader {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                background: #fff url(/images/loading.gif) no-repeat center center;
+                opacity: 0.8;
+                cursor: 'wait';
+                z-index: 10000;
+                /* background: rgba(0,0,0,0.75)*/
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="page-header" role="banner">
+            <div class="container-fluid">
+                <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" alt="eChipatalaAdmin WebApp" aria-roledescription="logo" width="150">
             </div>
 
-            <div class="card mb-g">
-                <div class="card-body pb-0 px-4">
-                    <div class="d-flex flex-row pb-3 pt-2  border-top-0 border-left-0 border-right-0">
-                        <div class="d-inline-block align-middle status status-success mr-3">
-                            <span class="profile-image rounded-circle d-block" style="background-image:url('images/avatar/3.png'); background-size: cover;"></span>
-                        </div>
-                        <h5 class="mb-0 flex-1 text-dark fw-500">
-                            <%= "#{String.capitalize(@conn.assigns.user.username)}"%>
-                            <small class="m-0 l-h-n">
-                                <%= "#{String.capitalize(@conn.assigns.user.user_role)}"%>
+            <div class="ml-auto d-flex">
+                <!-- /Back -->
+                <div>
+                    <%= if @conn.assigns.user.user_type == 1 do %>
+                        <a href="<%= Routes.user_path(@conn, :dashboard)%>" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;">
+                            Back
+                        </a>
+                    <% end %>
+
+                    <%= if @conn.assigns.user.user_type == 2 do %>
+                        <a href="<%= Routes.user_path(@conn, :index)%>" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;">
+                            Back
+                        </a>
+                    <% end %>
+
+                    <%= if @conn.assigns.user.user_type == 3 do %>
+                        <a href="<%= Routes.client_path(@conn, :index)%>" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;">
+                            Back
+                        </a>
+                    <% end %>
+                </div>
+            </div>
+        </header>
+
+        <main id="js-page-content" role="main" class="page-content">
+            <div class="row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8">
+                    <div class="subheader">
+                        <h1 class="subheader-title">
+                            <small style="color: #0d0d0d; font-size: 14px;">
+                                Hello <%= "#{String.capitalize(@conn.assigns.user.username)}"%>, welcome to eChipatala.
                             </small>
-                        </h5>
+                        </h1>
                     </div>
-                    <div class="pb-3 pt-2 border-top-0 border-left-0 border-right-0 text-muted">
-                        <div class="table-responsive w3-animate-top">
-                            <table class="table table-hover table-clean">
-                                <tbody>
-                                    <tr>
-                                        <th style="width: 150px">Name:</th>
-                                        <td>
-                                            <%= "#{String.capitalize(@conn.assigns.user.name)}"%>
-                                        </td>
-                                    </tr>
 
-                                    <tr>
-                                        <th style="width: 150px">Phone:</th>
-                                        <td>
-                                            <%= "#{String.capitalize(@conn.assigns.user.phone)}"%>
-                                        </td>
-                                    </tr>
+                    <div class="card mb-g">
+                        <div class="card-body pb-0 px-4">
+                            <div class="d-flex flex-row pb-3 pt-2  border-top-0 border-left-0 border-right-0">
+                                <div class="d-inline-block align-middle status status-success mr-3">
+                                    <span class="profile-image rounded-circle d-block" style="background-image:url('images/avatar/3.png'); background-size: cover;"></span>
+                                </div>
+                                <h5 class="mb-0 flex-1 text-dark fw-500">
+                                    <%= "#{String.capitalize(@conn.assigns.user.username)}"%>
+                                    <small class="m-0 l-h-n">
+                                        <%= "#{String.capitalize(@conn.assigns.user.user_role)}"%>
+                                    </small>
+                                </h5>
+                            </div>
+                            <div class="pb-3 pt-2 border-top-0 border-left-0 border-right-0 text-muted">
+                                <div class="table-responsive w3-animate-top">
+                                    <table class="table table-hover table-clean">
+                                        <tbody>
+                                            <tr>
+                                                <th style="width: 150px">Name:</th>
+                                                <td>
+                                                    <%= "#{String.capitalize(@conn.assigns.user.name)}"%>
+                                                </td>
+                                            </tr>
 
-                                    <tr>
-                                        <th style="width: 150px">Email:</th>
-                                        <td>
-                                            <%= "#{String.capitalize(@conn.assigns.user.email)}"%>
-                                        </td>
-                                    </tr>
+                                            <tr>
+                                                <th style="width: 150px">Phone:</th>
+                                                <td>
+                                                    <%= "#{String.capitalize(@conn.assigns.user.phone)}"%>
+                                                </td>
+                                            </tr>
 
-                                    <tr>
-                                        <th style="width: 150px">Role:</th>
-                                        <td>
-                                            <%= "#{String.capitalize(@conn.assigns.user.user_role)}"%>
-                                        </td>
-                                    </tr>
+                                            <tr>
+                                                <th style="width: 150px">Email:</th>
+                                                <td>
+                                                    <%= "#{String.capitalize(@conn.assigns.user.email)}"%>
+                                                </td>
+                                            </tr>
 
-                                    <tr>
-                                        <th style="width: 150px">Created on:</th>
-                                        <td>
-                                            <%= "#{(@conn.assigns.user.inserted_at)}"%>
-                                        </td>
-                                    </tr>     
-                                </tbody>
-                            </table>
+                                            <tr>
+                                                <th style="width: 150px">Role:</th>
+                                                <td>
+                                                    <%= "#{String.capitalize(@conn.assigns.user.user_role)}"%>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th style="width: 150px">Created on:</th>
+                                                <td>
+                                                    <%= "#{(@conn.assigns.user.inserted_at)}"%>
+                                                </td>
+                                            </tr>     
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-1"></div>
-    </div>
-</main>
+                <div class="col-md-2"></div>
+            </div>
+        </main>
+    </body>
+</html>

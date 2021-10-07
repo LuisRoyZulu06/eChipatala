@@ -77,10 +77,8 @@
                               <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-info-300"></i>
                           </a>
                       </div>
-                      <div class="hidden-lg-up">
-                          <a href="#" class="header-btn btn press-scale-down" data-action="toggle" data-class="mobile-nav-on">
-                              <i class="ni ni-menu"></i>
-                          </a>
+                      <div class="container-fluid">
+                            <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" alt="eChipatalaAdmin WebApp" aria-roledescription="logo" width="150">
                       </div>
 
                       <div class="ml-auto d-flex">

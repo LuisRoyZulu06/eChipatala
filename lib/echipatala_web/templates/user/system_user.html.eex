@@ -1,0 +1,310 @@
+<main id="js-page-content" role="main" class="page-content">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12 col-lg-offset-2">
+                    <div class="form-group">
+                        <%= if get_flash(@conn, :info) do %>
+                            <div class="alert alert-success alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                            <%= get_flash(@conn, :info) %>
+                            </div>
+                        <% end %>
+                        <%= if get_flash(@conn, :error) do %>
+                            <div class="alert alert-danger alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                                Opps! <%= get_flash(@conn, :error) %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-user-circle'></i> Manage  Users
+                    <br>
+                    <small>
+                        To add user to system, click button below.
+                    </small>
+                    <a href="javascript:void(0);" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;" data-toggle="modal" data-target="#addUser">
+                        Add user
+                    </a>
+                </h1>
+
+                <div class="info-card-text">
+                    <%= "#{(@conn.assigns.user.first_name)}"%> <%= "#{(@conn.assigns.user.last_name)}"%> | SmartPAY
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="panel-1" class="panel">
+                        <div class="panel-container show">
+                            <div class="panel-hdr">
+                                <h2>
+                                    Client Profiles <span class="fw-300"><i></i></span>
+                                </h2>
+                                <div class="panel-toolbar">
+                                    <div class="frame-wrap">
+                                        <button class="btn btn-sm btn-outline-info btn-pills" data-toggle="modal" data-target="#userfilter"> Filter Entries</button>
+                                        <%# <button class="btn btn-sm btn-outline-primary btn-pills" id="client_admin_excel"> Export Excel</button> %>
+                                        <button class="btn btn-sm btn-outline-secondary btn-pills" id="reload_table">Reload Entries</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-content">
+                                <!-- datatable start -->
+                                <input type="hidden" id="csrf" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                                <input type="hidden" id="user_id" name="user_id" value="<%= @user.id%>">
+                                <table id="tbl_system_users" class="table table-bordered table-hover table-striped w-100">
+                                    <thead class="p-3 bg-fusion-100 rounded overflow-hidden position-relative text-white mb-g">
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>User role</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+</main>
+
+
+<!---------------------------------EDIT MODAL -->
+<div class="modal fade" id="edit_system_user_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit system user <i class='subheader-icon fal fa-user-circle'></i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal" action="<%= Routes.user_path(@conn, :update_system_user)%>" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fal fa-user"></i></span>
+                                    </div>
+                                    <input type="hidden" name="_csrf_token" id="csrf" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                                    <input type="hidden" name="id" id="id">
+                                    <input type="hidden" name="user_type" id="user_type" class="user_type">
+                                    <input type="text" name="first_name" id="first_name" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fal fa-message"></i></span>
+                                    </div>
+                                    <input type="text" name="email" id="email" data-inputmask="'alias': 'email'" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" style="font-weight: bold;">TYPE</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fal fa-user"></i></span>
+                                    </div>
+                                    <select class="custom-select form-control select_admin_type" name="user_role">
+                                        <option value selected disabled>Select Type</option>
+                                        <option value="BACKOFFICE">ADMIN</option>
+                                        <%# <option value="TELLER">TELLER</option> %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fal fa-user"></i></span>
+                                    </div>
+                                    <input type="text" name="last_name" id="last_name" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Phone</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fal fa-phone"></i></span>
+                                    </div>
+                                    <input type="text" name="phone" id="phone" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group branches" style="display: none;">
+                                <label class="form-label" style="font-weight: bold;">Assign teller to branch</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fal fa-sitemap"></i></span>
+                                    </div>
+                                    <select class="custom-select form-control branch_select" name="branch_code">
+                                        <option value selected disabled>Select branch</option>
+                                        <%= for branch <- @branches do %>
+                                            <option value="<%= branch.code %>">
+                                                <%= branch.descript %>
+                                            </option>
+                                        <% end %>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group user_role_select" style="display: none;">
+                                <label class="form-label" style="font-weight: bold;">Role</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fal fa-user"></i></span>
+                                    </div>
+                                    <select class="custom-select form-control" name="role_id">
+                                        <option value selected disabled>Choose a role permission</option>
+                                        <%= for role <- @roles do %>
+                                            <option value="<%= role.id %>">
+                                                <%= role.description %>
+                                            </option>
+                                        <% end %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-pills waves-effect waves-themed text-whit" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-pills waves-effect waves-themed text-white" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;">Update user</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!---------------------------------VIEW DETAILS MODAL  -->
+<div class="modal fade" id="user_details" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><i class="fal fa-times"></i></span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive w3-animate-top">
+
+              <table class="table table-hover table-clean">
+                <tbody>
+                 <tr>
+                    <th style="width: 150px">Username:</th>
+                    <td id="username"></td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px">First Name:</th>
+                    <td id="first_name"></td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px">Last Name:</th>
+                    <td id="last_name"></td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px">Phone:</th>
+                    <td id="phone"></td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px">Email:</th>
+                    <td id="email"></td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px">Identity Type:</th>
+                    <td id="id_type"></td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px">ID Number:</th>
+                    <td id="id_no"></td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px">User Role:</th>
+                    <td id="user_role"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="form-group">
+              <button type="button" class="btn btn-secondary btn-pills waves-effect waves-themed text-whit" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!---------------------------------ACTIVATE-ACCOUNT -->
+<div class="modal modal-alert fade" id="activate_user" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Activate Account?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                                    <input type="hidden" name="id" id="id">
+                                    <input type="hidden" name="status" value="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pull-center">
+                        <button type="button" class="btn btn-sm btn-secondary btn-pills waves-effect waves-themed text-white" data-dismiss="modal">No, Cancel</button>
+                        <button type="submit" class="btn btn-sm btn-pills waves-effect waves-themed text-white" style="background-color: #8dc63f;">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= render "modal_system_user_filter.html", assigns %>
+<%= render "modal_add_system_user.html", assigns %>

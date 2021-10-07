@@ -102,6 +102,31 @@
                   </a>
                 </li>
 
+                <li>
+                  <a href="#" title="LOGS" data-filter-tags="application intel">
+                    <i class="fal fa-users"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">USER MANAGEMENT</span>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :system_users)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-user"></i>
+                          System Users
+                        </span>
+                      </a>
+                      
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :user_logs)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-handshake"></i>
+                          User Activity
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
               </ul>
 
               <div class="filter-message js-filter-message bg-success-600"></div>

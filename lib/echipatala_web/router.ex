@@ -43,6 +43,7 @@ defmodule EchipatalaWeb.Router do
 
   scope "/", EchipatalaWeb do
     pipe_through([:browser, :no_layout])
+    get "/Profile", UserController, :user_profile
     get("/logout/current/user", SessionController, :signout)
     get "/Account/Disabled", SessionController, :error_405
     get "/Help/User/Permissions", UserController, :user_permission
@@ -57,10 +58,12 @@ defmodule EchipatalaWeb.Router do
   scope "/", EchipatalaWeb do
     pipe_through([:browser, :app])
     get "/Dashboard", UserController, :dashboard
-    get "/Profile", UserController, :user_profile
 
     # ---------------------------User Management
     post "/Create/User", UserController, :create_institution_user
+    get("/system/users", UserController, :system_users)
+    get "/User/Activity/Logs", UserController, :user_logs
+
 
     # ---------------------------Institution Management
     get "/Institution/Management", InstitutionController, :institution_management
