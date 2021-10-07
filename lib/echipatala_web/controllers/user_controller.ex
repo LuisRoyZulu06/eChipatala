@@ -75,13 +75,9 @@ defmodule EchipatalaWeb.UserController do
   end
 
   def system_users(conn, _params) do
-    system_users = Accounts.system_users()
-    branches = Settings.branches()
-    roles = Accounts.list_user_roles()
+    system_users = Accounts.list_users()
     render(conn, "system_users.html",
-      system_users: system_users,
-      branches: branches,
-      roles: roles
+      system_users: system_users
     )
   end
 

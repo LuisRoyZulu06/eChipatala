@@ -17,7 +17,7 @@ defmodule Echipatala.Accounts do
       [%User{}, ...]
 
   """
-  def list_tbl_user do
+  def list_users do
     Repo.all(User)
   end
 

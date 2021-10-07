@@ -26,6 +26,10 @@ defmodule EchipatalaWeb.Router do
     plug(:put_layout, {EchipatalaWeb.LayoutView, :app})
   end
 
+  pipeline :staff do
+    plug(:put_layout, {EchipatalaWeb.LayoutView, :staff})
+  end
+
   pipeline :client do
     plug(:put_layout, {EchipatalaWeb.LayoutView, :client})
   end
@@ -76,6 +80,11 @@ defmodule EchipatalaWeb.Router do
   scope "/", EchipatalaWeb do
     pipe_through([:browser, :client])
     get("/Client/Dashboard", ClientController, :index)
+  end
+
+  scope "/", EchipatalaWeb do
+    pipe_through([:browser, :staff])
+    get("/Staff/Dashboard", StaffController, :index)
   end
 
   # Other scopes may use custom stacks.
