@@ -678,7 +678,7 @@ defmodule EchipatalaWeb.UserController do
 
     case Accounts.get_user_by(params["username"]) do
       nil ->
-        pwd = random_string(6)
+        pwd = random_string(8)
         params = Map.put(params, "password", pwd)
         Ecto.Multi.new()
         |> Ecto.Multi.insert(:user, User.changeset(%User{}, params))

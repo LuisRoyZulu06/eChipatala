@@ -37,6 +37,12 @@ defmodule Echipatala.Accounts do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+  def get_user_institution(id) do
+    User
+    |> where([e], e.institution_id == ^id and e.user_role == "STAFF")
+    |> Repo.all()
+  end
+
   @doc """
   Creates a user.
 
@@ -118,5 +124,10 @@ defmodule Echipatala.Accounts do
       user ->
         user
     end
+  end
+
+  def get_user_by(nt_username) do
+    User
+    |>Repo.get_by(username: nt_username)
   end
 end

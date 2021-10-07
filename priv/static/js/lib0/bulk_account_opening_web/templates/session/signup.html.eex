@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Login">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+  <!-- Call App Mode on ios devices -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!-- Remove Tap Highlight on Windows Phone IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account</title>
+  <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/vendors.bundle.css") %>" />
+  <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/app.bundle.css") %>" />
+  <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/default.css") %>" />
+  <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/fa-brands.css") %>" />
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/img/favicon/apple-touch-icon.png") %>" />
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/favicon-32x32.png") %>" />
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" />
+  <link rel="mask-icon" color="#5bbad5" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" color="#5bbad5"/>
+</head>
+    <body>
+        <div class="page-wrapper">
+            <div class="page-inner bg-brand-gradient">
+                <div class="page-content-wrapper bg-transparent m-0">
+                    <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient">
+                        <div class="d-flex align-items-center container p-0">
+                            <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9">
+                                <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
+                                    <img src="<%= Routes.static_path(@conn, "/images/logos/4.png") %>" alt="ZICB Logo" aria-roledescription="logo">
+                                </a>
+                            </div>
+                            <span class="text-white opacity-50 ml-auto mr-2 hidden-sm-down">
+                                Already a member?
+                            </span>
+                            <a href="<%= Routes.session_path(@conn, :login)%>" class="btn-link text-white ml-auto ml-sm-0">
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-1" style="background: url(img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
+                        <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
+                            <div class="row">
+                                <div class="col-xl-6 ml-auto mr-auto">
+                                    <div class="card p-4 rounded-plus bg-faded">
+                                        <form id="js-login" novalidate="" action="intel_analytics_dashboard.html">
+                                            <!-- <div class="form-group row">
+                                                <label class="col-xl-12 form-label" for="fname">Your first and last name</label>
+                                                <div class="col-6 pr-1">
+                                                    <input type="text" id="fname" class="form-control" placeholder="First Name" required>
+                                                    <div class="invalid-feedback">No, you missed this one.</div>
+                                                </div>
+                                                <div class="col-6 pl-1">
+                                                    <input type="text" id="lname" class="form-control" placeholder="Last Name" required>
+                                                    <div class="invalid-feedback">No, you missed this one.</div>
+                                                </div>
+                                            </div> -->
+                                            <div class="form-group">
+                                                <label class="form-label" for="emailverify">Email Address:</label>
+                                                <input type="email" id="emailverify" class="form-control" placeholder="Email Address" required>
+                                                <div class="invalid-feedback">No, you missed this one.</div>
+                                                <div class="help-block">Your Email address will be used as your username.</div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label" for="phonenumber">Phone Number:</label>
+                                                <input type="text" minlength="10" maxlength="13" class="form-control" placeholder="Phone number" required>
+                                                <div class="invalid-feedback">No, you missed this one.</div>
+                                                <div class="help-block">Your phone number will be needed for account verification and account recovery</div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label" for="phonenumber">ID Type:</label>
+                                                <select class="form-control" id="sel1">
+                                                  <option class="placeholder" selected disabled value="null">Select your ID Type</option>
+                                                   <option value="nrc">NRC</option>
+                                                   <option value="passport">Passport</option>
+                                                 </select>
+                                                <div class="invalid-feedback">No, you missed this one.</div>
+                                                <div class="help-block">Select ID type between NRC(National Registration Card) or Passport.</div>
+                                            </div>
+
+                                            <div id="nrc-field">
+                                              <label class="form-label" for="phonenumber" id="subCategory">NRC:</label>
+                                              <input type="text" minlength="10" maxlength="13" class="form-control" placeholder="NRC" required>
+                                              <div class="invalid-feedback">No, you missed this one.</div>
+                                              <div class="help-block">Your NRC number will be needed for account verification.</div>
+                                              <br>
+                                            </div>
+
+                                            <div id="passport-field">
+                                              <label class="form-label" for="phonenumber" id="subCategory">Passport:</label>
+                                              <input type="text" minlength="10" maxlength="13" class="form-control" placeholder="Passport" required>
+                                              <div class="invalid-feedback">No, you missed this one.</div>
+                                              <div class="help-block">Your passport number will be needed for account verification.</div>
+                                              <br>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label" for="userpassword">Password:</label>
+                                                <input type="password" minlength="8" maxlength="20" id="userpassword" class="form-control" placeholder="Password" required>
+                                                <div class="invalid-feedback">Sorry, you missed this one.</div>
+                                                <div class="help-block">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>
+                                            </div>
+                                            <div class="form-group demo">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="terms" required>
+                                                    <label class="custom-control-label" for="terms"> I agree to terms & conditions</label>
+                                                    <div class="invalid-feedback">You must agree before proceeding</div>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters">
+                                                <div class="col-md-4 ml-auto text-right">
+                                                    <button id="js-login-btn" type="submit" class="btn btn-block btn-danger btn-lg mt-3">Send verification</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white">
+                            2020 © Bulk Account Opening by&nbsp;<a href='http://www.probasegroup.com/' class='text-white opacity-40 fw-500' title='gotbootstrap.com' target='_blank'>www.probasegroup.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <script src="<%= Routes.static_path(@conn, "/js/jquery.isotope.min.js") %>"></script>
+            <script src="<%= Routes.static_path(@conn, "/js/jquery.prettyPhoto.js") %>"></script>
+            <script src="<%= Routes.static_path(@conn, "/js/jquery-1.11.2.min.js") %>"></script>
+            <script src="<%= Routes.static_path(@conn, "/js/jquery.js") %>"></script>
+            <script src="<%= Routes.static_path(@conn, "/js/app.bundle.js") %>"></script>
+            <script src="<%= Routes.static_path(@conn, "/js/vendors.bundle.js") %>"></script>
+            <script>
+            $("#js-login-btn").click(function(event)
+            {
+
+                // Fetch form to apply custom Bootstrap validation
+                var form = $("#js-login")
+
+                if (form[0].checkValidity() === false)
+                {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.addClass('was-validated');
+                // Perform ajax submit here...
+            });
+
+        </script>
+    </body>
+</html>

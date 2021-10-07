@@ -1,0 +1,344 @@
+<main id="js-page-content" role="main" class="page-content">
+	<div class="row">
+		<div class="col-md-1"></div>
+
+		<div class="col-md-10">
+		    <!--------- Flash -->
+		    <div class="row">
+		        <div class="col-md-12 col-lg-offset-2">
+		            <div class="form-group">
+		                <%= if get_flash(@conn, :info) do %>
+		                    <div class="alert alert-info alert-styled-left">
+		                    <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+		                    <%= get_flash(@conn, :info) %>
+		                    </div>
+		                <% end %>
+		                <%= if get_flash(@conn, :error) do %>
+		                    <div class="alert alert-danger alert-styled-left">
+		                    <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+		                    Opps! <%= get_flash(@conn, :error) %>
+		                    </div>
+		                <% end %>
+		            </div>
+		        </div>
+		    </div>
+
+		    <!---------------------------------------------------------------- Header -->
+		    <ol class="breadcrumb page-breadcrumb">
+		        <li class="position-absolute pos-top pos-left d-none d-sm-block">
+		            <span class="js-get-date"></span>
+
+					<div class="container">
+						<img width="50" src="<%= Echipatala.LogoUploader.url({@institution_details.logo, @institution_details})%>">
+					</div>
+
+					<table class="table table-clean">
+						<tbody>
+						<tr>
+							<th>Institution Type:  <%= @institution_details.institution_type %></th>
+						</tr>
+						<tr>
+							<th>Registered Health Personnel: </th>
+						</tr>
+						</tbody>
+	            	</table>
+
+                    <a href="<%= Routes.institution_path(@conn, :institution_management)%>" class="btn btn-sm btn-pills waves-effect waves-themed btn-info">
+                       <i class="fal fa-reply"></i> Back
+                    </a>
+
+                    <a href="#" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;">
+                       <i class="fa fa-area-chart"></i> Report Center
+                    </a>
+
+                    <a href="#" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;" data-toggle="modal" data-target="#add-user">
+                       <i class="fal fa-user-md"></i>
+                        Add user
+                    </a>
+		        </li>
+
+		        <li class="position-absolute pos-top pos-right d-none d-sm-block">
+		            <h1 class="subheader-title">
+		                <i class='subheader-icon fal fa-hospital'></i> <strong style="text-transform: uppercase;"> <%= @institution_details.name %> </strong>
+		                <small>
+		                	<p>
+		                		<i class="fal fa-phone"></i>
+		                		<%= @institution_details.tel %>
+		                	</p>
+
+		                	<p>
+		                		<i class="fal fa-envelope"></i>
+		                		<%= @institution_details.email %>
+		                	</p>
+
+		                	<p>
+		                		<i class="fal fa-map-pin"></i>
+		                		<%= @institution_details.address %>
+		                	</p>
+		                </small>
+		            </h1>
+		        </li>
+		    </ol>
+
+			<!---------------------------------------------------------------- Main Content -->
+			<div class="container-fluid" style="margin-top: 15em;">
+
+                <div id="panel-6" class="panel">
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tab-rhp" role="tab">Registered Health Personnels</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab-eid" role="tab">Edit Institution Details</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content p-3">
+                                <!-- Registered Users-->
+                                <div class="tab-pane fade show active" id="tab-rhp" role="tabpanel" aria-labelledby="tab-rhp">
+                                    <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                                        <thead class="p-3 bg-info-900 rounded overflow-hidden position-relative text-white mb-g">
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Gender</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%= for staff_details <-@staff_details do %>
+                                                <tr>
+                                                    <td><%= staff_details.username %></td>
+                                                    <td><%= staff_details.phone %></td>
+                                                    <td><%= staff_details.email %></td>
+                                                    <td><%= staff_details.gender %></td>
+                                                    <td>
+                                                    <button class="btn bg-fusion-100 waves-effect waves-themed btn-xs" data-toggle="dropdown">Options</button>
+                                                    <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
+                                                        <a class="dropdown-item text-info"
+                                                            data-toggle="modal"
+                                                            data-target="#edit-staff-details"
+                                                            data-id="<%= staff_details.id %>"
+                                                            data-name="<%= staff_details.name %>"
+                                                            data-username="<%= staff_details.username %>"
+                                                            data-phone="<%= staff_details.phone %>"
+                                                            data-email="<%= staff_details.email %>"
+                                                            data-gender="<%= staff_details.gender %>"
+                                                            data-institution_id="<%= staff_details.institution_id %>"
+                                                            >
+                                                            <i class="fal fa-edit"></i>
+                                                            Edit
+                                                        </a>
+
+                                                        <a class="dropdown-item text-info"
+                                                            data-toggle="modal"
+                                                            data-target="#staff-details"
+                                                            data-id="<%= staff_details.id %>"
+                                                            data-name="<%= staff_details.name %>"
+                                                            data-username="<%= staff_details.username %>"
+                                                            data-phone="<%= staff_details.phone %>"
+                                                            data-email="<%= staff_details.email %>"
+                                                            data-gender="<%= staff_details.gender %>"
+                                                            data-inserted_at="<%= staff_details.inserted_at %>"
+                                                            >
+                                                            <i class="fal fa-info"></i>
+                                                            Details
+                                                        </a>
+
+                                                        <a class="dropdown-item text-info"
+                                                            data-toggle="modal"
+                                                            data-target="#deactivate-student"
+                                                            data-id="<%= staff_details.id %>"
+                                                            data-institution_id="<%= staff_details.institution_id %>"
+                                                            >
+                                                            <i class="fal fa-trash"></i>
+                                                            Deactivate
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <!-- Edit Institution Details-->
+                                <div class="tab-pane fade" id="tab-eid" role="tabpanel" aria-labelledby="tab-eid">
+                                    <form action="<%= Routes.institution_path(@conn, :update_institution_details)%>" method="POST" enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Name</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fal fa-book"></i></span>
+                                                        </div>
+                                                        <input type="text" name="name" value="<%= @institution_details.name%>" class="form-control form-control-md">
+                                                        <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                                                        <input type="hidden" name="id" value="<%= @institution_details.id%>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">Tel</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fal fa-phone"></i></span>
+                                                        </div>
+                                                        <input type="text" name="tel" value="<%= @institution_details.tel%>" class="form-control form-control-md">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">Address</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fal fa-building"></i></span>
+                                                        </div>
+                                                        <input type="text" name="postal" value="<%= @institution_details.address%>" class="form-control form-control-md">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="form-label">Institution Type</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fal fa-building"></i></span>
+                                                        </div>
+                                                        <select class="custom-select form-control-sm" name="institution_type">
+                                                            <option value selected disabled>Select Institution Type</option>
+                                                                <option value="College">College</option>
+                                                                <option value="University">University</option>
+                                                                <option value="Vocational Training Center">Vocational Training Center</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Email</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fal fa-envelope"></i></span>
+                                                        </div>
+                                                        <input type="text" name="email" value="<%= @institution_details.email%>" class="form-control form-control-md">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="form-label">Logo</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fal fa-music"></i></span>
+                                                        </div>
+                                                        <input type="file" name="logo" class="form-control form-control-md">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <br />
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn bg-info-600">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+			</div>
+		</div>
+
+		<div class="col-md-1"></div>
+	</div>
+</main>
+
+<!-- Add user modal -->
+<div class="modal fade" id="add-user" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Staff to Institution</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        Close window <i class="fal fa-times"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <form action="<%= Routes.user_path(@conn, :create_institution_user)%>" method="POST">
+              
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label" for="username">Name</label>
+                            <input type="toolbarExtraButtons" name="name" class="form-control form-control-md" placeholder="Name" required>
+                            <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                            <input type="hidden" name="user_type" value="2">
+                            <input type="hidden" name="creator_id" value="<%= @conn.assigns.user.id %>">
+                            <input type="hidden" name="status" value="1">
+                            <input type="hidden" name="auto_password" value="Y">
+                            <input type="hidden" name="institution_id" value="<%= @institution_details.id %>">
+                            <div class="help-block">Enter staff name.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="text" name="phone" class="form-control form-control-md" placeholder="Phone" required>
+                            <div class="help-block">Enter staff phone number.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">User Role</label>
+                            <select class="custom-select form-control-sm" name="user_role" require>
+                                <option value selected disabled>Select Staff User Role</option>
+                                <option value="Staff">Staff</option>
+                            </select>
+                            <div class="help-block">Select staff user role.</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control form-control-md" placeholder="Enter username" required>
+                            <div class="help-block">Enter staff username.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="text" name="email" class="form-control form-control-md" placeholder="Email Address" required>
+                            <div class="help-block">Enter staff staff email address.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Gender</label>
+                            <select class="custom-select form-control-sm" name="gender" require>
+                                <option value selected disabled>Select Staff Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <div class="help-block">Select staff gender.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-info">Create</button>
+                </div>
+              </form>
+            </div>
+
+        </div>
+    </div>
+</div>
