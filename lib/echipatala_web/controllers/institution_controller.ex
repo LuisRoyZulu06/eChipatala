@@ -2,6 +2,8 @@ defmodule EchipatalaWeb.InstitutionController do
   use EchipatalaWeb, :controller
   import Ecto.Query, warn: false
   alias Echipatala.{Logs, Repo, Logs.UserLogs, Auth}
+  alias Echipatala.Accounts
+  alias Echipatala.Accounts.User
   alias Echipatala.Emails.Email
   alias Echipatala.Institutions
   alias Echipatala.Institutions.InstitutionDetails
@@ -37,7 +39,9 @@ defmodule EchipatalaWeb.InstitutionController do
 
         conn
 
-      {:error, _} ->
+      {:error, whatsup} ->
+        IO.inspect "======Hi Hi Hi Hi========"
+        IO.inspect whatsup
         conn
         |> put_flash(:error, "Failed to create Institution.")
         |> redirect(to: Routes.institution_path(conn, :institution_management))
@@ -45,10 +49,9 @@ defmodule EchipatalaWeb.InstitutionController do
   end
 
   def inst_details(conn, %{"id" => id}) do
-   #  institution = Accounts.get_user!(id);
-   #  institution_details = Institutions.get_all_institution_details(id)
-   institution_details = Institutions.get_institution_details!(id)
-   render(conn, "inst_details.html", institution_details: institution_details)
+    staff_details = Accounts.get_user_institution(id)
+    institution_details = Institutions.get_institution_details!(id)
+    render(conn, "inst_details.html", staff_details: staff_details, institution_details: institution_details)
   end
 
   def update_institution_details(conn, %{"id" => id} = params) do

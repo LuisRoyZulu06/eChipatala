@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>
+          Echipatala
+      </title>
+      <meta name="description" content="Basic">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+      <!-- Call App Mode on ios devices -->
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <!-- Remove Tap Highlight on Windows Phone IE -->
+      <meta name="msapplication-tap-highlight" content="no">
+
+      <!-- base css -->
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/vendors.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/app.bundle.css") %>">
+
+
+      <!-- Place favicon.ico in the root directory -->
+      <link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/img/favicon/apple-touch-icon.png") %>" />
+      <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/favicon-32x32.png") %>" />
+      <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" />
+      <link rel="mask-icon" color="#5bbad5" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" color="#5bbad5"/>
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/notifications/sweetalert2/sweetalert2.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/datagrid/datatables/datatables.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/page-invoice.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/default.css") %>" />
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/select2/select2.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/fullcalendar/fullcalendar.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/reactions/reactions.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/jqvmap/jqvmap.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/smartwizard/smartwizard.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/page-invoice.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/statistics/chartjs/chartjs.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/select2/select2.bundle.css") %>">
+
+      <style>
+          .dataTables_empty {
+              color: #fd3995;
+              font-size: 14px;
+              padding-top: 15px !important;
+              padding-bottom: 15px !important;
+          },
+          /*Loader*/
+          #loader {
+              display: none;
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              width: 100%;
+              background: #fff url(/images/loading.gif) no-repeat center center;
+              opacity: 0.8;
+              cursor: 'wait';
+              z-index: 10000;
+              /* background: rgba(0,0,0,0.75)*/
+          }
+      </style>
+  </head>
+
+  <body>
+    <main role="main">
+      <div class="page-wrapper">
+          <div class="page-inner">
+              
+
+              <div class="page-content-wrapper">
+                  <header class="page-header" role="banner">
+                      <div class="page-logo">
+                          <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
+                              <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" alt="eChipatalaAdmin WebApp" aria-roledescription="logo">
+                              <span class="page-logo-text mr-1">Echipatala</span>
+                              <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
+                              <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-info-300"></i>
+                          </a>
+                      </div>
+                      <div class="hidden-lg-up">
+                          <a href="#" class="header-btn btn press-scale-down" data-action="toggle" data-class="mobile-nav-on">
+                              <i class="ni ni-menu"></i>
+                          </a>
+                      </div>
+
+                      <div class="ml-auto d-flex">
+                          <!-- /Configurations-->
+                          <div>
+                              <a href="#" data-toggle="dropdown" title="Echipatala User" class="header-icon d-flex align-items-center justify-content-center ml-2">
+                                  <i class="fal fa-cog"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-animated dropdown-lg">
+                                  <div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
+                                      <div class="d-flex flex-row align-items-center mt-1 mb-1 color-white">
+                                          <span class="mr-2">
+                                              <i class="fal fa-cog"></i>
+                                          </span>
+                                           <div class="info-card-text">
+                                              System Configurations
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="dropdown-divider m-0"></div>
+                                  <div class="dropdown-divider m-0"></div>
+
+                                  <a class="dropdown-item fw-500 pt-3 pb-3" href="#">
+                                      <span data-i18n="drpdwn.page-change-password">
+                                        <i class="fal fa-lock"></i>
+                                        Change Password
+                                      </span>
+                                  </a>
+                              </div>
+                          </div>
+
+                          <!-- /Profile dropdown-->
+                          <div>
+                              <a href="#" data-toggle="dropdown" title="Echipatala User" class="header-icon d-flex align-items-center justify-content-center ml-2">
+                                  <img class="profile-image rounded-circle" alt="Echipatala User" src="<%= Routes.static_path(@conn, "/images/avatar/1.png") %>">
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-animated dropdown-lg">
+                                  <div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
+                                      <div class="d-flex flex-row align-items-center mt-1 mb-1 color-white">
+                                          <span class="mr-2">
+                                              <img class="profile-image rounded-circle" alt="Proxy User" src="<%= Routes.static_path(@conn, "/images/avatar/1.png") %>">
+                                          </span>
+                                           <div class="info-card-text">
+                                              <%= "#{(@conn.assigns.user.name)}"%>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="dropdown-divider m-0"></div>
+                                  <div class="dropdown-divider m-0"></div>
+
+                                  <a href="<%= Routes.user_path(@conn, :user_profile)%>" class="dropdown-item fw-500 pt-3 pb-3" href="#">
+                                      <span data-i18n="drpdwn.page-change-password">
+                                        <i class="fal fa-user"></i>
+                                        My Profile
+                                      </span>
+                                  </a>
+                                  <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.session_path(@conn, :signout)%>">
+                                      <span data-i18n="drpdwn.page-change-password">
+                                        <i class="fal fa-sign-out"></i>
+                                        Logout
+                                      </span>
+                                  </a>
+                              </div>
+                          </div>
+
+                      </div>
+                  </header>
+
+
+                  <!-- / Main Content-->
+                  <main id="js-page-content" role="main" class="page-content">
+                      <%= render @view_module, @view_template, assigns %>
+                  </main>
+
+
+                  <div class="page-content-overlay" data-action="toggle" data-class="mobile-nav-on"></div>
+
+                  <footer class="page-footer" role="contentinfo">
+                      <div class="d-flex align-items-right flex-1 text-muted">
+                          <span class="hidden-md-down fw-700"><%= Timex.today.year %> © Echipatala
+                          </span>
+                      </div>
+                  </footer>
+
+                  <div id="loader"></div>
+
+              </div>
+          </div>
+      </div>
+
+      <!-- /Stick on menu -->
+      <nav class="shortcut-menu d-none d-sm-block">
+          <input type="checkbox" class="menu-open" name="menu-open" id="menu_open" />
+          <label for="menu_open" class="menu-open-button ">
+              <span class="app-shortcut-icon d-block"></span>
+          </label>
+          <a href="#" class="menu-item btn" data-placement="left" title="STATISTICS">
+              <i class="fal fa-chart-area"></i>
+          </a>
+
+
+          <a href="#" class="menu-item btn" data-placement="left" title="SCHOOL">
+              <i class="fal fa-building"></i>
+          </a>
+
+          <a href="#" class="menu-item btn" data-placement="left" title="DOMT">
+              <i class="fal fa-file"></i>
+          </a>
+
+          <a href="#" class="menu-item btn" data-placement="left" title="ASYCUDA">
+            <i class="fal fa-globe"></i>
+          </a>
+
+          <a href="#" class="menu-item btn" data-placement="left" title="HOME">
+              <i class="fal fa-home"></i>
+          </a>
+      </nav>
+
+
+      <div class="modal fade modal-backdrop-transparent" id="modal-shortcut" tabindex="-1" role="dialog" aria-labelledby="modal-shortcut" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-top modal-transparent" role="document">
+              <div class="modal-content">
+                  <div class="modal-body">
+                      <ul class="app-list w-auto h-auto p-0 text-left">
+                          <li>
+                              <a href="#" class="app-list-item text-white border-0 m-0">
+                                  <div class="icon-stack">
+                                      <i class="base base-7 icon-stack-3x opacity-100 color-warning-500 "></i>
+                                      <i class="base base-7 icon-stack-2x opacity-100 color-warning-300 "></i>
+                                      <i class="fal fa-home icon-stack-1x opacity-100 color-white"></i>
+                                  </div>
+                                  <span class="app-list-name">
+                                      Dashboard
+                                  </span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </main>
+
+    <!-------------------------------------------------------------------------CoreScripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.3.3/umd/popper.min.js"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/vendors.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/app.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/miscellaneous/fullcalendar/fullcalendar.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/datagrid/datatables/datatables.export.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/datagrid/datatables/datatables.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/formplugins/select2/select2.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/notifications/sweetalert2/sweetalert2.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/default.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/dependency/moment/moment.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/formplugins/smartwizard/smartwizard.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/chartjs/chartjs.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/easypiechart/easypiechart.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/sparkline/sparkline.bundle.js") %>"></script>
+
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/peity/peity.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/flot/flot.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/easypiechart/easypiechart.bundle.js") %>"></script>
+
+    <!-------------------------------------------------------------------------Datatables -->
+    <script>
+      $(document).ready(function()
+        {
+            $('#default').dataTable(
+            {
+                responsive: true
+            });
+
+            $('.js-thead-colors a').on('click', function()
+            {
+                var theadColor = $(this).attr("data-bg");
+                console.log(theadColor);
+                $('#dt-basic-example thead').removeClassPrefix('bg-').addClass(theadColor);
+            });
+
+            $('.js-tbody-colors a').on('click', function()
+            {
+                var theadColor = $(this).attr("data-bg");
+                console.log(theadColor);
+                $('#dt-basic-example').removeClassPrefix('bg-').addClass(theadColor);
+            });
+
+        });
+
+
+        $(document).ready(function()
+        {
+
+            // default datatable
+            $('#dt-basic-example').dataTable(
+            {
+                responsive: true,
+                lengthChange: false,
+                dom:
+                    /*  --- Layout Structure
+                        --- Options
+                        l - length changing input control
+                        f - filtering input
+                        t - The table!
+                        i - Table information summary
+                        p - pagination control
+                        r - processing display element
+                        B - buttons
+                        R - ColReorder
+                        S - Select
+
+                        --- Markup
+                        < and >       - div element
+                        <"class" and >    - div with a class
+                        <"#id" and >    - div with an ID
+                        <"#id.class" and >  - div with an ID and a class
+
+                        --- Further reading
+                        https://datatables.net/reference/option/dom
+                        --------------------------------------
+                        */
+                    "<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'lB>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                buttons: [
+                    /*{
+                        extend:    'colvis',
+                        text:      'Column Visibility',
+                        titleAttr: 'Col visibility',
+                        className: 'mr-sm-3'
+                    },*/
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        titleAttr: 'Generate PDF',
+                        className: 'btn-outline-danger btn-sm mr-1'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        titleAttr: 'Generate Excel',
+                        className: 'btn-outline-success btn-sm mr-1'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        text: 'CSV',
+                        titleAttr: 'Generate CSV',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'copyHtml5',
+                        text: 'Copy',
+                        titleAttr: 'Copy to clipboard',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        titleAttr: 'Print Table',
+                        className: 'btn-outline-primary btn-sm'
+                    }
+                ]
+            });
+
+            // Institutions datatable
+            $('#dt-institutions').dataTable(
+            {
+                responsive: true,
+                lengthChange: false,
+                dom:
+                    /*  --- Layout Structure
+                        --- Options
+                        l - length changing input control
+                        f - filtering input
+                        t - The table!
+                        i - Table information summary
+                        p - pagination control
+                        r - processing display element
+                        B - buttons
+                        R - ColReorder
+                        S - Select
+
+                        --- Markup
+                        < and >       - div element
+                        <"class" and >    - div with a class
+                        <"#id" and >    - div with an ID
+                        <"#id.class" and >  - div with an ID and a class
+
+                        --- Further reading
+                        https://datatables.net/reference/option/dom
+                        --------------------------------------
+                        */
+                    "<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'lB>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                buttons: [
+                    /*{
+                        extend:    'colvis',
+                        text:      'Column Visibility',
+                        titleAttr: 'Col visibility',
+                        className: 'mr-sm-3'
+                    },*/
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        titleAttr: 'Generate PDF',
+                        className: 'btn-outline-danger btn-sm mr-1'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        titleAttr: 'Generate Excel',
+                        className: 'btn-outline-success btn-sm mr-1'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        text: 'CSV',
+                        titleAttr: 'Generate CSV',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'copyHtml5',
+                        text: 'Copy',
+                        titleAttr: 'Copy to clipboard',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        titleAttr: 'Print Table',
+                        className: 'btn-outline-primary btn-sm'
+                    }
+                ]
+            });
+
+            // tpin mappings datatable
+            $('#dt-tpin').dataTable(
+            {
+                responsive: true,
+                lengthChange: false,
+                dom:
+                    /*  --- Layout Structure
+                        --- Options
+                        l - length changing input control
+                        f - filtering input
+                        t - The table!
+                        i - Table information summary
+                        p - pagination control
+                        r - processing display element
+                        B - buttons
+                        R - ColReorder
+                        S - Select
+
+                        --- Markup
+                        < and >       - div element
+                        <"class" and >    - div with a class
+                        <"#id" and >    - div with an ID
+                        <"#id.class" and >  - div with an ID and a class
+
+                        --- Further reading
+                        https://datatables.net/reference/option/dom
+                        --------------------------------------
+                        */
+                    "<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'lB>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                buttons: [
+                    /*{
+                        extend:    'colvis',
+                        text:      'Column Visibility',
+                        titleAttr: 'Col visibility',
+                        className: 'mr-sm-3'
+                    },*/
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        titleAttr: 'Generate PDF',
+                        className: 'btn-outline-danger btn-sm mr-1'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        titleAttr: 'Generate Excel',
+                        className: 'btn-outline-success btn-sm mr-1'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        text: 'CSV',
+                        titleAttr: 'Generate CSV',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'copyHtml5',
+                        text: 'Copy',
+                        titleAttr: 'Copy to clipboard',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        titleAttr: 'Print Table',
+                        className: 'btn-outline-primary btn-sm'
+                    }
+                ]
+            });
+
+        });
+    </script>
+
+    <!-----------------------------------------------------------------------------Graph -->
+    <script>
+        /* line chart */
+        var lineChart = function()
+        {
+            var config = {
+                type: 'line',
+                data:
+                {
+                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    datasets: [
+                    {
+                        label: "Success",
+                        borderColor: myapp_get_color.success_500,
+                        pointBackgroundColor: myapp_get_color.success_700,
+                        pointBorderColor: 'rgba(0, 0, 0, 0)',
+                        pointBorderWidth: 1,
+                        borderWidth: 1,
+                        pointRadius: 3,
+                        pointHoverRadius: 4,
+                        data: [
+                            23,
+                            75,
+                            60, 48, 9,
+                            26,
+                            45
+                        ],
+                        fill: false
+                    }]
+                },
+                options:
+                {
+                    responsive: true,
+                    title:
+                    {
+                        display: false,
+                        text: 'Line Chart'
+                    },
+                    tooltips:
+                    {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover:
+                    {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales:
+                    {
+                        xAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: '6 months forecast'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }],
+                        yAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: 'Profit margin (approx)'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }]
+                    }
+                }
+            };
+            new Chart($("#lineChart > canvas").get(0).getContext("2d"), config);
+        }
+        /* line chart -- end */
+
+        /* area chart */
+        var areaChart = function()
+        {
+            var config = {
+                type: 'line',
+                data:
+                {
+                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    datasets: [
+                    {
+                        label: "Primary",
+                        backgroundColor: 'rgba(136,106,181, 0.2)',
+                        borderColor: myapp_get_color.primary_500,
+                        pointBackgroundColor: myapp_get_color.primary_700,
+                        pointBorderColor: 'rgba(0, 0, 0, 0)',
+                        pointBorderWidth: 1,
+                        borderWidth: 1,
+                        pointRadius: 3,
+                        pointHoverRadius: 4,
+                        data: [
+                            45,
+                            75,
+                            26,
+                            23,
+                            60, 48, 9
+                        ],
+                        fill: true
+                    },
+                    {
+                        label: "Success",
+                        backgroundColor: 'rgba(29,201,183, 0.2)',
+                        borderColor: myapp_get_color.success_500,
+                        pointBackgroundColor: myapp_get_color.success_700,
+                        pointBorderColor: 'rgba(0, 0, 0, 0)',
+                        pointBorderWidth: 1,
+                        borderWidth: 1,
+                        pointRadius: 3,
+                        pointHoverRadius: 4,
+                        data: [-10,
+                            16,
+                            72,
+                            93,
+                            29, 74,
+                            64
+                        ],
+                        fill: true
+                    }]
+                },
+                options:
+                {
+                    responsive: true,
+                    title:
+                    {
+                        display: false,
+                        text: 'Area Chart'
+                    },
+                    tooltips:
+                    {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover:
+                    {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales:
+                    {
+                        xAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: '6 months forecast'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }],
+                        yAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: 'Profit margin (approx)'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }]
+                    }
+                }
+            };
+            new Chart($("#areaChart > canvas").get(0).getContext("2d"), config);
+        }
+        /* area chart -- end */
+
+        /* horizontal bar chart */
+        var horizontalBarChart = function()
+        {
+            var horizontalBarChart = {
+                labels: ["January", "February", "March", "April"],
+                datasets: [
+                {
+                    label: "Red",
+                    backgroundColor: myapp_get_color.success_300,
+                    borderColor: myapp_get_color.success_500,
+                    borderWidth: 1,
+                    data: [
+                        45,
+                        60, -28, -9
+                    ]
+                },
+                {
+                    label: "Blue",
+                    backgroundColor: myapp_get_color.primary_300,
+                    borderColor: myapp_get_color.primary_500,
+                    borderWidth: 1,
+                    data: [-10,
+                        29, -34,
+                        64
+                    ]
+                }]
+
+            };
+            var config = {
+                type: 'horizontalBar',
+                data: horizontalBarChart,
+                options:
+                {
+                    responsive: true,
+                    legend:
+                    {
+                        position: 'top',
+                    },
+                    title:
+                    {
+                        display: false,
+                        text: 'Horizontal Bar Chart'
+                    },
+                    scales:
+                    {
+                        xAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: 'Profit margin (approx)'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }],
+                        yAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: 'Quarterly forecast'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }]
+                    }
+                }
+            }
+            new Chart($("#horizontalBarChart > canvas").get(0).getContext("2d"), config);
+        }
+        /* horizontal bar chart -- end */
+
+        /* bar chart */
+        var barChart = function()
+        {
+            var barChartData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                {
+                    label: "Red",
+                    backgroundColor: myapp_get_color.success_300,
+                    borderColor: myapp_get_color.success_500,
+                    borderWidth: 1,
+                    data: [
+                        45,
+                        75,
+                        26,
+                        23,
+                        60, -48, -9
+                    ]
+                },
+                {
+                    label: "Blue",
+                    backgroundColor: myapp_get_color.primary_300,
+                    borderColor: myapp_get_color.primary_500,
+                    borderWidth: 1,
+                    data: [-10,
+                        16,
+                        72,
+                        93,
+                        29, -74,
+                        64
+                    ]
+                }]
+
+            };
+            var config = {
+                type: 'bar',
+                data: barChartData,
+                options:
+                {
+                    responsive: true,
+                    legend:
+                    {
+                        position: 'top',
+                    },
+                    title:
+                    {
+                        display: false,
+                        text: 'Bar Chart'
+                    },
+                    scales:
+                    {
+                        xAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: '6 months forecast'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }],
+                        yAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: 'Profit margin (approx)'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }]
+                    }
+                }
+            }
+            new Chart($("#barChart > canvas").get(0).getContext("2d"), config);
+        }
+        /* bar chart -- end */
+
+        /* bar stacked */
+        var barStacked = function()
+        {
+            var barStackedData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                {
+                    label: "Red",
+                    backgroundColor: myapp_get_color.primary_300,
+                    borderColor: myapp_get_color.primary_500,
+                    borderWidth: 1,
+                    data: [
+                        45,
+                        75,
+                        26,
+                        23,
+                        60, -48, -9
+                    ]
+                },
+                {
+                    label: "Blue",
+                    backgroundColor: myapp_get_color.success_300,
+                    borderColor: myapp_get_color.success_500,
+                    borderWidth: 1,
+                    data: [-10,
+                        16,
+                        72,
+                        93,
+                        29, -74,
+                        64
+                    ]
+                }]
+
+            };
+            var config = {
+                type: 'bar',
+                data: barStackedData,
+                options:
+                {
+                    legend:
+                    {
+                        display: false,
+                        labels:
+                        {
+                            display: false
+                        }
+                    },
+                    scales:
+                    {
+                        yAxes: [
+                        {
+                            stacked: true,
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }],
+                        xAxes: [
+                        {
+                            stacked: true,
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }]
+                    }
+                }
+            }
+            new Chart($("#barStacked > canvas").get(0).getContext("2d"), config);
+        }
+        /* bar stacked -- end */
+
+        /* bar horizontal stacked */
+        var barHorizontalStacked = function()
+        {
+            var barHorizontalStackedData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                {
+                    label: "Red",
+                    backgroundColor: myapp_get_color.primary_300,
+                    borderColor: myapp_get_color.primary_500,
+                    borderWidth: 1,
+                    data: [
+                        45,
+                        75,
+                        26,
+                        23,
+                        60, -48, -9
+                    ]
+                },
+                {
+                    label: "Blue",
+                    backgroundColor: myapp_get_color.success_300,
+                    borderColor: myapp_get_color.success_500,
+                    borderWidth: 1,
+                    data: [-10,
+                        16,
+                        72,
+                        93,
+                        29, -74,
+                        64
+                    ]
+                }]
+
+            };
+            var config = {
+                type: 'horizontalBar',
+                data: barHorizontalStackedData,
+                options:
+                {
+                    legend:
+                    {
+                        display: false,
+                        labels:
+                        {
+                            display: false
+                        }
+                    },
+                    scales:
+                    {
+                        yAxes: [
+                        {
+                            stacked: true,
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }],
+                        xAxes: [
+                        {
+                            stacked: true,
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }]
+                    }
+                }
+            }
+            new Chart($("#barHorizontalStacked > canvas").get(0).getContext("2d"), config);
+        }
+        /* bar horizontal stacked -- end */
+
+        /* grid color */
+        var gridColor = function()
+        {
+            var config = {
+                type: 'line',
+                data:
+                {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [
+                    {
+                        data: [10, 24, 20, 25, 35, 50],
+                        backgroundColor: 'rgba(0,0,0, 0.07)',
+                        borderColor: myapp_get_color.fusion_300,
+                        borderWidth: 1,
+                        fill: true
+                    },
+                    {
+                        data: [20, 30, 28, 33, 45, 65],
+                        backgroundColor: 'rgba(0,0,0, 0.03)',
+                        borderColor: myapp_get_color.fusion_100,
+                        borderWidth: 1,
+                        fill: true
+                    }]
+                },
+                options:
+                {
+                    legend:
+                    {
+                        display: false,
+                        labels:
+                        {
+                            display: false
+                        }
+                    },
+                    scales:
+                    {
+                        yAxes: [
+                        {
+                            gridLines:
+                            {
+                                drawBorder: false,
+                                color: ['', myapp_get_color.danger_500, myapp_get_color.success_500]
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11,
+                                max: 80
+                            }
+                        }],
+                        xAxes: [
+                        {
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }]
+                    }
+                }
+            }
+            new Chart($("#gridColor > canvas").get(0).getContext("2d"), config);
+        }
+        /* grid color -- end */
+
+        /* bar & line combine */
+        var barlineCombine = function()
+        {
+            var barlineCombineData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                {
+                    type: 'line',
+                    label: 'Dataset 1',
+                    borderColor: myapp_get_color.danger_300,
+                    pointBackgroundColor: myapp_get_color.danger_500,
+                    pointBorderColor: myapp_get_color.danger_500,
+                    pointBorderWidth: 1,
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 5,
+                    fill: false,
+                    data: [
+                        -10,
+                        16,
+                        72,
+                        93,
+                        29,
+                        -74,
+                        64
+                    ]
+                },
+                {
+                    type: 'bar',
+                    label: 'Dataset 2',
+                    backgroundColor: myapp_get_color.primary_300,
+                    borderColor: myapp_get_color.primary_500,
+                    data: [
+                        45,
+                        75,
+                        26,
+                        23,
+                        60,
+                        -48,
+                        -9
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    type: 'bar',
+                    label: 'Dataset 3',
+                    backgroundColor: myapp_get_color.success_300,
+                    borderColor: myapp_get_color.success_500,
+                    data: [
+                        -10,
+                        16,
+                        72,
+                        93,
+                        29,
+                        -74,
+                        64
+                    ],
+                    borderWidth: 1
+                }]
+
+            };
+            var config = {
+                type: 'bar',
+                data: barlineCombineData,
+                options:
+                {
+                    responsive: true,
+                    legend:
+                    {
+                        position: 'top',
+                    },
+                    title:
+                    {
+                        display: true,
+                        text: 'Chart.js Bar Chart'
+                    },
+                    scales:
+                    {
+                        xAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: '6 months forecast'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }],
+                        yAxes: [
+                        {
+                            display: true,
+                            scaleLabel:
+                            {
+                                display: false,
+                                labelString: 'Profit margin (approx)'
+                            },
+                            gridLines:
+                            {
+                                display: true,
+                                color: "#f2f2f2"
+                            },
+                            ticks:
+                            {
+                                beginAtZero: true,
+                                fontSize: 11
+                            }
+                        }]
+                    }
+                }
+            }
+            new Chart($("#barlineCombine > canvas").get(0).getContext("2d"), config);
+        }
+        /* bar & line combine -- end */
+
+        /* polar area */
+        var polarArea = function()
+        {
+            var config = {
+                type: 'polarArea',
+                data:
+                {
+                    datasets: [
+                    {
+                        data: [
+                            11,
+                            16,
+                            7,
+                            3,
+                            14
+                        ],
+                        backgroundColor: [
+                            myapp_get_color.primary_200,
+                            myapp_get_color.primary_400,
+                            myapp_get_color.success_100,
+                            myapp_get_color.success_400,
+                            myapp_get_color.success_600
+                        ],
+                        label: 'My dataset' // for legend
+                    }],
+                    labels: [
+                        "USA",
+                        "Germany",
+                        "Austalia",
+                        "Canada",
+                        "France"
+                    ]
+                },
+                options:
+                {
+                    responsive: true,
+                    legend:
+                    {
+                        display: true,
+                        position: 'bottom',
+                    }
+                }
+            };
+            new Chart($("#polarArea > canvas").get(0).getContext("2d"), config);
+        }
+        /* polar area -- end */
+
+        /* radar chart */
+        var radarChart = function()
+        {
+            var config = {
+                type: "radar",
+                data:
+                {
+                    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Partying", "Running"],
+                    datasets: [
+                    {
+                        label: "First",
+                        pointRadius: 4,
+                        borderDashOffset: 2,
+                        backgroundColor: "rgba(136,106,181, 0.2)",
+                        borderColor: "rgba(0,0,0,0)",
+                        pointBackgroundColor: myapp_get_color.primary_500,
+                        pointBorderColor: myapp_get_color.primary_500,
+                        pointHoverBackgroundColor: myapp_get_color.primary_500,
+                        pointHoverBorderColor: myapp_get_color.primary_500,
+                        data: [65, 59, 90, 81, 56, 55, 40]
+                    },
+                    {
+                        label: "Second",
+                        pointRadius: 4,
+                        borderDashOffset: 2,
+                        backgroundColor: "rgba(29,201,183, 0.2)",
+                        borderColor: "rgba(0,0,0,0)",
+                        pointBackgroundColor: myapp_get_color.success_500,
+                        pointBorderColor: myapp_get_color.success_500,
+                        pointHoverBackgroundColor: myapp_get_color.success_500,
+                        pointHoverBorderColor: myapp_get_color.success_500,
+                        data: [28, 48, 40, 19, 96, 27, 100]
+                    }]
+                },
+                options:
+                {
+                    responsive: true,
+                }
+            }
+
+            new Chart($("#radarChart > canvas").get(0).getContext("2d"), config);
+
+        }
+        /* radar chart -- end */
+
+        /* bubble chart */
+        var bubbleChart = function()
+        {
+            var config = {
+                type: 'bubble',
+                data:
+                {
+                    labels: "Africa",
+                    datasets: [
+                    {
+                        label: ["China"],
+                        backgroundColor: myapp_get_color.primary_300,
+                        borderColor: myapp_get_color.primary_500,
+                        data: [
+                        {
+                            x: 21269017,
+                            y: 5.245,
+                            r: 15
+                        }]
+                    },
+                    {
+                        label: ["Denmark"],
+                        backgroundColor: myapp_get_color.success_300,
+                        borderColor: myapp_get_color.success_500,
+                        data: [
+                        {
+                            x: 258702,
+                            y: 7.526,
+                            r: 10
+                        }]
+                    },
+                    {
+                        label: ["Germany"],
+                        backgroundColor: myapp_get_color.info_300,
+                        borderColor: myapp_get_color.info_500,
+                        data: [
+                        {
+                            x: 3979083,
+                            y: 6.994,
+                            r: 15
+                        }]
+                    },
+                    {
+                        label: ["Japan"],
+                        backgroundColor: myapp_get_color.danger_300,
+                        borderColor: myapp_get_color.danger_500,
+                        data: [
+                        {
+                            x: 4931877,
+                            y: 5.921,
+                            r: 15
+                        }]
+                    }]
+                },
+                options:
+                {
+                    title:
+                    {
+                        display: true,
+                        text: 'Predicted world population (millions) in 2050'
+                    },
+                    scales:
+                    {
+                        yAxes: [
+                        {
+                            scaleLabel:
+                            {
+                                display: true,
+                                labelString: "Happiness"
+                            }
+                        }],
+                        xAxes: [
+                        {
+                            scaleLabel:
+                            {
+                                display: true,
+                                labelString: "GDP (PPP)"
+                            }
+                        }]
+                    }
+                }
+            }
+            new Chart($("#bubbleChart > canvas").get(0).getContext("2d"), config);
+        }
+        /* bubble chart -- end*/
+
+        /* pie chart */
+        var pieChart = function()
+        {
+            var config = {
+                type: 'pie',
+                data:
+                {
+                    datasets: [
+                    {
+                        data: [
+                            11,
+                            16,
+                            7,
+                            3,
+                            14
+                        ],
+                        backgroundColor: [
+                            myapp_get_color.primary_200,
+                            myapp_get_color.primary_400,
+                            myapp_get_color.success_50,
+                            myapp_get_color.success_300,
+                            myapp_get_color.success_500
+                        ],
+                        label: 'My dataset' // for legend
+                    }],
+                    labels: [
+                        "USA",
+                        "Germany",
+                        "Austalia",
+                        "Canada",
+                        "France"
+                    ]
+                },
+                options:
+                {
+                    responsive: true,
+                    legend:
+                    {
+                        display: true,
+                        position: 'bottom',
+                    }
+                }
+            };
+            new Chart($("#pieChart > canvas").get(0).getContext("2d"), config);
+        }
+        /* pie chart -- end */
+
+        /* doughnut chart */
+        var doughnutChart = function()
+        {
+            var config = {
+                type: 'doughnut',
+                data:
+                {
+                    datasets: [
+                    {
+                        data: [
+                            11,
+                            16,
+                            7,
+                            3,
+                            14
+                        ],
+                        backgroundColor: [
+                            myapp_get_color.success_200,
+                            myapp_get_color.success_400,
+                            myapp_get_color.primary_50,
+                            myapp_get_color.primary_300,
+                            myapp_get_color.primary_500
+                        ],
+                        label: 'My dataset' // for legend
+
+
+                    }],
+                    labels: [
+                        "USA",
+                        "Germany",
+                        "Austalia",
+                        "Canada",
+                        "France"
+                    ]
+                },
+                options:
+                {
+                    responsive: true,
+                    legend:
+                    {
+                        display: true,
+                        position: 'bottom',
+                    }
+                }
+            };
+            new Chart($("#doughnutChart > canvas").get(0).getContext("2d"), config);
+        }
+        /* doughnut chart -- end */
+
+        /* initialize all charts */
+        $(document).ready(function()
+        {
+            lineChart();
+            areaChart();
+            horizontalBarChart();
+            barChart();
+            barStacked();
+            barHorizontalStacked();
+            bubbleChart();
+            barlineCombine();
+            polarArea();
+            radarChart();
+            pieChart();
+            doughnutChart();
+        });
+    </script>
+
+    <script type="text/javascript">
+      /* Activate smart panels */
+      $('#js-page-content').smartPanel();
+    </script>
+
+    <!---------------------------------------------------------------------------FormWizard -->
+    <script>
+        $(document).ready(function()
+        {
+
+            // Smart Wizard
+            $('#smartwizard').smartWizard(
+            {
+                selected: 0, // Initial selected step, 0 = first step
+                keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
+                autoAdjustHeight: false, // Automatically adjust content height
+                cycleSteps: false, // Allows to cycle the navigation of steps
+                backButtonSupport: true, // Enable the back button support
+                useURLhash: false, // Enable selection of the step based on url hash
+                showStepURLhash: false,
+                lang:
+                { // Language variables
+                    next: 'Next',
+                    previous: 'Previous'
+                },
+                toolbarSettings:
+                {
+                    toolbarPosition: 'bottom', // none, top, bottom, both
+                    toolbarButtonPosition: 'right', // left, right
+                    showNextButton: true, // show/hide a Next button
+                    showPreviousButton: true, // show/hide a Previous button
+                    /*toolbarExtraButtons: [
+            $('<button></button>').text('Finish')
+                          .addClass('btn btn-info')
+                          .on('click', function(){
+                        alert('Finsih button click');
+                          }),
+            $('<button></button>').text('Cancel')
+                          .addClass('btn btn-danger')
+                          .on('click', function(){
+                        alert('Cancel button click');
+                          })
+                      ]*/
+                },
+                anchorSettings:
+                {
+                    anchorClickable: true, // Enable/Disable anchor navigation
+                    enableAllAnchors: false, // Activates all anchors clickable all times
+                    markDoneStep: true, // add done css
+                    enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+                },
+                contentURL: null, // content url, Enables Ajax content loading. can set as data data-content-url on anchor
+                contentCache: true, //ajax content
+                disabledSteps: [], // Array Steps disabled
+                errorSteps: [], // Highlight step with errors
+                theme: 'default', //dots, default, circles
+                transitionEffect: 'slide', // Effect on navigation, none/slide/fade
+                transitionSpeed: '400'
+            });
+
+
+
+
+        });
+    </script>
+
+    <!---------------------------------------------------------------------------Select 2---->
+    <script>
+      $(document).ready(function()
+      {
+          $(function()
+          {
+              $('.select2').select2();
+
+              $(".select2-placeholder-multiple").select2(
+              {
+                  placeholder: "Select State"
+              });
+              $(".js-hide-search").select2(
+              {
+                  minimumResultsForSearch: 1 / 0
+              });
+              $(".js-max-length").select2(
+              {
+                  maximumSelectionLength: 2,
+                  placeholder: "Select maximum 2 items"
+              });
+              $(".select2-placeholder").select2(
+              {
+                  placeholder: "Select a state",
+                  allowClear: true
+              });
+
+
+
+              $(".js-select2-icons").select2(
+              {
+                  minimumResultsForSearch: 1 / 0,
+                  templateResult: icon,
+                  templateSelection: icon,
+                  escapeMarkup: function(elm)
+                  {
+                      return elm
+                  }
+              });
+
+              function icon(elm)
+              {
+                  elm.element;
+                  return elm.id ? "<i class='" + $(elm.element).data("icon") + " mr-2'></i>" + elm.text : elm.text
+              }
+
+              $(".js-data-example-ajax").select2(
+              {
+                  ajax:
+                  {
+                      url: "https://api.github.com/search/repositories",
+                      dataType: 'json',
+                      delay: 250,
+                      data: function(params)
+                      {
+                          return {
+                              q: params.term, // search term
+                              page: params.page
+                          };
+                      },
+                      processResults: function(data, params)
+                      {
+                          // parse the results into the format expected by Select2
+                          // since we are using custom formatting functions we do not need to
+                          // alter the remote JSON data, except to indicate that infinite
+                          // scrolling can be used
+                          params.page = params.page || 1;
+
+                          return {
+                              results: data.items,
+                              pagination:
+                              {
+                                  more: (params.page * 30) < data.total_count
+                              }
+                          };
+                      },
+                      cache: true
+                  },
+                  placeholder: 'Search for a repository',
+                  escapeMarkup: function(markup)
+                  {
+                      return markup;
+                  }, // let our custom formatter work
+                  minimumInputLength: 1,
+                  templateResult: formatRepo,
+                  templateSelection: formatRepoSelection
+              });
+
+              function formatRepo(repo)
+              {
+                  if (repo.loading)
+                  {
+                      return repo.text;
+                  }
+
+                  var markup = "<div class='select2-result-repository clearfix d-flex'>" +
+                      "<div class='select2-result-repository__avatar mr-2'><img src='" + repo.owner.avatar_url + "' class='width-2 height-2 mt-1 rounded' /></div>" +
+                      "<div class='select2-result-repository__meta'>" +
+                      "<div class='select2-result-repository__title fs-lg fw-500'>" + repo.full_name + "</div>";
+
+                  if (repo.description)
+                  {
+                      markup += "<div class='select2-result-repository__description fs-xs opacity-80 mb-1'>" + repo.description + "</div>";
+                  }
+
+                  markup += "<div class='select2-result-repository__statistics d-flex fs-sm'>" +
+                      "<div class='select2-result-repository__forks mr-2'><i class='fal fa-lightbulb'></i> " + repo.forks_count + " Forks</div>" +
+                      "<div class='select2-result-repository__stargazers mr-2'><i class='fal fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
+                      "<div class='select2-result-repository__watchers mr-2'><i class='fal fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
+                      "</div>" +
+                      "</div></div>";
+
+                  return markup;
+              }
+
+              function formatRepoSelection(repo)
+              {
+                  return repo.full_name || repo.text;
+              }
+
+          });
+      });
+    </script>
+  </body>
+</html>

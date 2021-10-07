@@ -24,7 +24,11 @@ defmodule EchipatalaWeb.Router do
 
   pipeline :app do
     plug(:put_layout, {EchipatalaWeb.LayoutView, :app})
-   end
+  end
+
+  pipeline :client do
+    plug(:put_layout, {EchipatalaWeb.LayoutView, :client})
+  end
 
   pipeline :no_layout do
     plug :put_layout, false
@@ -55,6 +59,8 @@ defmodule EchipatalaWeb.Router do
     get "/Dashboard", UserController, :dashboard
     get "/Profile", UserController, :user_profile
 
+    # ---------------------------User Management
+    post "/Create/User", UserController, :create_institution_user
 
     # ---------------------------Institution Management
     get "/Institution/Management", InstitutionController, :institution_management
@@ -62,6 +68,11 @@ defmodule EchipatalaWeb.Router do
     get "/Institution/Details", InstitutionController, :inst_details
     post "/Update/Institution/Details", InstitutionController, :update_institution_details
     get "/Institution/Statistics", InstitutionController, :institution_stats
+  end
+
+  scope "/", EchipatalaWeb do
+    pipe_through([:browser, :client])
+    get("/Client/Dashboard", ClientController, :index)
   end
 
   # Other scopes may use custom stacks.

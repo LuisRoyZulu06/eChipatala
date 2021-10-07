@@ -32,7 +32,7 @@
                     </small>
 
                     <div class="panel-toolbar"><br><br>
-                        <button type="button" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;" data-toggle="modal" data-target="#add-institution">
+                        <button type="button" class="btn btn-info btn-sm btn-pills waves-effect waves-themed" data-toggle="modal" data-target="#add-institution">
                             Register Institution
                         </button>
                     </div>
@@ -52,14 +52,9 @@
 
 
                         <div class="panel-container show">
-                        <div class="panel-hdr">
-                            <h2>
-                                Institutions on the system.
-                            </h2>
-                        </div>
                             <div class="panel-content">
                                 <!-- datatable start -->
-                                <table id="dt-institutions" class="table table-bordered table-hover table-striped w-100">
+                                <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
                                     <thead class="p-3 bg-fusion-100 rounded overflow-hidden position-relative text-white mb-g">
                                         <tr>
                                             <th>Institution Name</th>
@@ -77,7 +72,7 @@
                                             <td><%= inst.tel %></td>
                                             <td><%= inst.email %></td>
                                             <td>
-                                            <a href="<%= Routes.institution_path(@conn, :inst_details, id: inst.id)%>" class="btn btn-outline-secondary btn-sm btn-pills waves-effect waves-themed">
+                                            <a href="<%= Routes.institution_path(@conn, :inst_details, id: inst.id)%>" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;">
                                                 Details
                                             </a>
                                             </td>
@@ -118,6 +113,7 @@
                         <label class="form-label">Name</label>
                         <input type="text" name="name" class="form-control form-control-md" placeholder="Institution Name" required>
                         <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                        <input type="hidden" name="creator_id" value="<%= "#{(@conn.assigns.user.id)}"%>">
                         <div class="help-block">Enter institution name.</div>
                     </div>
 
@@ -131,11 +127,10 @@
                         <label class="form-label">Institution Type</label>
                         <select class="custom-select form-control-sm" name="institution_type" require>
                             <option value selected disabled>Select Institution Type</option>
-                            <option value="College">College</option>
-                            <option value="University">University</option>
-                            <option value="Vocational Training Center">Vocational Training Center</option>
+                            <option value="Hospital">Hospital</option>
+                            <option value="Clinic">Clinic</option>
                         </select>
-                        <div class="help-block">Enter street address of institution.</div>
+                        <div class="help-block">Select institution type.</div>
                     </div>
                   </div>
 

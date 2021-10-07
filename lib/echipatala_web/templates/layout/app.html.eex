@@ -130,7 +130,7 @@
                 <!-- /Profile dropdown-->
                 <div>
                   <a href="#" data-toggle="dropdown" title="eChipatala User" class="header-icon d-flex align-items-center justify-content-center ml-2">
-                    <img class="profile-image rounded-circle" alt="eChipatala User" src="<%= Routes.static_path(@conn, "/images/avatar/2.png") %>">
+                    <img class="profile-image rounded-circle" alt="eChipatala User" src="<%= Routes.static_path(@conn, "/images/avatar/1.png") %>">
                   </a>
 
                   <div class="dropdown-menu dropdown-menu-animated dropdown-lg">

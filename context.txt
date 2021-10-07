@@ -7,3 +7,6 @@ mix phx.gen.context Notifications Sms tbl_sms type mobile sms status msg_count d
 
 ---------------------------------------------Institution context
 mix phx.gen.context Institutions InstitutionDetails tbl_institutions name institution_type tel email address system_user_id creator_id
+
+---------------------------------------------Staff context
+mix phx.gen.context Staff StaffDetails

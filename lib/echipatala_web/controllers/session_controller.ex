@@ -48,7 +48,7 @@ defmodule EchipatalaWeb.SessionController do
                   conn
                   |> put_session(:current_user, user.id)
                   |> put_session(:session_timeout_at, session_timeout_at())
-                  |> redirect(to: Routes.student_path(conn, :index))
+                  |> redirect(to: Routes.client_path(conn, :index))
               end
 
               true ->

@@ -8,7 +8,6 @@ defmodule Echipatala.Repo.Migrations.CreateTblInstitutions do
       add :tel, :string
       add :email, :string
       add :address, :string
-      add :system_user_id, :string
       add :creator_id, :string
       add :logo, :string
 

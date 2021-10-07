@@ -49,7 +49,7 @@ defmodule Echipatala.Institutions do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_institution_details(attrs \\ %{}) do
+  def create_institution(attrs \\ %{}) do
     %InstitutionDetails{}
     |> InstitutionDetails.changeset(attrs)
     |> Repo.insert()
