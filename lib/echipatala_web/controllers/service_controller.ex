@@ -5,8 +5,8 @@ defmodule EchipatalaWeb.ServiceController do
   alias Echipatala.Services.Service
 
   def index(conn, _params) do
-    tbl_service = Services.list_tbl_service()
-    render(conn, "index.html", tbl_service: tbl_service)
+    services = Services.institution_services("1")
+    render(conn, "index.html", services: services)
   end
 
   def create(conn, params) do
@@ -19,6 +19,11 @@ defmodule EchipatalaWeb.ServiceController do
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
+  end
+
+  def sub_services(conn, %{"id"=> id}) do
+    subs = Services.get_sub_services(id)
+    render(conn, "sub_services.html", subs: subs)
   end
 
 

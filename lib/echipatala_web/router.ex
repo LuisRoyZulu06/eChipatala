@@ -89,6 +89,7 @@ defmodule EchipatalaWeb.Router do
     #--------------service controller --------
     get("/Service", ServiceController, :index)
     post("/Service/create", ServiceController, :create)
+    get("/Service/subs", ServiceController, :sub_services)
   end
 
   # Other scopes may use custom stacks.

@@ -17,8 +17,18 @@ defmodule Echipatala.Services do
       [%Service{}, ...]
 
   """
-  def list_tbl_service do
+  def institution_services(id) do
+    # Service
+    # |> where([a], a.inst_id == ^id)
+    # |> Repo.all()
     Repo.all(Service)
+  end
+
+  def get_sub_services(id) do
+    Service
+    |> where([a], a.parent_id == ^id)
+    # |> preload([:breakdown])
+    |> Repo.all()
   end
 
   @doc """

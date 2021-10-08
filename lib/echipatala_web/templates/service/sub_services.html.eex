@@ -26,14 +26,14 @@
             <!---------------- Subheader -->
             <div class="subheader">
                 <h1 class="subheader-title">
-                    <i class='subheader-icon fal fa-building'></i> Our Institution Services
+                    <i class='subheader-icon fal fa-building'></i> Sub Services Under Dental
                     <small>
                         The.
                     </small>
 
                     <div class="panel-toolbar"><br><br>
                         <button type="button" class="btn btn-info btn-sm btn-pills waves-effect waves-themed" data-toggle="modal" data-target="#add-institution">
-                            Add Service
+                            Add sub Service
                         </button>
                     </div>
                 </h1>
@@ -59,22 +59,16 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Descript</th>
-                                            <th>Consult fee</th>
-                                            <th>Is sub</th>
-                                            <th>Has subs</th>
                                             <th>Status</th>
                                             <th>Maker</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <%= for service <- @services do %>
+                                    <%= for service <- @subs do %>
                                         <tr>
                                             <td><%= service.name %></td>
                                             <td><%= service.descript %></td>
-                                            <td><%= service.consult_fee %></td>
-                                            <td><%= service.is_sub %></td>
-                                            <td><%= service.has_subs %></td>
                                             <td><%= service.status %></td>
                                             <td><%= service.maker_id %></td>
                                             <td>
@@ -90,14 +84,9 @@
                                                       Edit
                                                   </a>
 
-                                                  <a href="<%= Routes.service_path(@conn, :sub_services, %{id: service.id}) %>" class="dropdown-item text-info">
-                                                      <i class="fal fa-edit"></i>
-                                                      Sub Services
-                                                  </a>
-
                                                   <a class="dropdown-item text-info">
                                                       <i class="fal fa-edit"></i>
-                                                      Fees
+                                                      View Sub Services
                                                   </a>
 
                                                   <a class="dropdown-item text-info">
@@ -127,12 +116,12 @@
 </main>
 
 
-<!--------------------------------------------------- AddServiceModal ------------------------------------->
+<!--------------------------------------------------- AddInstitutionModal ------------------------------------->
 <div class="modal fade" id="add-institution" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Service</h5>
+                <h5 class="modal-title">Add Sub Service</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
                         <i class="fal fa-times"></i>
