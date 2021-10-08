@@ -81,7 +81,7 @@
 
             <nav id="js-info-nav" class="info-nav app-fonts" role="navigation">
               <div class="info-card" style="background-color: #aa2224;">
-                
+
                 <img src="<%= Routes.static_path(@conn, "/images/avatar/3.png") %>" class="cover" alt="cover" width="250">
               </div>
 
@@ -113,6 +113,13 @@
                   <a href="<%= Routes.staff_path(@conn, :index)%>" title="HOME" data-filter-tags="application intel">
                     <i class="fal fa-user-md"></i>
                     <span class="nav-link-text" data-i18n="nav.application_intel">PATIENT ENTRY</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<%= Routes.service_path(@conn, :index)%>" title="HOME" data-filter-tags="application intel">
+                    <i class="fal fa-user-md"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">OUR SERVICES</span>
                   </a>
                 </li>
               </ul>

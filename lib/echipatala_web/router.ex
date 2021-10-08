@@ -85,6 +85,10 @@ defmodule EchipatalaWeb.Router do
   scope "/", EchipatalaWeb do
     pipe_through([:browser, :staff])
     get("/Staff/Dashboard", StaffController, :index)
+
+    #--------------service controller --------
+    get("/Service", ServiceController, :index)
+    post("/Service/create", ServiceController, :create)
   end
 
   # Other scopes may use custom stacks.
