@@ -30,15 +30,15 @@
                 </div>
 
                 <div class="col-sm-6 col-xl-4">
-                    <div class="p-3 bg-success-200 rounded overflow-hidden position-relative text-white mb-g">
-                        <div class="">
+                    <a data-toggle="modal" data-target="#select-eChipatala">
+                        <div class="p-3 bg-success-200 rounded overflow-hidden position-relative text-white mb-g">
                             <h3 class="display-4 d-block l-h-n m-0 fw-500">
-                                4
-                                <small class="m-0 l-h-n">Consultation</small>
+                                Consultation
+                                <small class="m-0 l-h-n">Have a chat with your DOC</small>
                             </h3>
+                            <i class="fal fa-user-md position-absolute pos-right pos-bottom opacity-15 mb-n5 mr-n6" style="font-size: 8rem;"></i>
                         </div>
-                        <i class="fal fa-user-md position-absolute pos-right pos-bottom opacity-15 mb-n5 mr-n6" style="font-size: 8rem;"></i>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-sm-6 col-xl-4">
@@ -100,3 +100,44 @@
         <div class="col-md-2"></div>
     </div>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="select-eChipatala" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: rgba(102, 102, 102, 0.6)">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        Close window<i class="fal fa-times"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">Institution</label>
+                                <select class="custom-select form-control" name="gender" require>
+                                    <option value selected disabled>Select Institution</option>
+                                    <%= for select_institution <-@select_institution do %>
+                                        <option value="<%= select_institution.id %>"><%= select_institution.name %></option>
+                                    <% end %>
+                                </select>
+                                <div class="help-block">Select institution of your choice.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="modal-footer">
+                                    <a href="<%= Routes.chat_path(@conn, :consult) %>" class="btn btn-primary" style="background-color: #08152b;">
+                                        <i class="fal fa-hospital"></i> Select Institution
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

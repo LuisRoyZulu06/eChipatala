@@ -237,7 +237,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Register user Modal -->
         <div class="modal fade" id="eChipatala-reg" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: rgba(102, 102, 102, 1)">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -249,16 +249,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="POST">
+                        <form action="<%= Routes.user_path(@conn, :register_user)%>" method="POST">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="username">Name</label>
                                         <input type="text" name="name" class="form-control form-control-md" placeholder="Name" required>
                                         <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
-                                        <input type="hidden" name="user_role" value="PATIENT">
+                                        <input type="hidden" name="user_role" value="CLIENT">
+                                        <input type="hidden" name="auto_password" value="Y">
                                         <input type="hidden" name="user_type" value="3">
-                                        <input type="hidden" name="creator_id" value="SELF REGISTRATION">
                                         <input type="hidden" name="status" value="1">
                                         <div class="help-block">Enter your name.</div>
                                     </div>

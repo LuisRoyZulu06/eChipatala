@@ -721,6 +721,42 @@ defmodule EchipatalaWeb.UserController do
     end
   end
 
+  def register_user(conn, params) do
+    case Accounts.get_user_by(params["username"]) do
+      nil ->
+        pwd = random_string(8)
+        params = Map.put(params, "password", pwd)
+        Ecto.Multi.new()
+        |> Ecto.Multi.insert(:user, User.changeset(%User{}, params))
+        # |> Ecto.Multi.run(:user_log, fn _repo, %{user: user} ->
+        #   activity = "Created user with id #{user.id}"
+        #   user_log = %{user_id: conn.assigns.user.id, activity: activity}
+
+        #   UserLogs.changeset(%UserLogs{}, user_log)
+        #   |> Repo.insert()
+        # end)
+        |> Repo.transaction()
+        |> case do
+          {:ok, %{user: _user, user_log: _user_log}} ->
+            Email.send_alert(pwd, params["username"], params["email"])
+
+            conn
+            |> put_flash(:info, "User created Successfully")
+            |> redirect(to: Routes.session_path(conn, :new))
+
+          {:error, _} ->
+            conn
+            |> put_flash(:error, "Failed to create user.")
+            |> redirect(to: Routes.session_path(conn, :new))
+        end
+
+      _user ->
+        conn
+        |> put_flash(:error, "User with Username #{params["username"]} already exists.")
+        |> redirect(to: Routes.session_path(conn, :new))
+    end
+  end
+
   def update_user(conn, params) do
     system_user = Accounts.get_user!(params["id"])
 
