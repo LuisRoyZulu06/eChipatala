@@ -80,6 +80,8 @@ defmodule EchipatalaWeb.Router do
   scope "/", EchipatalaWeb do
     pipe_through([:browser, :client])
     get("/Client/Dashboard", ClientController, :index)
+    get("/Client/institutions", ClientController, :institutions)
+    get("/Client/institution", ClientController, :institution)
   end
 
   scope "/", EchipatalaWeb do

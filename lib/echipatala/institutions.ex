@@ -37,6 +37,10 @@ defmodule Echipatala.Institutions do
   """
   def get_institution_details!(id), do: Repo.get!(InstitutionDetails, id)
 
+  def get_institution(id) do
+    Repo.get!(InstitutionDetails, id)
+  end
+
   @doc """
   Creates a institution_details.
 
