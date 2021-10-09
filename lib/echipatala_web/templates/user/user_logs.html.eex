@@ -1,0 +1,52 @@
+<main id="js-page-content" role="main" class="page-content">
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-user-circle'></i> User Logs
+             <small>
+                This window displays logs of all the system users who have engaged the system.
+            </small>
+        </h1>
+
+
+        <div class="subheader-block" id="loggedIn-user">
+            <i class='subheader-icon fal fa-user'></i> <%= "#{String.capitalize(@conn.assigns.user.name)}"%> | <%= "#{String.capitalize(@conn.assigns.user.user_role)}"%>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+
+
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <br><br>
+                        <!-- datatable start -->
+                        <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                            <thead class="p-3 bg-info-900 rounded overflow-hidden position-relative text-white mb-g">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Activity</th>
+                                    <th>Date</th>
+                                    <th>Host</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <%= for log <- @logs do %>
+                                <tr>
+                                    <td><%= ILearn.Accounts.get_user!(log.user_id).name %></td>
+                                    <td><%= ILearn.Accounts.get_user!(log.user_id).user_role %></td>
+                                    <td><%= log.activity%></td>
+                                    <td><%= "#{log.inserted_at |> Calendar.DateTime.shift_zone!("Africa/Cairo") |> Calendar.Strftime.strftime!("%d-%b-%Y %H:%M:%S")}" %></td>
+                                    <td><%= @conn.host%></td>
+                                </tr>
+                            <% end %>
+                        </table>
+                        <!-- datatable end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

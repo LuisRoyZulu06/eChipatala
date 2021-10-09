@@ -20,7 +20,7 @@ defmodule Echipatala.MixProject do
   def application do
     [
       mod: {Echipatala.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :arc_ecto]
     ]
   end
 
@@ -48,7 +48,11 @@ defmodule Echipatala.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:timex, "~> 3.6"},
-      {:calendar, "~> 0.17.0"}
+      {:calendar, "~> 0.17.0"},
+      {:arc, "~> 0.11.0"},
+      {:arc_ecto, "~> 0.11.3"},
+      {:bamboo, "~> 1.3"},
+      {:bamboo_smtp, "~> 2.1.0"}
     ]
   end
 

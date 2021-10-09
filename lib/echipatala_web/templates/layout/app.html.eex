@@ -71,6 +71,7 @@
     <main role="main">
       <div class="page-wrapper" id="mypage" data-loader_url="<%= Routes.static_path(@conn, "/css/loader/load.png") %>">
         <div class="page-inner">
+          <!-- Aside Navigation Bar -->
           <aside class="page-sidebar">
             <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient" style="background-color:#122854">
               <div class="d-flex align-items-center container p-0" style="margin-top: -3em;">
@@ -79,79 +80,53 @@
             </div>
 
             <nav id="js-info-nav" class="info-nav app-fonts" role="navigation">
-              <div class="info-card">
+              <div class="info-card" style="background-color: #aa2224;">
                 
                 <img src="<%= Routes.static_path(@conn, "/images/avatar/3.png") %>" class="cover" alt="cover" width="250">
               </div>
 
               <!--------------------------------------------Aside Nav-Menu -->
               <ul id="js-nav-menu" class="nav-menu text-white">
-                <li class="nav-title text-white" style="color:red;">eChipatala Digital Hospital</li>
-
+                <br>
                 <li>
-                  <a href="#" title="DASHBOARD" data-filter-tags="application intel">
+                  <a href="<%= Routes.user_path(@conn, :dashboard)%>" title="HOME" data-filter-tags="application intel">
                     <i class="fal fa-home"></i>
-                    <span class="nav-link-text" data-i18n="nav.application_intel">DASHBOARD</span>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">HOME</span>
                   </a>
                 </li>
 
                 <li>
-                  <a href="#" title="CLIENT MANAGEMENT" data-filter-tags="application intel">
-                    <i class="fal fa-user-circle"></i>
-                    <span class="nav-link-text" data-i18n="nav.application_intel">CLIENT MANAGEMENT</span>
+                  <a href="<%= Routes.institution_path(@conn, :institution_management)%>" title="INSTITUTION MANAGEMENT" data-filter-tags="application intel">
+                    <i class="fal fa-hospital"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">INSTITUTION MANAGEMENT</span>
                   </a>
                 </li>
 
                 <li>
-                  <a href="#" title="Report Center" data-filter-tags="application intel">
-                    <i class="fal fa-info-circle"></i>
-                    <span class="nav-link-text" data-i18n="nav.application_intel">REPORT CENTER</span>
+                  <a href="#" title="LOGS" data-filter-tags="application intel">
+                    <i class="fal fa-users"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">USER MANAGEMENT</span>
                   </a>
 
                   <ul>
                     <li>
-                      <a href="#" class="d-flex align-items-center justify-content-center ml-2" data-filter-tags="application intel analytics dashboard">
-                        <span class="nav-link-text" id="">
-                          eNAPSA Reports
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :system_users)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-user"></i>
+                          System Users
+                        </span>
+                      </a>
+                      
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :user_logs)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-handshake"></i>
+                          User Activity
                         </span>
                       </a>
                     </li>
-
-                    <li>
-                      <a href="#" class="d-flex align-items-center justify-content-center ml-2" data-filter-tags="application intel analytics dashboard">
-                        <span class="nav-link-text" id="">
-                          NHIMA Reports
-                        </span>
-                      </a>
-                    </li>
-
-
-                    <li>
-                      <a href="#" class="d-flex align-items-center justify-content-center ml-2" data-filter-tags="application intel analytics dashboard">
-                        <span class="nav-link-text" id="">
-                          ZRA Transaction Reports
-                        </span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#" class="d-flex align-items-center justify-content-center ml-2" data-filter-tags="application intel analytics dashboard">
-                        <span class="nav-link-text" id="">
-                          Transaction Charges Reports
-                        </span>
-                      </a>
-                    </li>
-
                   </ul>
                 </li>
 
-
-                <li>
-                  <a href="#" title="SUPPORT" data-filter-tags="application intel">
-                    <i class="fal fa-question-circle"></i>
-                    <span class="nav-link-text" data-i18n="nav.application_intel">Info</span>
-                  </a>
-                </li>
               </ul>
 
               <div class="filter-message js-filter-message bg-success-600"></div>
@@ -159,17 +134,16 @@
           </aside>
 
           <div class="page-content-wrapper">
+            <!-- Navigation Bar -->
             <header class="page-header" role="banner">
               <div class="page-logo">
-                <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" alt="eChipatala WebApp" aria-roledescription="logo">
                 <span class="page-logo-text mr-1">
-                  SmartPAY
+                  eChipatala
                 </span>
                 <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
                 <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-info-300"></i>
               </div>
-
-
 
               <div class="hidden-lg-up">
                 <a href="#" class="header-btn btn press-scale-down" data-action="toggle" data-class="mobile-nav-on">
@@ -180,8 +154,8 @@
               <div class="ml-auto d-flex">
                 <!-- /Profile dropdown-->
                 <div>
-                  <a href="#" data-toggle="dropdown" title="SmartPAY User" class="header-icon d-flex align-items-center justify-content-center ml-2">
-                    <img class="profile-image rounded-circle" alt="SmartPAY User" src="<%= Routes.static_path(@conn, "/images/avatar/2.png") %>">
+                  <a href="#" data-toggle="dropdown" title="eChipatala User" class="header-icon d-flex align-items-center justify-content-center ml-2">
+                    <img class="profile-image rounded-circle" alt="eChipatala User" src="<%= Routes.static_path(@conn, "/images/avatar/1.png") %>">
                   </a>
 
                   <div class="dropdown-menu dropdown-menu-animated dropdown-lg">
@@ -192,7 +166,7 @@
                         </span>
 
                         <div class="info-card-text">
-                          ADMIN | SmartPAY
+                          <%= "#{(@conn.assigns.user.username)}"%> | eChipatala
                         </div>
                       </div>
                     </div>
@@ -200,23 +174,16 @@
                     <div class="dropdown-divider m-0"></div>
                     <div class="dropdown-divider m-0"></div>
 
-                    <a class="dropdown-item fw-500 pt-3 pb-3" href="#">
+                    <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :user_profile)%>">
                       <span data-i18n="drpdwn.page-change-password">
                         <i class="fal fa-user"></i>
                         My Profile
                       </span>
                     </a>
 
-                    <a class="dropdown-item fw-500 pt-3 pb-3" href="#">
-                      <span data-i18n="drpdwn.page-change-password">
-                        <i class="fal fa-lock"></i>
-                        Change Password
-                      </span>
-                    </a>
-
                     <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.session_path(@conn, :signout)%>">
                       <span data-i18n="drpdwn.page-change-password">
-                        <i class="fal fa-sign-out"></i>
+                        <i class="fal fa-power-off"></i>
                         Logout
                       </span>
                     </a>
@@ -235,10 +202,7 @@
             <footer class="page-footer" role="contentinfo">
               <div class="d-flex align-items-center flex-1 text-muted">
                 <span class="hidden-md-down fw-700">
-                  2021 © eChipatala Powered By&nbsp;
-                  <a href='http://www.probasegroup.com/' class='text-info fw-500' title='proBASE' target='_blank'>
-                    <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" width="100">
-                  </a>
+                  2021 © <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" width="100">
                   </span>
               </div>
 

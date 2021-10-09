@@ -74,6 +74,13 @@ defmodule EchipatalaWeb.UserController do
     render(conn, "user_profile.html")
   end
 
+  def system_users(conn, _params) do
+    system_users = Accounts.list_users()
+    render(conn, "system_users.html",
+      system_users: system_users
+    )
+  end
+
   def activity_logs(conn, _params) do
     results = Logs.get_all_activity_logs()
     page = %{first: "Users", last: "Activity logs"}
@@ -678,7 +685,7 @@ defmodule EchipatalaWeb.UserController do
 
     case Accounts.get_user_by(params["username"]) do
       nil ->
-        pwd = random_string(6)
+        pwd = random_string(8)
         params = Map.put(params, "password", pwd)
         Ecto.Multi.new()
         |> Ecto.Multi.insert(:user, User.changeset(%User{}, params))
