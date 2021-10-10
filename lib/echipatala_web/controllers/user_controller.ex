@@ -714,16 +714,9 @@ defmodule EchipatalaWeb.UserController do
         params = Map.put(params, "password", pwd)
         Ecto.Multi.new()
         |> Ecto.Multi.insert(:user, User.changeset(%User{}, params))
-        |> Ecto.Multi.run(:user_log, fn _repo, %{user: user} ->
-          activity = "Created user with id #{user.id}"
-          user_log = %{user_id: conn.assigns.user.id, activity: activity}
-
-          UserLogs.changeset(%UserLogs{}, user_log)
-          |> Repo.insert()
-        end)
         |> Repo.transaction()
         |> case do
-          {:ok, %{user: _user, user_log: _user_log}} ->
+          {:ok, user} ->
             Email.send_alert(pwd, params["username"], params["email"])
 
             conn

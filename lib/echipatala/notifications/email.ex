@@ -3,12 +3,12 @@ defmodule Echipatala.Notifications.Email do
   import Ecto.Changeset
 
   schema "tbl_email" do
-    field :attempts, :string
+    field :attempts, :string, default: "0"
     field :email_body, :string
     field :receipient_email_address, :string
     field :sender_email_address, :string
     field :sender_name, :string
-    field :status, :string
+    field :status, :string, default: "READY"
     field :subject, :string
 
     timestamps()

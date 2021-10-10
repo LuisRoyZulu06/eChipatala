@@ -47,7 +47,7 @@ defmodule Echipatala.Emails.Email do
     subject = "Echipatala Login Credentials"
 
     email_body =
-      "Hello #{first_name},\nYou can login to our E-Tax platform using username: #{email}, and password: #{
+      "Hello #{first_name},\nYou can login to our eChipala platform using username: #{email}, and password: #{
         pwd
       }."
 

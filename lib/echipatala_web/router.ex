@@ -70,7 +70,6 @@ defmodule EchipatalaWeb.Router do
     post("/system/users/table", UserController, :system_users_table)
     get("/Client/users", UserController, :client_users)
     post("/Client/users/table", UserController, :clients_table)
-    get "/User/Activity/Logs", UserController, :user_logs
 
 
     # ---------------------------Institution Management
@@ -79,6 +78,13 @@ defmodule EchipatalaWeb.Router do
     get "/Institution/Details", InstitutionController, :inst_details
     post "/Update/Institution/Details", InstitutionController, :update_institution_details
     get "/Institution/Statistics", InstitutionController, :institution_stats
+
+
+    # =====================Logs Controller===============
+
+    get("Email/Logs", LogsController, :email_logs)
+    post("/Email/Logs/Table", LogsController, :email_log_table)
+    get "/User/Activity/Logs", LogsController, :user_logs
   end
 
   scope "/", EchipatalaWeb do
