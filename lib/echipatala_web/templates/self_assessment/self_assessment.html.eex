@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+        <main id="js-page-content" role="main" class="page-content">
+            <div class="subheader">
+                <h1 class="subheader-title">
+                  <i class='subheader-icon fal fa-globe'></i>
+                  Self Evaluation
+                  <small>
+                  Evaluate Your Health, Health Consultancy at Your Disposal.
+                  </small>
+                </h1>
+
+                <a href="#" onclick="history.back(-1)" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #800020; color: #fff; font-weight: bold;">
+                    <i class="fal fa-reply"></i> Back
+                </a>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="panel-1" class="panel">
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                                <div class="panel-content">
+                                    <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
+                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab-assess" role="tab">Take Self Assessment</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="<%= Routes.self_assessment_path(@conn, :results)%>" role="tab">Results Of Self Assessment</a></li>
+                                    </ul>
+                                    <div class="tab-content p-3">
+                                        <div class="tab-pane fade show active" id="tab-assess" role="tabpanel">
+                                            <%= render "assess.html", assigns %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="col-md-1"></div>
+</div>

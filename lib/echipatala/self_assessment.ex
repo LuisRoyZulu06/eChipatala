@@ -1,12 +1,13 @@
-defmodule Echipatala.Accounts do
+defmodule Echipatala.SelfAssessment do
   @moduledoc """
   The Accounts context.
   """
 
   import Ecto.Query, warn: false
   alias Echipatala.Repo
+
   alias Echipatala.Accounts.User
-  alias Echipatala.Institutions.InstitutionDetails
+
   @doc """
   Returns the list of tbl_user.
 
@@ -42,13 +43,6 @@ defmodule Echipatala.Accounts do
     |> Repo.all()
   end
 
-
-  # def get_institution_student(id) do
-  #   User
-  #   |> where([e], e.id == ^id)
-  #   |> Repo.all()
-  # end
-
   @doc """
   Creates a user.
 
@@ -71,11 +65,13 @@ defmodule Echipatala.Accounts do
   Updates a user.
 
   ## Examples
+
       iex> update_user(user, %{field: new_value})
       {:ok, %User{}}
 
       iex> update_user(user, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
+
   """
   def update_user(%User{} = user, attrs) do
     user

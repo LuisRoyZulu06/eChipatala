@@ -43,6 +43,7 @@ defmodule EchipatalaWeb.Router do
     pipe_through([:session, :app])
     get("/", SessionController, :new)
     post("/", SessionController, :create)
+    post("/Register", UserController, :register_user)
   end
 
   scope "/", EchipatalaWeb do
@@ -80,8 +81,21 @@ defmodule EchipatalaWeb.Router do
   scope "/", EchipatalaWeb do
     pipe_through([:browser, :client])
     get("/Client/Dashboard", ClientController, :index)
+
+    # ---------------------------Chat Management
+    get "/Consult", ChatController, :consult
+    #-- To check and verify
     get("/Client/institutions", ClientController, :institutions)
     get("/Client/institution", ClientController, :institution)
+
+    # ====================self assessment======================
+    get("/Self/Assessment", SelfAssessmentController, :index)
+    post "/Self/Assessment", SelfAssessmentController, :assess
+    get("/Self/Assessment/Results", SelfAssessmentController, :results)
+    # post "/zamtel/mobile/deposit", SelfAssessmentController, :deposit
+    # post "/zamtel/deposit/reports", SelfAssessmentController, :deposit_reports
+    # post "/Simulate/Zamtel/Data", SelfAssessmentController, :simulate_zamtel_data
+    # post "/zamtel/admin/reports", SelfAssessmentController, :admin_report
   end
 
   scope "/", EchipatalaWeb do
@@ -92,6 +106,9 @@ defmodule EchipatalaWeb.Router do
     get("/Service", ServiceController, :index)
     post("/Service/create", ServiceController, :create)
     get("/Service/subs", ServiceController, :sub_services)
+
+    # ---------------------------Chat Management
+    get "/Messages", ChatController, :index
   end
 
   # Other scopes may use custom stacks.

@@ -11,7 +11,8 @@ defmodule Echipatala.Application do
       # Start the Ecto repository
       Echipatala.Repo,
       # Start the endpoint when the application starts
-      EchipatalaWeb.Endpoint
+      EchipatalaWeb.Endpoint,
+      {Phoenix.PubSub, [name: Echipatala.PubSub, adapter: Phoenix.PubSub.PG2]}
       # Starts a worker by calling: Echipatala.Worker.start_link(arg)
       # {Echipatala.Worker, arg},
     ]
