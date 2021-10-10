@@ -10,3 +10,6 @@ mix phx.gen.context Institutions InstitutionDetails tbl_institutions name instit
 
 ---------------------------------------------Staff context
 mix phx.gen.context Staff StaffDetails 
+
+---------------------------------------------Chat context
+mix phx.gen.context Chat ChatDetails tbl_chat msg staff_id client_id

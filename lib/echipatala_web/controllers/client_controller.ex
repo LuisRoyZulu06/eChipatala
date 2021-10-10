@@ -1,6 +1,8 @@
 defmodule EchipatalaWeb.ClientController do
   use EchipatalaWeb, :controller
   import Ecto.Query, warn: false
+  alias Echipatala.Institutions
+  alias Echipatala.Institutions.InstitutionDetails
   alias Echipatala.{Logs, Repo, Logs.UserLogs, Auth}
   alias Echipatala.Emails.Email
   alias EchipatalaWeb.Plugs.EnforcePasswordPolicy
@@ -23,7 +25,8 @@ defmodule EchipatalaWeb.ClientController do
   # )
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    select_institution = Institutions.list_institutions()
+    render(conn, "index.html", select_institution: select_institution)
   end
 
   def institutions(conn, _params) do
