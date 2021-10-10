@@ -46,11 +46,7 @@
                                             <label class="form-label" for="example-textarea">Doctor of your choice</label>
                                             <select class="custom-select form-control" name="recipient" required="required">
                                                 <option value selected disabled>Select doctor</option>
-                                                <%= for select_staff <-@select_staff do %>
-                                                    <option value="<%= @select_staff.username %>">
-                                                        <%= @select_staff.username %>
-                                                    </option>
-                                                <% end %>
+                                                
                                             </select>
                                             <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
                                         </div>
