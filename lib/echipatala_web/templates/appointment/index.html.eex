@@ -1,0 +1,44 @@
+<h1>Listing Tbl appointment</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Appoint ref</th>
+      <th>Descript</th>
+      <th>Inst</th>
+      <th>Client</th>
+      <th>Doct</th>
+      <th>Initiator</th>
+      <th>Init date</th>
+      <th>Appointment date</th>
+      <th>Status</th>
+      <th>Status note</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for appointment <- @tbl_appointment do %>
+    <tr>
+      <td><%= appointment.appoint_ref %></td>
+      <td><%= appointment.descript %></td>
+      <td><%= appointment.inst_id %></td>
+      <td><%= appointment.client_id %></td>
+      <td><%= appointment.doct_id %></td>
+      <td><%= appointment.initiator_id %></td>
+      <td><%= appointment.init_date %></td>
+      <td><%= appointment.appointment_date %></td>
+      <td><%= appointment.status %></td>
+      <td><%= appointment.status_note %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.appointment_path(@conn, :show, appointment) %></span>
+        <span><%= link "Edit", to: Routes.appointment_path(@conn, :edit, appointment) %></span>
+        <span><%= link "Delete", to: Routes.appointment_path(@conn, :delete, appointment), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Appointment", to: Routes.appointment_path(@conn, :new) %></span>
