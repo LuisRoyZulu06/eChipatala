@@ -67,6 +67,9 @@ defmodule EchipatalaWeb.Router do
     # ---------------------------User Management
     post "/Create/User", UserController, :create_institution_user
     get("/system/users", UserController, :system_users)
+    post("/system/users/table", UserController, :system_users_table)
+    get("/Client/users", UserController, :client_users)
+    post("/Client/users/table", UserController, :clients_table)
     get "/User/Activity/Logs", UserController, :user_logs
 
 

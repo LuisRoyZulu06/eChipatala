@@ -52,7 +52,11 @@ defmodule Echipatala.MixProject do
       {:arc, "~> 0.11.0"},
       {:arc_ecto, "~> 0.11.3"},
       {:bamboo, "~> 1.3"},
-      {:bamboo_smtp, "~> 2.1.0"}
+      {:bamboo_smtp, "~> 2.1.0"},
+      {:scrivener, "~> 2.0"},
+      {:scrivener_ecto, "~> 2.7", override: true},
+      {:elixlsx, "~> 0.4.2"},
+      {:number, "~> 0.5.7"},
     ]
   end
 

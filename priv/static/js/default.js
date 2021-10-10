@@ -977,7 +977,7 @@ var tbl_client_profiles = $('#client_profiles').DataTable({
             return init_btn+dtls_btn+edt_btn+deact_btn+del_btn+'</div>'
         }else if(status == "PENDING_APPROVAL" && user_id != row.maker_id){
             return init_btn+dtls_btn+aprv_btn+'</div>'
-        }else if(status == "ACTIVE"){
+        }else if(status == "1"){
             return init_btn+dtls_btn+edt_btn+rst_pas_btn+deact_btn+del_btn+'</div>';
         }else if(status == "DEACTIVATED"){
             return init_btn+edt_btn+dtls_btn+act_btn+del_btn+'</div>';
@@ -1005,8 +1005,8 @@ var tbl_client_profiles = $('#client_profiles').DataTable({
             "url"    : '/system/users/table',
             "data"   : {
                 "_csrf_token": $("#csrf").val(),
-                "first_name": $("#first_name").val(),
-                "last_name": $("#last_name").val(),
+                "name": $("#name").val(),
+                "phone": $("#phone").val(),
                 "email": $("#email").val(),
                 "username": $("#username").val(),
                 "from": $("#from").val(),
@@ -1014,8 +1014,8 @@ var tbl_client_profiles = $('#client_profiles').DataTable({
             }
         },
         "columns": [
-            {"data": "first_name"},
-            {"data": "last_name"},
+            {"data": "name"},
+            {"data": "phone"},
             {"data": "username"},
             {"data": "email"},
             {"data": "user_role"},
@@ -1041,8 +1041,8 @@ var tbl_client_profiles = $('#client_profiles').DataTable({
         tbl_system_user.on('preXhr.dt', function ( e, settings, data ) {
             console.log(data)
             data._csrf_token = $("#csrf").val();
-            data.first_name = $('#filter_first_name').val();
-            data.last_name = $('#filter_last_name').val();
+            data.first_name = $('#filter_name').val();
+            data.last_name = $('#filter_phone').val();
             data.email = $('#filter_email').val();
             data.username = $('#filter_username').val();
             data.from = $('#filter_from').val();
@@ -1054,6 +1054,86 @@ var tbl_client_profiles = $('#client_profiles').DataTable({
 
     $('#reload_table').on( 'click', function () {
         tbl_system_user.ajax.reload();
+    });
+
+    $('#client_admin_excel').on( 'click', function (event) {
+        $('#clientSearchForm').attr('action', '/client/admin/export/excel');
+        $('#clientSearchForm').attr('method', 'GET');
+        $("#clientSearchForm").submit();
+    });
+
+
+
+
+
+    var user_id = $("#user_id").val();
+    var tbl_client_user= $('#tbl_client_users').DataTable({
+        "select": {
+            "style": 'multi'
+        },
+        "responsive": true,
+        "processing": true,
+        'language': {
+            'loadingRecords': '&nbsp;',
+            processing: '<i class="fal fa-spinner fa-spin fa-2x fa-fw"></i><span class="sr-only">Loading...</span> ',
+            "emptyTable": "No Client Details to display"
+        },
+        "paging": true,
+        "serverSide": true,
+        "ajax": {
+            "type"   : "POST",
+            "url"    : '/Client/users/table',
+            "data"   : {
+                "_csrf_token": $("#csrf").val(),
+                "name": $("#name").val(),
+                "phone": $("#phone").val(),
+                "email": $("#email").val(),
+                "username": $("#username").val(),
+                "from": $("#from").val(),
+                "to": $("#to").val()
+            }
+        },
+        "columns": [
+            {"data": "name"},
+            {"data": "phone"},
+            {"data": "username"},
+            {"data": "email"},
+            {"data": "user_role"},
+            {
+                "data": "status",
+                "render": function (data, type, row) {
+                    return formartAdminStatus(data)   
+                }
+            },
+            {
+                "data": "id",
+                "render": function (data, type, row) {
+                    return user_button_options(data, row)
+                }
+            }
+        ],
+        "lengthMenu": [[10, 25, 50, 100, 500, 1000], [10, 25, 50, 100, 500, 1000]],
+        "order": [[1, 'asc']]
+    });
+
+
+    $('#btn_system_user_filter').on( 'click', function () {
+        tbl_client_user.on('preXhr.dt', function ( e, settings, data ) {
+            console.log(data)
+            data._csrf_token = $("#csrf").val();
+            data.first_name = $('#filter_name').val();
+            data.last_name = $('#filter_phone').val();
+            data.email = $('#filter_email').val();
+            data.username = $('#filter_username').val();
+            data.from = $('#filter_from').val();
+            data.to = $('#filter_to').val();  
+        } );
+        $('#userfilter').modal('hide');
+        tbl_client_user.draw();
+    });
+
+    $('#reload_table').on( 'click', function () {
+        tbl_client_user.ajax.reload();
     });
 
     $('#client_admin_excel').on( 'click', function (event) {

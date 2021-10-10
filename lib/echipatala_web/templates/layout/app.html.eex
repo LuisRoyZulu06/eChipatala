@@ -116,6 +116,13 @@
                           System Users
                         </span>
                       </a>
+
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :client_users)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-user"></i>
+                          Client Users
+                        </span>
+                      </a>
                       
                       <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :user_logs)%>">
                         <span style="color: #d82b2a;">
