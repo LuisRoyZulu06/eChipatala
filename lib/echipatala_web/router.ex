@@ -84,6 +84,9 @@ defmodule EchipatalaWeb.Router do
 
     # ---------------------------Chat Management
     get "/Consult", ChatController, :consult
+    #-- To check and verify
+    get("/Client/institutions", ClientController, :institutions)
+    get("/Client/institution", ClientController, :institution)
   end
 
   scope "/", EchipatalaWeb do
