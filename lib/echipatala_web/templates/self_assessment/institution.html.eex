@@ -1,0 +1,64 @@
+<main id="js-page-content" role="main" class="page-content">
+    <div class="row">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+            <ol class="breadcrumb page-breadcrumb">
+                <li>
+                    Hello <%= "#{String.capitalize(@conn.assigns.user.username)}"%>, welcome to eChipatala.
+                </li>
+                <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+            </ol>
+
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-chart-area'></i> Dashboard
+                </h1>
+            </div>
+
+            <div class="row">
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <div class="frame-wrap chile">
+                            <table class="table table-bordered table-hover m-0 ">
+								<thead class="thead-themed">
+									<tr>
+										<th class="table2">Service</th>
+										<th class="table2">Service Description</th>
+										<th class="table2">Consultation Fee</th>
+										<th class="table2">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%= for service <-@services do %>
+									<tr>
+										<td scope="row"><%= service.name %></td>
+										<td><%= service.descript %></td>
+										<td><%= service.consult_fee %></td>
+                                        <td>
+                                            <button class="btn bg-fusion-100 waves-effect waves-themed btn-xs" data-toggle="dropdown">Options</button>
+                                            <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
+                                                <a href="<%= Routes.service_path(@conn, :sub_services, %{id: service.id}) %>" class="dropdown-item text-info">
+                                                    <i class="fal fa-edit"></i>
+                                                    Sub Services
+                                                </a>
+                                                <a href="<%= Routes.service_path(@conn, :sub_services, %{id: service.id}) %>" class="dropdown-item text-info">
+                                                    <i class="fal fa-edit"></i>
+                                                    Consult
+                                                </a>
+                                            </div>
+                                        </td>
+									</tr>
+									<% end %>
+								</tbody>
+							</table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+</main>

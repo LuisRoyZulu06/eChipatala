@@ -1,0 +1,543 @@
+<div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+        <main id="js-page-content" role="main" class="page-content">
+            <div class="subheader">
+                <h1 class="subheader-title">
+                  <i class='subheader-icon fal fa-globe'></i>
+                  Self Evaluation
+                  <small>
+                  Evaluate Your Health, Health Consultancy at Your Disposal.
+                  </small>
+                </h1>
+
+                <a href="#" onclick="history.back(-1)" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #800020; color: #fff; font-weight: bold;">
+                    <i class="fal fa-reply"></i> Back
+                </a>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="panel-6" class="panel">
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                                <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
+                                    <li class="nav-item"><a class="nav-link" href="<%= Routes.self_assessment_path(@conn, :index)%>" role="tab">Take Self Assessment</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="#" role="tab">Results Of Self Assessment</a></li>
+                                </ul>
+
+
+                                <div id="panel-1" class="panel">
+                                    <div class="panel-content">
+                                        <input type="hidden" id="csrf" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                                        <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link show active" data-toggle="tab" href="#covid_19" role="tab">
+                                                    Covid 19
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#cholera" role="tab">
+                                                    Cholera
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#aids" role="tab">
+                                                    HIV & AIDS
+                                                </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#malaria" role="tab">
+                                                    Malaria
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="tab-content p-3">
+                                        <!--------------------------------------Covid 19 -->
+                                        <div class="tab-pane fade show active" id="covid_19" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Health Covid 19 Symptoms</h6>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                    <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
+                                                                                        <li>Difficulty breathing or shortness of breath</li>
+                                                                                        <li>Loss of speech or mobility, or confusion</li>
+                                                                                        <li>Chest pain</li>
+                                                                                        <li>Headache</li>
+                                                                                        <li>Fever</li>
+                                                                                        <li>Cough</li>
+                                                                                        <li>Tiredness</li>
+                                                                                        <li>Loss of taste or smell</li>
+                                                                                        <li>Red or irritated eyes</li>
+                                                                                        <li>High temperature</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Your Symptoms</h6>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                    <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
+                                                                                        <li>Difficulty breathing or shortness of breath</li>
+                                                                                        <li>Loss of speech or mobility, or confusion</li>
+                                                                                        <li>Chest pain</li>
+                                                                                        <li>Headache</li>
+                                                                                        <li>Fever</li>
+                                                                                        <li>Cough</li>
+                                                                                        <li>Tiredness</li>
+                                                                                        <li>Loss of taste or smell</li>
+                                                                                        <li>Red or irritated eyes</li>
+                                                                                        <li>High temperature</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.</h6>
+                                                                                <hr>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <a href="<%= Routes.self_assessment_path(@conn, :index)%>">
+                                                                <div id="panel-1" class="panel">
+                                                                    <div class="panel-container show">
+                                                                        <div class="panel-content">
+                                                                            <div class="panel-container show">
+                                                                                <div class="panel-content">
+                                                                                    <h1 id="headerStyle">Seek Medical Attention at this recommended inistitution...click here</h6>
+                                                                                    <hr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                            
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                         <!--------------------------------------Cholera -->
+                                        <div class="tab-pane fade" id="cholera" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Health Covid 19 Symptoms</h6>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                    <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
+                                                                                        <li>profuse watery diarrhea, sometimes described as “rice-water stools”</li>
+                                                                                        <li>vomiting</li>
+                                                                                        <li>thirst</li>
+                                                                                        <li>leg cramps</li>
+                                                                                        <li>restlessness or irritability</li>
+                                                                                        <li>Rapid heart rate</li>
+                                                                                        <li>Loss of skin elasticity (the ability to return to original position quickly if pinched)</li>
+                                                                                        <li>Dry mucous membranes, including the inside of the mouth, throat, nose, and eyelids</li>
+                                                                                        <li>Low blood pressure</li>
+                                                                                        <li>dry mouth</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Your Symptoms</h6>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                    <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
+                                                                                        <li>Difficulty breathing or shortness of breath</li>
+                                                                                        <li>Loss of speech or mobility, or confusion</li>
+                                                                                        <li>Chest pain</li>
+                                                                                        <li>Headache</li>
+                                                                                        <li>Fever</li>
+                                                                                        <li>Cough</li>
+                                                                                        <li>Tiredness</li>
+                                                                                        <li>Loss of taste or smell</li>
+                                                                                        <li>Red or irritated eyes</li>
+                                                                                        <li>High temperature</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.</h6>
+                                                                                <hr>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <a href="<%= Routes.self_assessment_path(@conn, :index)%>">
+                                                                <div id="panel-1" class="panel">
+                                                                    <div class="panel-container show">
+                                                                        <div class="panel-content">
+                                                                            <div class="panel-container show">
+                                                                                <div class="panel-content">
+                                                                                    <h1 id="headerStyle">Seek Medical Attention at this recommended inistitution...click here</h6>
+                                                                                    <hr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                         <!--------------------------------------AIDS -->
+                                        <div class="tab-pane" id="aids" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Health Covid 19 Symptoms</h6>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                    <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
+                                                                                        <li>Difficulty breathing or shortness of breath</li>
+                                                                                        <li>Loss of speech or mobility, or confusion</li>
+                                                                                        <li>Chest pain</li>
+                                                                                        <li>Headache</li>
+                                                                                        <li>Fever</li>
+                                                                                        <li>Cough</li>
+                                                                                        <li>Tiredness</li>
+                                                                                        <li>Loss of taste or smell</li>
+                                                                                        <li>Red or irritated eyes</li>
+                                                                                        <li>High temperature</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Your Symptoms</h6>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                    <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
+                                                                                        <li>Difficulty breathing or shortness of breath</li>
+                                                                                        <li>Loss of speech or mobility, or confusion</li>
+                                                                                        <li>Chest pain</li>
+                                                                                        <li>Headache</li>
+                                                                                        <li>Fever</li>
+                                                                                        <li>Cough</li>
+                                                                                        <li>Tiredness</li>
+                                                                                        <li>Loss of taste or smell</li>
+                                                                                        <li>Red or irritated eyes</li>
+                                                                                        <li>High temperature</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.</h6>
+                                                                                <hr>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <a href="<%= Routes.self_assessment_path(@conn, :index)%>">
+                                                                <div id="panel-1" class="panel">
+                                                                    <div class="panel-container show">
+                                                                        <div class="panel-content">
+                                                                            <div class="panel-container show">
+                                                                                <div class="panel-content">
+                                                                                    <h1 id="headerStyle">Seek Medical Attention at this recommended inistitution...click here</h6>
+                                                                                    <hr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <!--------------------------------------Malaria -->
+                                        <div class="tab-pane" id="malaria" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Health Covid 19 Symptoms</h6>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                    <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
+                                                                                        <li>Fever and sweating.</li>
+                                                                                        <li>Chills that shake the whole body.</li>
+                                                                                        <li>Headache.</li>
+                                                                                        <li>Fatigue.</li>
+                                                                                        <li>Chest pain, breathing problems and cough.</li>
+                                                                                        <li>Diarrhea</li>
+                                                                                        <li>Nausea and vomiting</li>
+                                                                                        <li>Rapid breathing</li>
+                                                                                        <li>Rapid heart rate</li>
+                                                                                        <li>Cough</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Your Symptoms</h6>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                    <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
+                                                                                        <li>Difficulty breathing or shortness of breath</li>
+                                                                                        <li>Loss of speech or mobility, or confusion</li>
+                                                                                        <li>Chest pain</li>
+                                                                                        <li>Headache</li>
+                                                                                        <li>Fever</li>
+                                                                                        <li>Cough</li>
+                                                                                        <li>Tiredness</li>
+                                                                                        <li>Loss of taste or smell</li>
+                                                                                        <li>Red or irritated eyes</li>
+                                                                                        <li>High temperature</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div id="panel-1" class="panel">
+                                                                <div class="panel-container show">
+                                                                    <div class="panel-content">
+                                                                        <div class="panel-container show">
+                                                                            <div class="panel-content">
+                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.</h6>
+                                                                                <hr>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <a href="<%= Routes.self_assessment_path(@conn, :index)%>">
+                                                                <div id="panel-1" class="panel">
+                                                                    <div class="panel-container show">
+                                                                        <div class="panel-content">
+                                                                            <div class="panel-container show">
+                                                                                <div class="panel-content">
+                                                                                    <h1 id="headerStyle">Seek Medical Attention at this recommended inistitution...click here</h6>
+                                                                                    <hr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="col-md-1"></div>
+</div>
+

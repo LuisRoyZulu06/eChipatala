@@ -82,6 +82,15 @@ defmodule EchipatalaWeb.Router do
     get("/Client/Dashboard", ClientController, :index)
     get("/Client/institutions", ClientController, :institutions)
     get("/Client/institution", ClientController, :institution)
+
+    # ====================self assessment======================
+    get("/Self/Assessment", SelfAssessmentController, :index)
+    post "/Self/Assessment", SelfAssessmentController, :assess
+    get("/Self/Assessment/Results", SelfAssessmentController, :results)
+    # post "/zamtel/mobile/deposit", SelfAssessmentController, :deposit
+    # post "/zamtel/deposit/reports", SelfAssessmentController, :deposit_reports
+    # post "/Simulate/Zamtel/Data", SelfAssessmentController, :simulate_zamtel_data
+    # post "/zamtel/admin/reports", SelfAssessmentController, :admin_report
   end
 
   scope "/", EchipatalaWeb do

@@ -1,0 +1,23 @@
+<h1>Show Symptom</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @symptom.name %>
+  </li>
+
+  <li>
+    <strong>Category:</strong>
+    <%= @symptom.category %>
+  </li>
+
+  <li>
+    <strong>Maker:</strong>
+    <%= @symptom.maker_id %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.symptom_path(@conn, :edit, @symptom) %></span> |
+<span><%= link "Back", to: Routes.symptom_path(@conn, :index) %></span>
