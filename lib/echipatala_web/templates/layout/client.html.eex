@@ -232,6 +232,7 @@
     <script src="<%= Routes.static_path(@conn, "/js/formplugins/select2/select2.bundle.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/notifications/sweetalert2/sweetalert2.bundle.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/default.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/assess.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/dependency/moment/moment.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/formplugins/smartwizard/smartwizard.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/statistics/chartjs/chartjs.bundle.js") %>"></script>

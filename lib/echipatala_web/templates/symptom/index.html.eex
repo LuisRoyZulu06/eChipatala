@@ -1,0 +1,30 @@
+<h1>Listing Tbl symptom</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Maker</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for symptom <- @tbl_symptom do %>
+    <tr>
+      <td><%= symptom.name %></td>
+      <td><%= symptom.category %></td>
+      <td><%= symptom.maker_id %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.symptom_path(@conn, :show, symptom) %></span>
+        <span><%= link "Edit", to: Routes.symptom_path(@conn, :edit, symptom) %></span>
+        <span><%= link "Delete", to: Routes.symptom_path(@conn, :delete, symptom), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Symptom", to: Routes.symptom_path(@conn, :new) %></span>

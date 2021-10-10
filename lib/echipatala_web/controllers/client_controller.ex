@@ -7,6 +7,7 @@ defmodule EchipatalaWeb.ClientController do
   alias Echipatala.Emails.Email
   alias EchipatalaWeb.Plugs.EnforcePasswordPolicy
   alias Echipatala.Institutions
+  alias Echipatala.Appointments
   alias Echipatala.Services
 
   plug(
@@ -34,11 +35,14 @@ defmodule EchipatalaWeb.ClientController do
   end
 
   def institution(conn, %{"id"=> id}) do
+    user = conn.assigns.user
     inst = Institutions.get_institution(id)
-    services= Services.institution_services(inst.id)
+    services = Services.institution_services(inst.id)
+    appointments = Appointments.client_appointments(inst.id, user.id)
     render(conn, "institution.html",
       institution: inst,
-      services: services
+      services: services,
+      appointments: appointments
     )
   end
 

@@ -1,0 +1,28 @@
+<h1>Listing Tbl disease</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Maker</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for disease <- @tbl_disease do %>
+    <tr>
+      <td><%= disease.name %></td>
+      <td><%= disease.maker_id %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.disease_path(@conn, :show, disease) %></span>
+        <span><%= link "Edit", to: Routes.disease_path(@conn, :edit, disease) %></span>
+        <span><%= link "Delete", to: Routes.disease_path(@conn, :delete, disease), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Disease", to: Routes.disease_path(@conn, :new) %></span>

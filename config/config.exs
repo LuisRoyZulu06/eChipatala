@@ -15,7 +15,8 @@ config :echipatala, EchipatalaWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "GL408pFKI6V8wZL1reO1ubpYoZwDPh2TT8UaSD2cDsoQPoTxPPeK3atZjb7RfX/b",
   render_errors: [view: EchipatalaWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Echipatala.PubSub, adapter: Phoenix.PubSub.PG2]
+   pubsub_server: Echipatala.PubSub
+  # pubsub: [name: Echipatala.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
