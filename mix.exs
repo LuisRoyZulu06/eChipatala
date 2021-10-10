@@ -70,3 +70,44 @@ defmodule Echipatala.MixProject do
     ]
   end
 end
+
+
+      # {:phoenix, "~> 1.4.11"},
+      # {:phoenix_pubsub, "~> 1.1"},
+      # {:phoenix_ecto, "~> 4.0"},
+      # {:ecto_sql, "~> 3.1"},
+      # {:tds, "~> 2.1.1"},
+      # # ----------------------
+      # {:phoenix_html, "~> 2.11"},
+      # {:phoenix_live_reload, "~> 1.2", only: :dev},
+      # {:gettext, "~> 0.11"},
+      # {:jason, "~> 1.0"},
+      # {:plug_cowboy, "~> 2.0"},
+      # {:timex, "~> 3.6"},
+      # {:calendar, "~> 0.17.0"},
+      # {:quantum, "~> 2.2.7"},
+      # {:bamboo, "~> 1.3"},
+      # {:bamboo_smtp, "~> 2.1.0"},
+      # {:poison, "~> 3.1"},
+      # {:atomic_map, "~> 0.8"},
+      # {:html_entities, "~> 0.4"},
+      # {:arc, "~> 0.11.0"},
+      # {:arc_ecto, "~> 0.11.3"},
+      # {:scrivener, "~> 2.0"},
+      # {:scrivener_ecto, "~> 2.7", override: true},
+      # {:number, "~> 0.5.7"},
+      # {:logger_file_backend, "~> 0.0.10"},
+
+
+
+
+
+
+        #----------LOCAL------
+  username: "sa",
+  password: "me@Probase",
+  database: "smartcom_dev",
+  #-------- UAT ------
+  # username: "smartpay",
+  # password: "Password123$",
+  # database: "natsave_dev"
