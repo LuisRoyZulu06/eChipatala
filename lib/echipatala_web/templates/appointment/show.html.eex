@@ -1,0 +1,58 @@
+<h1>Show Appointment</h1>
+
+<ul>
+
+  <li>
+    <strong>Appoint ref:</strong>
+    <%= @appointment.appoint_ref %>
+  </li>
+
+  <li>
+    <strong>Descript:</strong>
+    <%= @appointment.descript %>
+  </li>
+
+  <li>
+    <strong>Inst:</strong>
+    <%= @appointment.inst_id %>
+  </li>
+
+  <li>
+    <strong>Client:</strong>
+    <%= @appointment.client_id %>
+  </li>
+
+  <li>
+    <strong>Doct:</strong>
+    <%= @appointment.doct_id %>
+  </li>
+
+  <li>
+    <strong>Initiator:</strong>
+    <%= @appointment.initiator_id %>
+  </li>
+
+  <li>
+    <strong>Init date:</strong>
+    <%= @appointment.init_date %>
+  </li>
+
+  <li>
+    <strong>Appointment date:</strong>
+    <%= @appointment.appointment_date %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @appointment.status %>
+  </li>
+
+  <li>
+    <strong>Status note:</strong>
+    <%= @appointment.status_note %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.appointment_path(@conn, :edit, @appointment) %></span> |
+<span><%= link "Back", to: Routes.appointment_path(@conn, :index) %></span>

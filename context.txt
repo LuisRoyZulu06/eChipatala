@@ -11,5 +11,6 @@ mix phx.gen.context Institutions InstitutionDetails tbl_institutions name instit
 ---------------------------------------------Staff context
 mix phx.gen.context Staff StaffDetails 
 
----------------------------------------------Chat context
-mix phx.gen.context Chat ChatDetails tbl_chat msg staff_id client_id
+---------------------------------------------Institution services
+mix phx.gen.html Services Service tbl_service name descript consult_fee inst_id is_sub has_subs parent_id status maker_id
+mix phx.gen.html Services Fee tbl_fee name amount currency service_id status maker_id

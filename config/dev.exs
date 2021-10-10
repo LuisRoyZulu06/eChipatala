@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :echipatala, Echipatala.Repo,
   username: "sa",
-  password: "qwerty",
+  password: "me@Probase",
   database: "echipatala",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
