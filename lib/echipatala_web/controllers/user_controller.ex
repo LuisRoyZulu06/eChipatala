@@ -755,7 +755,7 @@ defmodule EchipatalaWeb.UserController do
         # end)
         |> Repo.transaction()
         |> case do
-          {:ok, %{user: _user, user_log: _user_log}} ->
+          {:ok, user} ->
             Email.send_alert(pwd, params["username"], params["email"])
 
             conn
