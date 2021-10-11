@@ -5,9 +5,8 @@ defmodule Echipatala.Accounts do
 
   import Ecto.Query, warn: false
   alias Echipatala.Repo
-
   alias Echipatala.Accounts.User
-
+  alias Echipatala.Institutions.InstitutionDetails
   @doc """
   Returns the list of tbl_user.
 
@@ -17,7 +16,7 @@ defmodule Echipatala.Accounts do
       [%User{}, ...]
 
   """
-  def list_tbl_user do
+  def list_users do
     Repo.all(User)
   end
 
@@ -36,6 +35,19 @@ defmodule Echipatala.Accounts do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
+
+  def get_user_institution(id) do
+    User
+    |> where([e], e.institution_id == ^id and e.user_role == "STAFF")
+    |> Repo.all()
+  end
+
+
+  # def get_institution_student(id) do
+  #   User
+  #   |> where([e], e.id == ^id)
+  #   |> Repo.all()
+  # end
 
   @doc """
   Creates a user.
@@ -59,13 +71,11 @@ defmodule Echipatala.Accounts do
   Updates a user.
 
   ## Examples
-
       iex> update_user(user, %{field: new_value})
       {:ok, %User{}}
 
       iex> update_user(user, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
-
   """
   def update_user(%User{} = user, attrs) do
     user
@@ -118,5 +128,100 @@ defmodule Echipatala.Accounts do
       user ->
         user
     end
+  end
+
+  def get_user_by(nt_username) do
+    User
+    |>Repo.get_by(username: nt_username)
+  end
+
+
+
+
+  def system_users(conn, search_params, page, size) do
+    User
+    |> where([c], c.status != "DELETED" and c.user_type !=3)
+    |> handle_user_filter(search_params)
+    |> order_by(desc: :inserted_at)
+    |> compose_user_select()
+    |> Repo.paginate(page: page, page_size: size)
+  end
+
+
+  def client_users(conn, search_params, page, size) do
+    User
+    |> where([c], c.status != "DELETED" and c.user_type ==3)
+    |> handle_user_filter(search_params)
+    |> order_by(desc: :inserted_at)
+    |> compose_user_select()
+    |> Repo.paginate(page: page, page_size: size)
+  end
+
+  defp handle_user_filter(query, params) do
+    Enum.reduce(params, query, fn
+      {"isearch", value}, query when byte_size(value) > 0 ->
+        user_isearch_filter(query, sanitize_term(value))
+
+      {"name", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.name, ^sanitize_term(value)))
+
+      {"phone", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.phone, ^sanitize_term(value)))
+
+      {"username", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.username, ^sanitize_term(value)))
+
+      {"email", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.email, ^sanitize_term(value)))
+
+      {"from", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("CAST(? AS DATE) >= ?", a.inserted_at, ^value))
+
+      {"to", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("CAST(? AS DATE) <= ?", a.inserted_at, ^value))
+
+
+
+      {_, _}, query ->
+        # Not a where parameter
+        query
+    end)
+  end
+
+  defp user_isearch_filter(query, search_term) do
+       where(
+         query,
+         [a],
+         fragment("lower(?) LIKE lower(?)", a.name, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.phone, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.username, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.email, ^search_term)
+       )
+    end
+
+    defp sanitize_term(term), do: "%#{String.replace(term, "%", "\\%")}%"
+
+
+  defp compose_user_select(query) do
+    query
+    |> select(
+      [t],
+      map(t, [
+        :id,
+        :name,
+        :password,
+        :auto_password,
+        :creator_id,
+        :email,
+        :password,
+        :user_type,
+        :user_role,
+        :status,
+        :phone,
+        :username,
+        :inserted_at,
+        :updated_at
+      ])
+    )
   end
 end

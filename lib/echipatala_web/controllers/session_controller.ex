@@ -43,12 +43,19 @@ defmodule EchipatalaWeb.SessionController do
                   |> put_session(:session_timeout_at, session_timeout_at())
                   |> redirect(to: Routes.user_path(conn, :dashboard))
 
+                # --------------------- Staff
+                user.user_type == 2 ->
+                  conn
+                  |> put_session(:current_user, user.id)
+                  |> put_session(:session_timeout_at, session_timeout_at())
+                  |> redirect(to: Routes.staff_path(conn, :index))
+
                 # --------------------- Patient
                 user.user_type == 3 ->
                   conn
                   |> put_session(:current_user, user.id)
                   |> put_session(:session_timeout_at, session_timeout_at())
-                  |> redirect(to: Routes.student_path(conn, :index))
+                  |> redirect(to: Routes.client_path(conn, :index))
               end
 
               true ->

@@ -1,0 +1,18 @@
+<h1>Show Disease</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @disease.name %>
+  </li>
+
+  <li>
+    <strong>Maker:</strong>
+    <%= @disease.maker_id %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.disease_path(@conn, :edit, @disease) %></span> |
+<span><%= link "Back", to: Routes.disease_path(@conn, :index) %></span>

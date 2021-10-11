@@ -5,6 +5,7 @@ defmodule EchipatalaWeb.UserController do
   alias Echipatala.Accounts
   alias Echipatala.Accounts.User
   alias Echipatala.Emails
+  alias Echipatala.Pages
   alias Echipatala.Emails.Email
   alias EchipatalaWeb.Plugs.EnforcePasswordPolicy
 
@@ -72,6 +73,40 @@ defmodule EchipatalaWeb.UserController do
 
   def user_profile(conn, _params) do
     render(conn, "user_profile.html")
+  end
+
+  def system_users(conn, _params) do
+    system_users = Accounts.list_users()
+    render(conn, "system_users.html",
+      system_users: system_users
+    )
+  end
+
+
+  def system_users_table(conn, params) do
+    {draw, start, length, search_params} = Pages.search_options(params)
+    json(conn, Pages.display(draw, Accounts.system_users(
+      conn.assigns.user,
+      search_params,
+      start,
+      length
+    )))
+  end
+
+  def client_users(conn, _params) do
+    # system_users = Accounts.client_users()
+    render(conn, "client_users.html"
+    )
+  end
+
+  def clients_table(conn, params) do
+    {draw, start, length, search_params} = Pages.search_options(params)
+    json(conn, Pages.display(draw, Accounts.client_users(
+      conn.assigns.user,
+      search_params,
+      start,
+      length
+    )))
   end
 
   def activity_logs(conn, _params) do
@@ -189,7 +224,7 @@ defmodule EchipatalaWeb.UserController do
       |> redirect(to: Routes.user_path(conn, :list_users))
   end
 
-  def create(conn, %{"user" => user_params}) do
+  def create_user(conn, %{"user" => user_params}) do
     IO.inspect "=========================================="
     IO.inspect user_params
 
@@ -228,15 +263,12 @@ defmodule EchipatalaWeb.UserController do
         conn
         |> put_flash(:error, reason)
         |> redirect(to: "#{redirect_to_back(conn)}")
-        # |> redirect(to: Routes.user_path(conn, :list_users))
-        # |> redirect(to: "#{redirect_to_back(conn)}?id=#{params["company_id"]}")
     end
   rescue
     _ ->
       conn
       |> put_flash(:error, "An error occurred, reason unknown. try again")
       |> redirect(to: "#{redirect_to_back(conn)}")
-      # |> redirect(to: Routes.user_path(conn, :list_users))
   end
 
   def delete(conn, %{"id" => id}) do
@@ -678,20 +710,13 @@ defmodule EchipatalaWeb.UserController do
 
     case Accounts.get_user_by(params["username"]) do
       nil ->
-        pwd = random_string(6)
+        pwd = random_string(8)
         params = Map.put(params, "password", pwd)
         Ecto.Multi.new()
         |> Ecto.Multi.insert(:user, User.changeset(%User{}, params))
-        |> Ecto.Multi.run(:user_log, fn _repo, %{user: user} ->
-          activity = "Created user with id #{user.id}"
-          user_log = %{user_id: conn.assigns.user.id, activity: activity}
-
-          UserLogs.changeset(%UserLogs{}, user_log)
-          |> Repo.insert()
-        end)
         |> Repo.transaction()
         |> case do
-          {:ok, %{user: _user, user_log: _user_log}} ->
+          {:ok, user} ->
             Email.send_alert(pwd, params["username"], params["email"])
 
             conn
@@ -711,6 +736,42 @@ defmodule EchipatalaWeb.UserController do
         |> put_flash(:error, "User with Username #{params["username"]} already exists.")
         |> redirect(to: "#{redirect_to_back(conn)}?id=#{params["institution_id"]}")
         # |> redirect(to: Routes.user_path(conn, :profile_users, id: params["company_id"]))
+    end
+  end
+
+  def register_user(conn, params) do
+    case Accounts.get_user_by(params["username"]) do
+      nil ->
+        pwd = random_string(8)
+        params = Map.put(params, "password", pwd)
+        Ecto.Multi.new()
+        |> Ecto.Multi.insert(:user, User.changeset(%User{}, params))
+        # |> Ecto.Multi.run(:user_log, fn _repo, %{user: user} ->
+        #   activity = "Created user with id #{user.id}"
+        #   user_log = %{user_id: conn.assigns.user.id, activity: activity}
+
+        #   UserLogs.changeset(%UserLogs{}, user_log)
+        #   |> Repo.insert()
+        # end)
+        |> Repo.transaction()
+        |> case do
+          {:ok, user} ->
+            Email.send_alert(pwd, params["username"], params["email"])
+
+            conn
+            |> put_flash(:info, "User created Successfully")
+            |> redirect(to: Routes.session_path(conn, :new))
+
+          {:error, _} ->
+            conn
+            |> put_flash(:error, "Failed to create user.")
+            |> redirect(to: Routes.session_path(conn, :new))
+        end
+
+      _user ->
+        conn
+        |> put_flash(:error, "User with Username #{params["username"]} already exists.")
+        |> redirect(to: Routes.session_path(conn, :new))
     end
   end
 

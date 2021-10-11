@@ -1,0 +1,216 @@
+<main id="js-page-content" role="main" class="page-content">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+            <!-----------------------------------------------------------------Flash -->
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <%= if get_flash(@conn, :info) do %>
+                        <div class="alert alert-success alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times; <span
+                                    class="sr-only">Close</span></button>
+                            <strong>Success! &nbsp; </strong>
+                            <%= get_flash(@conn, :info) %>
+                        </div>
+                    <% end %>
+
+                    <%= if get_flash(@conn, :error) do %>
+                        <div class="alert alert-danger alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span
+                                    class="sr-only">Close</span></button>
+                            <strong>Oops! </strong>
+                            <%= get_flash(@conn, :error) %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            <ol class="breadcrumb page-breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Self Assessment</a></li>
+                <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+            </ol>
+
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-table'></i> Evaluate Your Health Using This Self Assessment
+                    <small>
+                        <a href="<%= Routes.self_assessment_path(@conn, :index)%>" class="btn btn-md btn-secondary" style="background-color:#800020; color:#fff">Back</a>
+                    </small>
+                </h1>
+            </div>
+
+            <div id="panel-5" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        <span class="fw-300"><i>Self Assessment</i></span>
+                    </h2>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <form action="<%= Routes.self_assessment_path(@conn, :assess) %>" method="post" id="new-role-form">
+                            <input type="hidden" id="csrf" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                            <input type="hidden" name="id" value="">
+
+                            <table cellpadding="3" cellspacing="0" border="0" width="100%">
+                                <tbody>
+                                    <div class="form-group">
+                                        <tr>
+                                            <td nowrap="" colspan="2" class="" style="color:#800020; text-decoration-line:underline;">
+                                                <b>Symptoms(Please check a box only corresponding to how you feel) Ache</b>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Headache
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Cough
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td nowrap="">
+                                                <input type="checkbox" name="">
+                                                Loss of taste or smell
+                                            </td>
+                                            <td nowrap="">
+                                                <input type="checkbox" name="">
+                                                Rapid heart rate
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Difficulty breathing or shortness of breath
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Loss of speech or mobility, or confusion
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Chest pain
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Tiredness
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Loss of taste or smell
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Red or irritated eyes
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                High temperature
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                profuse watery diarrhea, sometimes described as “rice-water stools”
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                vomiting
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                thirst
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                leg cramps
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                restlessness or irritability
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                High temperature
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                profuse watery diarrhea, sometimes described as “rice-water stools”
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Loss of skin elasticity (the ability to return to original position quickly if pinched)
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Dry mucous membranes, including the inside of the mouth, throat, nose, and eyelids
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Low blood pressure
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                dry mouth
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Fever and sweating.
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="">
+                                                Chills that shake the whole body.
+                                            </td>
+                                        </tr>
+                                    </div>
+
+                                    <tr>
+                                        <td colspan="2">&nbsp;</td>
+                                    </tr>
+                                    </div>
+
+                                    <tr>
+                                        <td colspan="2" align="left">
+                                            <hr size="1">
+                                            <button type="submit" class="btn btn-md" style="background-color: #800020; color: #fff;">Assess Health</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+</main>
+
+
+
+
+

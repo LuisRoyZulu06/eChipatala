@@ -1,0 +1,130 @@
+<div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+
+        <main id="js-page-content" role="main" class="page-content">
+            <!------------------ Flash -->
+            <div class="row">
+                <div class="col-md-12 col-lg-offset-2">
+                    <div class="form-group">
+                        <%= if get_flash(@conn, :info) do %>
+                            <div class="alert alert-info alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                            <%= get_flash(@conn, :info) %>
+                            </div>
+                        <% end %>
+                        <%= if get_flash(@conn, :error) do %>
+                            <div class="alert alert-danger alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                            Opps! <%= get_flash(@conn, :error) %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------ Subheader -->
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-envelope'></i> Email Logs
+                    <br>
+                    <small>
+                        List of all email logs.
+                    </small>
+                    <a href="javascript:void(0);" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;" data-toggle="modal" data-target="#filter_mail">
+                        Filter
+                    </a>
+                </h1>
+
+                <div class="info-card-text">
+                    <%= "#{(@conn.assigns.user.username)}"%>  | SmartPAY
+                </div>
+            </div>
+
+
+            <!------------------ Table of email logs -->
+            <div id="table_field" class="answer_list" >
+                <%# style="display: none;" to be displayed when the search button is pressed %>
+                <div id="panel-1" class="panel">
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <br><br>
+                            <!-- datatable start -->
+                            <input type="hidden" id="csrf" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                            <table id="tbl_email_logs" class="table table-bordered table-hover table-striped w-100">
+                                <thead class="p-3 bg-fusion-100 rounded overflow-hidden position-relative text-white mb-g">
+                                    <tr>
+                                        <th>Recipient</th>
+                                        <th>Subject</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="col-md-1"></div>
+</div>
+
+
+<!-- Filter Modal -->
+<div class="modal fade" id="filter_mail" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Filter SMS Logs</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <form id="nhimaSearchForm">
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="ref">Recipient Email.</label>
+                                <input type="text" name="email" id="email" placeholder="Recipient Mail" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="status">Status</label>
+                                <select name="status" id="status" placeholder="Status" class="form-control">
+                                    <option></option>
+                                    <option value="READY">READY</option>
+                                    <option value="SUCCESS">SENT</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="from">Start Date </label>
+                                <input type="date" name="from" id="from" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="to">End Date</label>
+                                <input type="date" name="to" id="to" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn" id="btn_email_filter" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;">FIlter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

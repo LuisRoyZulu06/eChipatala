@@ -1,0 +1,180 @@
+<main id="js-page-content" role="main" class="page-content">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+            <!---------------- Flash -->
+            <div class="row">
+                <div class="col-md-12 col-lg-offset-2">
+                    <div class="form-group">
+                        <%= if get_flash(@conn, :info) do %>
+                            <div class="alert alert-info alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                            <%= get_flash(@conn, :info) %>
+                            </div>
+                        <% end %>
+                        <%= if get_flash(@conn, :error) do %>
+                            <div class="alert alert-danger alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                            Opps! <%= get_flash(@conn, :error) %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <!---------------- Subheader -->
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-building'></i> Sub Services Under Dental
+                    <small>
+                        The.
+                    </small>
+
+                    <div class="panel-toolbar"><br><br>
+                        <button type="button" class="btn btn-info btn-sm btn-pills waves-effect waves-themed" data-toggle="modal" data-target="#add-institution">
+                            Add sub Service
+                        </button>
+                    </div>
+                </h1>
+
+
+                <div class="subheader-block">
+                    <i class='subheader-icon fal fa-user'></i>
+                    Hello <%= "#{String.capitalize(@conn.assigns.user.username)}"%>, welcome to eChipatala.
+                </div>
+            </div>
+
+            <!---------------- Mgt Table -->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="panel-1" class="panel">
+
+
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                                <!-- datatable start -->
+                                <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                                    <thead class="p-3 bg-fusion-100 rounded overflow-hidden position-relative text-white mb-g">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Descript</th>
+                                            <th>Status</th>
+                                            <th>Maker</th>
+                                            <th>Options</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <%= for service <- @subs do %>
+                                        <tr>
+                                            <td><%= service.name %></td>
+                                            <td><%= service.descript %></td>
+                                            <td><%= service.status %></td>
+                                            <td><%= service.maker_id %></td>
+                                            <td>
+                                              <button class="btn bg-fusion-100 waves-effect waves-themed btn-xs" data-toggle="dropdown">Options</button>
+                                              <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
+                                                  <a class="dropdown-item text-info"
+                                                      data-toggle="modal"
+                                                      data-target="#edit-staff-details"
+                                                      data-id="<%= service.id %>"
+                                                      data-name="<%= service.name %>"
+                                                      >
+                                                      <i class="fal fa-edit"></i>
+                                                      Edit
+                                                  </a>
+
+                                                  <a class="dropdown-item text-info">
+                                                      <i class="fal fa-edit"></i>
+                                                      View Sub Services
+                                                  </a>
+
+                                                  <a class="dropdown-item text-info">
+                                                      <i class="fal fa-edit"></i>
+                                                      Active Clients
+                                                  </a>
+
+                                                  <a class="dropdown-item text-info">
+                                                      <i class="fal fa-edit"></i>
+                                                      Assigned Staff
+                                                  </a>
+                                              </div>
+                                            </td>
+                                        <tr>
+                                    <% end %>
+                                </table>
+                                <!-- datatable end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+</main>
+
+
+<!--------------------------------------------------- AddInstitutionModal ------------------------------------->
+<div class="modal fade" id="add-institution" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Sub Service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        <i class="fal fa-times"></i>
+                        Close window
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<%= Routes.service_path(@conn, :create)%>" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control form-control-md" placeholder="Institution Name" required>
+                        <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                        <input type="hidden" name="maker_id" value="<%= "#{(@conn.assigns.user.id)}"%>">
+                        <input type="hidden" name="inst_id" value="<%= "#{(@conn.assigns.user.institution_id)}"%>">
+                        <div class="help-block">Enter Service name.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Has Sub Services</label>
+                        <select class="custom-select form-control-sm" name="has_subs" require>
+                            <option value selected disabled>Has Sub Services</option>
+                            <option value="TRUE">Yes</option>
+                            <option value="FALSE">No</option>
+                        </select>
+                        <div class="help-block">Select institution type.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Consultation Fee</label>
+                        <input type="text" name="consult_fee" class="form-control form-control-md" placeholder="Consultation Fee" required>
+                        <div class="help-block">Service Consultation Fee.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descript</label>
+                        <input type="text" name="descript" class="form-control form-control-md" placeholder="Description" required>
+                        <div class="help-block">Short Service Description.</div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn btn-sm btn-pills waves-effect waves-themed bg-fusion-300" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-sm btn-pills waves-effect waves-themed btn-info">Create</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+.Wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Base {
+    background: #ccc;
+    height: 150px;
+    width: 268px;
+    border-radius: 15px;
+}
+
+.Inner-wrap {
+    background-color: rgb(128, 0, 32);
+  background-image: white;
+  background-size: auto 147%;
+  background-position: center;
+  position: relative;
+  height: 180px;
+   width: 125%;
+  border-radius: 10px;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+p {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* / Controls top right logo / */
+.Logo {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  right: 0;
+  top: 0;
+  padding: inherit;
+  fill: #117aca;
+}
+
+/* / Controls chip icon / */
+.Chip {
+    height: 80px;
+    margin: 10px 0 25px 0;
+}
+
+.gold path{
+    fill: url(#gold-gradient);
+}
+
+svg {
+    display: block;
+}
+
+/* / Controls name size / */
+.Logo-name {
+    transform: scale(.5);
+    margin-left: -75px;
+}
+
+.Card-number p {
+    text-align: center;
+}
+
+.Card-number {
+    margin-top: -25px;
+    display: flex;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+    float: left;
+    margin: 0px 10px;
+    font-size: 2.2em;
+}
+
+#first-li {
+    margin-left: 0;
+}
+
+#last-li {
+    margin-right: 0;
+}
+
+.Expire {
+    font-size: .75em;
+    text-align: center;
+}
+
+.Expire h4 {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+/* /   word-spacing: 9999999px; / */
+    text-transform: uppercase;
+}
+
+.Expire p {
+    font-size: 1.2em;
+    color: #aaa;
+}
+
+.Name h6 {
+    position: absolute;
+    bottom: 0;
+    left: 18%;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.7em;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.Visa {
+    width: 115px;
+    position: absolute;
+    bottom: -145px;
+    right: 0;
+    padding: inherit;
+}
+.lop{
+  border-radius:20px
+}
+.p {
+margin: 0;
+font-size: 20px;
+}
+.fa {
+  display: inline-block;
+  color:#0C2F9E;
+  font-size: 20px;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 24px;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.chile{
+  min-height:250px;
+}
+.card-text{
+  font-size:20px;
+}
+.pet
+{
+-webkit-box-shadow: 7px 6px 18px -5px rgba(138,134,138,1);
+-moz-box-shadow: 7px 6px 18px -5px rgba(138,134,138,1);
+box-shadow: 7px 6px 18px -5px rgba(138,134,138,1);
+}
+.modal-content {
+    border-radius: 27px;
+}

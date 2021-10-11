@@ -14,6 +14,7 @@ defmodule Echipatala.Accounts.User do
     field :user_role, :string
     field :user_type, :integer
     field :username, :string
+    # field :institution_id, :id
 
     timestamps()
   end
@@ -53,3 +54,4 @@ defmodule Echipatala.Accounts.User do
 end
 
 #Echipatala.Accounts.create_user(%{name: "Luis Roy", username: "Luis", email: "luis@probasegroup.com", password: "password06", user_type: 1, user_role: "ADMIN", status: "1", phone: "260979797337", gender: "M", auto_password: "N",  inserted_at: NaiveDateTime.utc_now, updated_at: NaiveDateTime.utc_now})
+#Echipatala.Accounts.create_user(%{name: "Myself", username: "me", email: "lunje@probasegroup.com", password: "password06", user_type: 1, user_role: "ADMIN", status: "1", phone: "260979797337", gender: "M", auto_password: "N",  inserted_at: NaiveDateTime.utc_now, updated_at: NaiveDateTime.utc_now})

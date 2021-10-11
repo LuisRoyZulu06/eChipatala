@@ -14,8 +14,10 @@ defmodule Echipatala.Repo.Migrations.CreateTblUser do
       add :password, :string
       add :auto_password, :string
       add :creator_id, :string
+      add :institution_id, :id
 
       timestamps()
     end
+    create unique_index(:tbl_user, [:email], name: :unique_email)
   end
 end

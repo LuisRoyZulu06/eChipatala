@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>
+          eChipatala
+      </title>
+      <%= csrf_meta_tag() %>
+      <meta charset="utf-8">
+      <meta name="csrf-token"  csrf-param="_csrf_token" csrf-header="x-csrf-token" content="<%= Plug.CSRFProtection.get_csrf_token() %>"/>
+      <meta name="description" content="Basic">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+      <!-- Call App Mode on ios devices -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <!-- Remove Tap Highlight on Windows Phone IE -->
+      <meta name="msapplication-tap-highlight" content="no">
+
+      <!-- base css -->
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/loader.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/vendors.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/app.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/custom_style.css") %>">
+
+      <!-- Place favicon.ico in the root directory -->
+      <link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/img/favicon/apple-touch-icon.png") %>" />
+      <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/favicon-32x32.png") %>" />
+      <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" />
+      <link rel="mask-icon" color="#5bbad5" href="<%= Routes.static_path(@conn, "/img/favicon/safari-pinned-tab.svg") %>" color="#5bbad5"/>
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/notifications/sweetalert2/sweetalert2.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/datagrid/datatables/datatables.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/page-invoice.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/default.css") %>" />
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/select2/select2.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/fullcalendar/fullcalendar.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/lightgallery/lightgallery.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/reactions/reactions.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/jqvmap/jqvmap.bundle.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/smartwizard/smartwizard.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/page-invoice.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/statistics/chartjs/chartjs.css") %>">
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/select2/select2.bundle.css") %>">
+
+      <style>
+        td.details-control {
+    			background: url(/images/details_open.png) no-repeat center center;
+    			cursor: pointer;
+    		}
+    		tr.shown td.details-control {
+    			background: url(/images/details_close.png) no-repeat center center;
+    		}
+        .dataTables_empty {
+            color: #fd3995;
+            font-size: 14px;
+            padding-top: 15px !important;
+            padding-bottom: 15px !important;
+        }
+        .nav-title {
+        text-transform: none;
+        margin: 0;
+        color: #ffad5d;
+        padding: 1rem 2rem;
+        margin-top: 1.5rem;
+        font-size: 13px;
+        letter-spacing: 1px;
+        font-weight: 500;
+}
+      </style>
+  </head>
+
+  <body>
+    <main role="main">
+      <div class="page-wrapper" id="mypage" data-loader_url="<%= Routes.static_path(@conn, "/css/loader/load.png") %>">
+        <div class="page-inner">
+          <!-- Aside Navigation Bar -->
+          <aside class="page-sidebar">
+            <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient" style="background-color:#122854">
+              <div class="d-flex align-items-center container p-0" style="margin-top: -3em;">
+                <img alt="Logo" aria-roledescription="logo" width="240" src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>">
+              </div>
+            </div>
+
+            <nav id="js-info-nav" class="info-nav app-fonts" role="navigation">
+              <div class="info-card" style="background-color: #aa2224;">
+
+                <img src="<%= Routes.static_path(@conn, "/images/avatar/3.png") %>" class="cover" alt="cover" width="250">
+              </div>
+
+              <!--------------------------------------------Aside Nav-Menu -->
+              <ul id="js-nav-menu" class="nav-menu text-white">
+                <br>
+                <li>
+                  <a href="<%= Routes.staff_path(@conn, :index)%>" title="HOME" data-filter-tags="application intel">
+                    <i class="fal fa-home"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">HOME</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<%= Routes.chat_path(@conn, :index)%>" title="HOME" data-filter-tags="application intel">
+                    <i class="fal fa-comments"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">CHAT</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<%= Routes.staff_path(@conn, :index)%>" title="HOME" data-filter-tags="application intel">
+                    <i class="fal fa-clock"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">APPOINTMENT</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<%= Routes.staff_path(@conn, :index)%>" title="HOME" data-filter-tags="application intel">
+                    <i class="fal fa-user-md"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">PATIENT ENTRY</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<%= Routes.service_path(@conn, :index)%>" title="HOME" data-filter-tags="application intel">
+                    <i class="fal fa-user-md"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">OUR SERVICES</span>
+                  </a>
+                </li>
+              </ul>
+
+              <div class="filter-message js-filter-message bg-success-600"></div>
+            </nav>
+          </aside>
+
+          <div class="page-content-wrapper">
+            <!-- Navigation Bar -->
+            <header class="page-header" role="banner">
+              <div class="page-logo">
+                <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" alt="eChipatala WebApp" aria-roledescription="logo">
+                <span class="page-logo-text mr-1">
+                  eChipatala
+                </span>
+                <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
+                <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-info-300"></i>
+              </div>
+
+              <div class="hidden-lg-up">
+                <a href="#" class="header-btn btn press-scale-down" data-action="toggle" data-class="mobile-nav-on">
+                  <i class="ni ni-menu"></i>
+                </a>
+              </div>
+
+              <div class="ml-auto d-flex">
+                <!-- /Profile dropdown-->
+                <div>
+                  <a href="#" data-toggle="dropdown" title="eChipatala User" class="header-icon d-flex align-items-center justify-content-center ml-2">
+                    <img class="profile-image rounded-circle" alt="eChipatala User" src="<%= Routes.static_path(@conn, "/images/avatar/1.png") %>">
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-animated dropdown-lg">
+                    <div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
+                      <div class="d-flex flex-row align-items-center mt-1 mb-1 color-white">
+                        <span class="mr-2">
+                          <img class="profile-image rounded-circle" alt="Proxy User" src="<%= Routes.static_path(@conn, "/images/avatar/3.png") %>">
+                        </span>
+
+                        <div class="info-card-text">
+                          <%= "#{(@conn.assigns.user.username)}"%> | eChipatala
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="dropdown-divider m-0"></div>
+                    <div class="dropdown-divider m-0"></div>
+
+                    <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :user_profile)%>">
+                      <span data-i18n="drpdwn.page-change-password">
+                        <i class="fal fa-user"></i>
+                        My Profile
+                      </span>
+                    </a>
+
+                    <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.session_path(@conn, :signout)%>">
+                      <span data-i18n="drpdwn.page-change-password">
+                        <i class="fal fa-power-off"></i>
+                        Logout
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </header>
+
+            <!-- / Main Content-->
+            <main id="js-page-content" role="main" class="page-content">
+                <%= render @view_module, @view_template, assigns %>
+            </main>
+
+            <div class="page-content-overlay" data-action="toggle" data-class="mobile-nav-on"></div>
+
+            <footer class="page-footer" role="contentinfo">
+              <div class="d-flex align-items-center flex-1 text-muted">
+                <span class="hidden-md-down fw-700">
+                  2021 © <img src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>" width="100">
+                  </span>
+              </div>
+
+              <div>
+                <ul class="list-table m-0">
+                  <li class="pl-3">
+                    <a href="#" class="text-secondary fw-700">
+                      Help Center <i class="fal fa-question-circle" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </footer>
+
+            <div id="loader"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-------------------------------------------------------------------------CoreScripts -->
+    <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.3.3/umd/popper.min.js"></script> %>
+    <script src="<%= Routes.static_path(@conn, "/js/vendors.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/app.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/custom_scripts.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/miscellaneous/fullcalendar/fullcalendar.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/datagrid/datatables/datatables.export.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/datagrid/datatables/datatables.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/formplugins/select2/select2.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/notifications/sweetalert2/sweetalert2.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/default.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/zra.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/admin/napsa.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/admin/nhima.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/admin/zra.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/nhima.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/admin/fees.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/msg_logs.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/role_admin.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/dependency/moment/moment.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/formplugins/smartwizard/smartwizard.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/chartjs/chartjs.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/peity/peity.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/easypiechart/easypiechart.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/sparkline/sparkline.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/miscellaneous/lightgallery/lightgallery.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/phoenix_ujs/ujs.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/jquery.blockUI.js") %>"></script>
+
+    <!-------------------------------------------------------------------------Datatables -->
+    <script>
+      $(document).ready(function()
+        {
+            $('#default').dataTable(
+            {
+                responsive: true
+            });
+
+            $('.js-thead-colors a').ion('click', function()
+            {
+                var theadColor = $(this).attr("data-bg");
+                console.log(theadColor);
+                $('#dt-basic-example thead').removeClassPrefix('bg-').addClass(theadColor);
+            });
+
+            $('.js-tbody-colors a').on('click', function()
+            {
+                var theadColor = $(this).attr("data-bg");
+                console.log(theadColor);
+                $('#dt-basic-example').removeClassPrefix('bg-').addClass(theadColor);
+            });
+
+        });
+
+
+      $(document).ready(function()
+        {
+
+            // default datatable
+            $('#dt-basic-example').dataTable(
+            {
+                responsive: true,
+                lengthChange: false,
+                dom:
+                    /*  --- Layout Structure
+                        --- Options
+                        l - length changing input control
+                        f - filtering input
+                        t - The table!
+                        i - Table information summary
+                        p - pagination control
+                        r - processing display element
+                        B - buttons
+                        R - ColReorder
+                        S - Select
+
+                        --- Markup
+                        < and >       - div element
+                        <"class" and >    - div with a class
+                        <"#id" and >    - div with an ID
+                        <"#id.class" and >  - div with an ID and a class
+
+                        --- Further reading
+                        https://datatables.net/reference/option/dom
+                        --------------------------------------
+                        */
+                    "<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'lB>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                buttons: [
+                    /*{
+                        extend:    'colvis',
+                        text:      'Column Visibility',
+                        titleAttr: 'Col visibility',
+                        className: 'mr-sm-3'
+                    },*/
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        titleAttr: 'Generate PDF',
+                        className: 'btn-outline-danger btn-sm mr-1'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        titleAttr: 'Generate Excel',
+                        className: 'btn-outline-success btn-sm mr-1'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        text: 'CSV',
+                        titleAttr: 'Generate CSV',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'copyHtml5',
+                        text: 'Copy',
+                        titleAttr: 'Copy to clipboard',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        titleAttr: 'Print Table',
+                        className: 'btn-outline-primary btn-sm'
+                    }
+                ]
+            });
+
+            // tax type datatable
+            $('#dt-tax-type').dataTable(
+            {
+                responsive: true,
+                lengthChange: false,
+                dom:
+                    /*  --- Layout Structure
+                        --- Options
+                        l - length changing input control
+                        f - filtering input
+                        t - The table!
+                        i - Table information summary
+                        p - pagination control
+                        r - processing display element
+                        B - buttons
+                        R - ColReorder
+                        S - Select
+
+                        --- Markup
+                        < and >       - div element
+                        <"class" and >    - div with a class
+                        <"#id" and >    - div with an ID
+                        <"#id.class" and >  - div with an ID and a class
+
+                        --- Further reading
+                        https://datatables.net/reference/option/dom
+                        --------------------------------------
+                        */
+                    "<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'lB>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                buttons: [
+                    /*{
+                        extend:    'colvis',
+                        text:      'Column Visibility',
+                        titleAttr: 'Col visibility',
+                        className: 'mr-sm-3'
+                    },*/
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        titleAttr: 'Generate PDF',
+                        className: 'btn-outline-danger btn-sm mr-1'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        titleAttr: 'Generate Excel',
+                        className: 'btn-outline-success btn-sm mr-1'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        text: 'CSV',
+                        titleAttr: 'Generate CSV',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'copyHtml5',
+                        text: 'Copy',
+                        titleAttr: 'Copy to clipboard',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        titleAttr: 'Print Table',
+                        className: 'btn-outline-primary btn-sm'
+                    }
+                ]
+            });
+
+            // tpin mappings datatable
+            $('#dt-tpin').dataTable(
+            {
+                responsive: true,
+                lengthChange: false,
+                dom:
+                    /*  --- Layout Structure
+                        --- Options
+                        l - length changing input control
+                        f - filtering input
+                        t - The table!
+                        i - Table information summary
+                        p - pagination control
+                        r - processing display element
+                        B - buttons
+                        R - ColReorder
+                        S - Select
+
+                        --- Markup
+                        < and >       - div element
+                        <"class" and >    - div with a class
+                        <"#id" and >    - div with an ID
+                        <"#id.class" and >  - div with an ID and a class
+
+                        --- Further reading
+                        https://datatables.net/reference/option/dom
+                        --------------------------------------
+                        */
+                    "<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'lB>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                buttons: [
+                    /*{
+                        extend:    'colvis',
+                        text:      'Column Visibility',
+                        titleAttr: 'Col visibility',
+                        className: 'mr-sm-3'
+                    },*/
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        titleAttr: 'Generate PDF',
+                        className: 'btn-outline-danger btn-sm mr-1'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        titleAttr: 'Generate Excel',
+                        className: 'btn-outline-success btn-sm mr-1'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        text: 'CSV',
+                        titleAttr: 'Generate CSV',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'copyHtml5',
+                        text: 'Copy',
+                        titleAttr: 'Copy to clipboard',
+                        className: 'btn-outline-primary btn-sm mr-1'
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        titleAttr: 'Print Table',
+                        className: 'btn-outline-primary btn-sm'
+                    }
+                ]
+            });
+        });
+    </script>
+
+    <!-----------------------------------------------------------------------------Graph -->
+    <script>
+      /* dashboard */
+      var areaChart = function()
+      {
+          var config = {
+              type: 'line',
+              data:
+              {
+                  labels: ["January", "February", "March", "April", "May", "June", "July"],
+                  datasets: [
+                  {
+                      label: "ZRA Transactions",
+                      backgroundColor: 'rgba(136,106,181, 0.2)',
+                      borderColor: myapp_get_color.primary_500,
+                      pointBackgroundColor: myapp_get_color.primary_700,
+                      pointBorderColor: 'rgba(0, 0, 0, 0)',
+                      pointBorderWidth: 1,
+                      borderWidth: 1,
+                      pointRadius: 3,
+                      pointHoverRadius: 4,
+                      data: [
+                          45,
+                          75,
+                          26,
+                          23,
+                          60, 48, 9
+                      ],
+                      fill: true
+                  },
+                  {
+                      label: "eNAPSA Transactions",
+                      backgroundColor: 'rgba(29,201,183, 0.2)',
+                      borderColor: myapp_get_color.success_500,
+                      pointBackgroundColor: myapp_get_color.success_700,
+                      pointBorderColor: 'rgba(0, 0, 0, 0)',
+                      pointBorderWidth: 1,
+                      borderWidth: 1,
+                      pointRadius: 3,
+                      pointHoverRadius: 4,
+                      data: [-10,
+                          16,
+                          72,
+                          93,
+                          29, 74,
+                          64
+                      ],
+                      fill: true
+                  }]
+              },
+              options:
+              {
+                  responsive: true,
+                  title:
+                  {
+                      display: false,
+                      text: 'Area Chart'
+                  },
+                  tooltips:
+                  {
+                      mode: 'index',
+                      intersect: false,
+                  },
+                  hover:
+                  {
+                      mode: 'nearest',
+                      intersect: true
+                  },
+                  scales:
+                  {
+                      xAxes: [
+                      {
+                          display: true,
+                          scaleLabel:
+                          {
+                              display: false,
+                              labelString: '6 months forecast'
+                          },
+                          gridLines:
+                          {
+                              display: true,
+                              color: "#f2f2f2"
+                          },
+                          ticks:
+                          {
+                              beginAtZero: true,
+                              fontSize: 11
+                          }
+                      }],
+                      yAxes: [
+                      {
+                          display: true,
+                          scaleLabel:
+                          {
+                              display: false,
+                              labelString: 'Profit margin (approx)'
+                          },
+                          gridLines:
+                          {
+                              display: true,
+                              color: "#f2f2f2"
+                          },
+                          ticks:
+                          {
+                              beginAtZero: true,
+                              fontSize: 11
+                          }
+                      }]
+                  }
+              }
+          };
+          new Chart($("#areaChart > canvas").get(0).getContext("2d"), config);
+      }
+
+      /* initialize dashboard */
+      $(document).ready(function()
+      {
+        areaChart();
+      });
+    </script>
+
+    <!---------------------------------------------------------------------------FormWizard -->
+    <script>
+        $(document).ready(function()
+        {
+
+            // Smart Wizard
+            $('#smartwizard').smartWizard(
+            {
+                selected: 0, // Initial selected step, 0 = first step
+                keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
+                autoAdjustHeight: false, // Automatically adjust content height
+                cycleSteps: false, // Allows to cycle the navigation of steps
+                backButtonSupport: true, // Enable the back button support
+                useURLhash: false, // Enable selection of the step based on url hash
+                showStepURLhash: false,
+                lang:
+                { // Language variables
+                    next: 'Next',
+                    previous: 'Previous'
+                },
+                toolbarSettings:
+                {
+                    toolbarPosition: 'bottom', // none, top, bottom, both
+                    toolbarButtonPosition: 'right', // left, right
+                    showNextButton: true, // show/hide a Next button
+                    showPreviousButton: true, // show/hide a Previous button
+                    /*toolbarExtraButtons: [
+            $('<button></button>').text('Finish')
+                          .addClass('btn btn-info')
+                          .on('click', function(){
+                        alert('Finsih button click');
+                          }),
+            $('<button></button>').text('Cancel')
+                          .addClass('btn btn-danger')
+                          .on('click', function(){
+                        alert('Cancel button click');
+                          })
+                      ]*/
+                },
+                anchorSettings:
+                {
+                    anchorClickable: true, // Enable/Disable anchor navigation
+                    enableAllAnchors: false, // Activates all anchors clickable all times
+                    markDoneStep: true, // add done css
+                    enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+                },
+                contentURL: null, // content url, Enables Ajax content loading. can set as data data-content-url on anchor
+                contentCache: true, //ajax content
+                disabledSteps: [], // Array Steps disabled
+                errorSteps: [], // Highlight step with errors
+                theme: 'default', //dots, default, circles
+                transitionEffect: 'slide', // Effect on navigation, none/slide/fade
+                transitionSpeed: '400'
+            });
+
+
+
+
+        });
+    </script>
+
+    <!---------------------------------------------------------------------------Select 2---->
+    <script>
+      $(document).ready(function()
+      {
+          $(function()
+          {
+              $('.select2').select2();
+
+              $(".select2-placeholder-multiple").select2(
+              {
+                  placeholder: "Select State"
+              });
+              $(".js-hide-search").select2(
+              {
+                  minimumResultsForSearch: 1 / 0
+              });
+              $(".js-max-length").select2(
+              {
+                  maximumSelectionLength: 2,
+                  placeholder: "Select maximum 2 items"
+              });
+              $(".select2-placeholder").select2(
+              {
+                  placeholder: "Select a state",
+                  allowClear: true
+              });
+
+
+
+              $(".js-select2-icons").select2(
+              {
+                  minimumResultsForSearch: 1 / 0,
+                  templateResult: icon,
+                  templateSelection: icon,
+                  escapeMarkup: function(elm)
+                  {
+                      return elm
+                  }
+              });
+
+              function icon(elm)
+              {
+                  elm.element;
+                  return elm.id ? "<i class='" + $(elm.element).data("icon") + " mr-2'></i>" + elm.text : elm.text
+              }
+
+              $(".js-data-example-ajax").select2(
+              {
+                  ajax:
+                  {
+                      url: "https://api.github.com/search/repositories",
+                      dataType: 'json',
+                      delay: 250,
+                      data: function(params)
+                      {
+                          return {
+                              q: params.term, // search term
+                              page: params.page
+                          };
+                      },
+                      processResults: function(data, params)
+                      {
+                          // parse the results into the format expected by Select2
+                          // since we are using custom formatting functions we do not need to
+                          // alter the remote JSON data, except to indicate that infinite
+                          // scrolling can be used
+                          params.page = params.page || 1;
+
+                          return {
+                              results: data.items,
+                              pagination:
+                              {
+                                  more: (params.page * 30) < data.total_count
+                              }
+                          };
+                      },
+                      cache: true
+                  },
+                  placeholder: 'Search for a repository',
+                  escapeMarkup: function(markup)
+                  {
+                      return markup;
+                  }, // let our custom formatter work
+                  minimumInputLength: 1,
+                  templateResult: formatRepo,
+                  templateSelection: formatRepoSelection
+              });
+
+              function formatRepo(repo)
+              {
+                  if (repo.loading)
+                  {
+                      return repo.text;
+                  }
+
+                  var markup = "<div class='select2-result-repository clearfix d-flex'>" +
+                      "<div class='select2-result-repository__avatar mr-2'><img src='" + repo.owner.avatar_url + "' class='width-2 height-2 mt-1 rounded' /></div>" +
+                      "<div class='select2-result-repository__meta'>" +
+                      "<div class='select2-result-repository__title fs-lg fw-500'>" + repo.full_name + "</div>";
+
+                  if (repo.description)
+                  {
+                      markup += "<div class='select2-result-repository__description fs-xs opacity-80 mb-1'>" + repo.description + "</div>";
+                  }
+
+                  markup += "<div class='select2-result-repository__statistics d-flex fs-sm'>" +
+                      "<div class='select2-result-repository__forks mr-2'><i class='fal fa-lightbulb'></i> " + repo.forks_count + " Forks</div>" +
+                      "<div class='select2-result-repository__stargazers mr-2'><i class='fal fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
+                      "<div class='select2-result-repository__watchers mr-2'><i class='fal fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
+                      "</div>" +
+                      "</div></div>";
+
+                  return markup;
+              }
+
+              function formatRepoSelection(repo)
+              {
+                  return repo.full_name || repo.text;
+              }
+
+          });
+      });
+    </script>
+
+      <!------------- Error ScreenShot ----------->
+    <script>
+        $(document).ready(function()
+        {
+            var $initScope = $('#js-lightgallery');
+            if ($initScope.length)
+            {
+                $initScope.justifiedGallery(
+                {
+                    border: -1,
+                    rowHeight: 150,
+                    margins: 8,
+                    waitThumbnailsLoad: true,
+                    randomize: false,
+                }).on('jg.complete', function()
+                {
+                    $initScope.lightGallery(
+                    {
+                        thumbnail: true,
+                        animateThumb: true,
+                        showThumbByDefault: true,
+                    });
+                });
+            };
+            $initScope.on('onAfterOpen.lg', function(event)
+            {
+                $('body').addClass("overflow-hidden");
+            });
+            $initScope.on('onCloseAfter.lg', function(event)
+            {
+                $('body').removeClass("overflow-hidden");
+            });
+        });
+
+    </script>
+    </div>
+  </body>
+</html>
