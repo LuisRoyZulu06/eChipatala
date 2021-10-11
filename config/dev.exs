@@ -4,7 +4,6 @@ use Mix.Config
 config :echipatala, Echipatala.Repo,
   username: "SA",
   password: "Qwerty123",
-
   database: "echipatala",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
