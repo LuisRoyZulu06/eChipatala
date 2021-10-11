@@ -134,4 +134,94 @@ defmodule Echipatala.Accounts do
     User
     |>Repo.get_by(username: nt_username)
   end
+
+
+
+
+  def system_users(conn, search_params, page, size) do
+    User
+    |> where([c], c.status != "DELETED" and c.user_type !=3)
+    |> handle_user_filter(search_params)
+    |> order_by(desc: :inserted_at)
+    |> compose_user_select()
+    |> Repo.paginate(page: page, page_size: size)
+  end
+
+
+  def client_users(conn, search_params, page, size) do
+    User
+    |> where([c], c.status != "DELETED" and c.user_type ==3)
+    |> handle_user_filter(search_params)
+    |> order_by(desc: :inserted_at)
+    |> compose_user_select()
+    |> Repo.paginate(page: page, page_size: size)
+  end
+
+  defp handle_user_filter(query, params) do
+    Enum.reduce(params, query, fn
+      {"isearch", value}, query when byte_size(value) > 0 ->
+        user_isearch_filter(query, sanitize_term(value))
+
+      {"name", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.name, ^sanitize_term(value)))
+
+      {"phone", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.phone, ^sanitize_term(value)))
+
+      {"username", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.username, ^sanitize_term(value)))
+
+      {"email", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.email, ^sanitize_term(value)))
+
+      {"from", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("CAST(? AS DATE) >= ?", a.inserted_at, ^value))
+
+      {"to", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("CAST(? AS DATE) <= ?", a.inserted_at, ^value))
+
+
+
+      {_, _}, query ->
+        # Not a where parameter
+        query
+    end)
+  end
+
+  defp user_isearch_filter(query, search_term) do
+       where(
+         query,
+         [a],
+         fragment("lower(?) LIKE lower(?)", a.name, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.phone, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.username, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.email, ^search_term)
+       )
+    end
+
+    defp sanitize_term(term), do: "%#{String.replace(term, "%", "\\%")}%"
+
+
+  defp compose_user_select(query) do
+    query
+    |> select(
+      [t],
+      map(t, [
+        :id,
+        :name,
+        :password,
+        :auto_password,
+        :creator_id,
+        :email,
+        :password,
+        :user_type,
+        :user_role,
+        :status,
+        :phone,
+        :username,
+        :inserted_at,
+        :updated_at
+      ])
+    )
+  end
 end

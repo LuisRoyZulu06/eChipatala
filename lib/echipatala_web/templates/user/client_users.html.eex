@@ -29,8 +29,8 @@
                     <small>
                         To add user to system, click button below.
                     </small>
-                    <a href="javascript:void(0);" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;" data-toggle="modal" data-target="#addUser">
-                        Add user
+                    <a href="javascript:void(0);" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;" data-toggle="modal" data-target="#addClientUser">
+                        Add Client User
                     </a>
                 </h1>
 
@@ -47,7 +47,7 @@
                                 <!-- datatable start -->
                                 <input type="hidden" id="csrf" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
                                 <input type="hidden" id="user_id" name="user_id" value="<%= @user.id%>">
-                                <table id="tbl_system_users" class="table table-bordered table-hover table-striped w-100">
+                                <table id="tbl_client_users" class="table table-bordered table-hover table-striped w-100">
                                     <thead class="p-3 bg-fusion-100 rounded overflow-hidden position-relative text-white mb-g">
                                         <tr>
                                             <th>First Name</th>
@@ -365,6 +365,4 @@
         </div>
     </div>
 </div>
-
-<%= render "modal_system_user_filter.html", assigns %>
-<%= render "modal_add_system_user.html", assigns %>
+<%= render "modal_add_client_user.html", assigns %>

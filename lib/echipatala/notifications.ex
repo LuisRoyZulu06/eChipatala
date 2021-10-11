@@ -21,6 +21,72 @@ defmodule Echipatala.Notifications do
     Repo.all(Email)
   end
 
+
+
+  def list_all_emails(conn, search_params, page, size) do
+    Email
+    |> where([c], c.status !="")
+    |> handle_email_filter(search_params)
+    |> order_by(desc: :inserted_at)
+    |> compose_email_select()
+    |> Repo.paginate(page: page, page_size: size)
+  end
+
+  defp handle_email_filter(query, params) do
+    Enum.reduce(params, query, fn
+      {"isearch", value}, query when byte_size(value) > 0 ->
+        user_isearch_filter(query, sanitize_term(value))
+
+      {"email", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.receipient_email_address, ^sanitize_term(value)))
+
+      {"status", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.status, ^sanitize_term(value)))
+
+      {"from", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("CAST(? AS DATE) >= ?", a.inserted_at, ^value))
+
+      {"to", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("CAST(? AS DATE) <= ?", a.inserted_at, ^value))
+
+
+
+      {_, _}, query ->
+        # Not a where parameter
+        query
+    end)
+  end
+
+  defp user_isearch_filter(query, search_term) do
+       where(
+         query,
+         [a],
+         fragment("lower(?) LIKE lower(?)", a.status, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.receipient_email_address, ^search_term)
+       )
+    end
+
+    defp sanitize_term(term), do: "%#{String.replace(term, "%", "\\%")}%"
+
+
+  defp compose_email_select(query) do
+    query
+    |> select(
+      [t],
+      map(t, [
+        :id,
+        :subject,
+        :sender_email_address,
+        :sender_name,
+        :email_body,
+        :receipient_email_address,
+        :status,
+        :inserted_at,
+        :updated_at
+      ])
+    )
+  end
+
   @doc """
   Gets a single email.
 

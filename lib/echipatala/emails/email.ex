@@ -46,8 +46,7 @@ defmodule Echipatala.Emails.Email do
     sender_name = "Echipatala"
     subject = "Echipatala Login Credentials"
 
-    email_body =
-      "Hello #{first_name},\n your eChipatala username is: #{email}, and password: #{
+    email_body = "Hello #{first_name},\n your eChipatala username is: #{email}, and password: #{
         pwd
       }."
 

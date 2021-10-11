@@ -116,8 +116,34 @@
                           System Users
                         </span>
                       </a>
-                      
-                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :user_logs)%>">
+
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :client_users)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-user"></i>
+                          Client Users
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+
+                                <li>
+                  <a href="#" title="LOGS" data-filter-tags="application intel">
+                    <i class="fal fa-table"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">LOGS</span>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.logs_path(@conn, :email_logs)%>">
+                        <span id="">
+                          <i class="fal fa-envelope"></i>
+                          Email Logs
+                        </span>
+                      </a>
+
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.logs_path(@conn, :user_logs)%>">
                         <span style="color: #d82b2a;">
                           <i class="fal fa-handshake"></i>
                           User Activity
