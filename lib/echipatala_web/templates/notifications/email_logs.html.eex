@@ -1,0 +1,235 @@
+<div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+
+        <main id="js-page-content" role="main" class="page-content">
+            <!------------------ Flash -->
+            <div class="row">
+                <div class="col-md-12 col-lg-offset-2">
+                    <div class="form-group">
+                        <%= if get_flash(@conn, :info) do %>
+                            <div class="alert alert-info alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                            <%= get_flash(@conn, :info) %>
+                            </div>
+                        <% end %>
+                        <%= if get_flash(@conn, :error) do %>
+                            <div class="alert alert-danger alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                            Opps! <%= get_flash(@conn, :error) %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------ Subheader -->
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-envelope'></i> Email Logs
+                    <br>
+                    <small>
+                        List of all email logs.
+                    </small>
+                </h1>
+
+                <div class="info-card-text">
+                    <%= "#{(@conn.assigns.user.username)}"%> | eChipatala
+                </div>
+            </div>
+
+            <!------------------ Search for email logs -->
+            <div id="panel-1" class="panel">
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <form class="form-horizontal">
+                            <input type="hidden" name="_csrf_token" id="csrf" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                            <div class="panel-container">
+                                <div class="form-group">
+                                    <label class="form-label" for="name-f">Date Range</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text text-info">
+                                                From
+                                            </span>
+                                        </div>
+                                        <input type="date" name="from" class="form-control" id="from_date">
+                                        <div class="input-group-append input-group-prepend">
+                                            <span class="input-group-text text-info">
+                                                To
+                                            </span>
+                                        </div>
+                                        <div class="input-group-prepend">
+                                        </div>
+                                        <input type="date" name="to" class="form-control" id="to_date">
+                                        <div class="input-group-append input-group-prepend">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Email</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fal fa-envelope"></i></span>
+                                                </div>
+                                                <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" minlength="2" maxlength="50">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Status</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fal fa-recycle"></i></span>
+                                                </div>
+                                                <select class="form-control" name="status" id="status">
+                                                    <option value="">Status</option>
+                                                    <option value="PENDING">Pending</option>
+                                                    <option value="SUCCESS">Success</option>
+                                                    <option value="FAILED">Failed</option>
+                                                        <option value="INVALID_ROUTE">Invalid Route</option>
+                                                        <option value="LIMIT_REACHED">Limit reached</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="footer text-right">
+                                <button type="button" class="btn btn-info" id="fetch_emails"></i>Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------ Table of email logs -->
+            <div class="answer_list" >
+                <div id="panel-1" class="panel">
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <br><br>
+                            <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                            <thead class="p-3 bg-info-900 rounded overflow-hidden position-relative text-white mb-g">
+                                <tr>
+                                    <th>Recipient</th>
+                                    <th>Subject</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <%= for log <- @log do %>
+                                <tr>
+                                    <td><%= log.receipient_email_address %></td>
+                                    <td><%= log.subject %></td>
+                                    <td><%= log.email_body %></td>
+                                    <td><%= log.status %></td>
+                                </tr>
+                            <% end %>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="col-md-1"></div>
+</div>
+
+<!--------------------------------- Details MODAL  -->
+<div class="modal fade" id="view_details" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: rgba(45, 89, 134, 1);">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <label>
+                        Close window
+                        <i class="fal fa-times"></i>
+                    </label>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!------->
+                <div class="table-responsive w3-animate-top">
+
+              <table class="table table-hover table-clean">
+                <tbody>
+                  <tr>
+                    <th style="width: 150px; font-style: bold; font-size: 16px;">Recipient:</th>
+                    <td>
+                      <input type="text" id="recipient_email" class="form-control form-control-lg rounded-0 border-bottom-0 border-top-0 border-left-0 border-right-0 px-0">
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px; font-style: bold; font-size: 16px;">Subject:</th>
+                    <td>
+                      <input type="text" id="subject" class="form-control form-control-lg rounded-0 border-bottom-0 border-top-0 border-left-0 border-right-0 px-0">
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th style="width: 150px; font-style: bold; font-size: 16px;">Email Status:</th>
+                    <td>
+                      <input type="text" id="status" class="form-control form-control-lg rounded-0 border-bottom-0 border-top-0 border-left-0 border-right-0 px-0">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p>
+                <textarea type="text" id="mail_body" class="form-control form-control-lg rounded-0 border-bottom-0 border-top-0 border-left-0 border-right-0 px-0"></textarea>
+              </p>
+            </div>
+                <!------->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="<%= Routes.static_path(@conn, "/js/jquery-1.11.2.min.js") %>"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+    $('#view_details').on('show.bs.modal', function (event){
+
+      console.log("edit")
+
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var recipient_email = button.data('recipient_email')
+        var subject = button.data('subject')
+        var mail_body = button.data('mail_body')
+        var status = button.data('status');
+
+
+        var modal = $(this)
+
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #recipient_email').val(recipient_email);
+        modal.find('.modal-body #subject').val(subject);
+        modal.find('.modal-body #mail_body').val(mail_body);
+        modal.find('.modal-body #status').val(status);
+    });
+    });
+</script>
+
+<script>
+    function showDiv() {
+    document.getElementById('table_field').style.display = "block";
+    }
+</script>

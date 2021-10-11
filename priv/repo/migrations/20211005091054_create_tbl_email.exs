@@ -8,8 +8,8 @@ defmodule Echipatala.Repo.Migrations.CreateTblEmail do
       add :sender_name, :string
       add :email_body, :string
       add :receipient_email_address, :string
-      add :status, :string
-      add :attempts, :string
+      add :status, :string, default: "READY"
+      add :attempts, :string, default: "0"
 
       timestamps()
     end

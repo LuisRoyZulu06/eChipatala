@@ -75,7 +75,7 @@
           <aside class="page-sidebar">
             <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient" style="background-color:#122854">
               <div class="d-flex align-items-center container p-0" style="margin-top: -3em;">
-                <img alt="Logo" aria-roledescription="logo" width="240" src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>">
+                <img alt="Logo" aria-roledescription="logo" width="170" src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>">
               </div>
             </div>
 

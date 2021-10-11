@@ -47,7 +47,7 @@ defmodule Echipatala.Emails.Email do
     subject = "Echipatala Login Credentials"
 
     email_body =
-      "Hello #{first_name},\nYou can login to our E-Tax platform using username: #{email}, and password: #{
+      "Hello #{first_name},\n your eChipatala username is: #{email}, and password: #{
         pwd
       }."
 
@@ -71,7 +71,7 @@ defmodule Echipatala.Emails.Email do
     end
 
     # new_email()
-    # |> from("natsaveepay@natsave.co.zm")
+    # |> from("eChipatala")
     # |> to(email)
     # |> subject("Echipatala Login Credentials")
     # |> text_body("""
@@ -82,11 +82,11 @@ defmodule Echipatala.Emails.Email do
   end
 
   def forgot_pwd_confirmation(pwd, email, first_name) do
-    sender_email = "natsaveepay@natsave.co.zm"
+    sender_email = "eChipatala"
     sender_name = "Stanbic Bank"
     subject = "New Echipatala Password"
 
-    mail_body = "Hello #{email},\nYour new login password is: #{pwd}."
+    mail_body = "Hello #{email},\n your new eChipatala password is: #{pwd}."
 
     params = %{
       subject: subject,
@@ -110,7 +110,7 @@ defmodule Echipatala.Emails.Email do
 
   # def send_alert(pwd, email, first_name) do
   #   new_email()
-  #   |> from("natsaveepay@natsave.co.zm")
+  #   |> from("eChipatala")
   #   |> to(email)
   #   |> subject("Echipatala Login Credentials")
   #   |> text_body("""
@@ -121,8 +121,8 @@ defmodule Echipatala.Emails.Email do
   # end
 
   def send_mail(to, subject, body) do
-    sender_email = "stanbic@stanbic.co.zm"
-    sender_name = "StanbicEchipatala"
+    sender_email = "eChipatala@mail.com"
+    sender_name = "eCchipatala"
 
     params = %{
       subject: subject,

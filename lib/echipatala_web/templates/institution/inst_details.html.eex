@@ -301,7 +301,7 @@
                             <label class="form-label">User Role</label>
                             <select class="custom-select form-control-sm" name="user_role" require>
                                 <option value selected disabled>Select Staff User Role</option>
-                                <option value="Staff">Staff</option>
+                                <option value="STAFF">Staff</option>
                             </select>
                             <div class="help-block">Select staff user role.</div>
                         </div>

@@ -76,6 +76,9 @@ defmodule EchipatalaWeb.Router do
     get "/Institution/Details", InstitutionController, :inst_details
     post "/Update/Institution/Details", InstitutionController, :update_institution_details
     get "/Institution/Statistics", InstitutionController, :institution_stats
+
+    # ---------------------------Notifications Management
+    get "/Email/Logs", NotificationsController, :email_logs
   end
 
   scope "/", EchipatalaWeb do
