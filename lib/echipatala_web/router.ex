@@ -114,6 +114,7 @@ defmodule EchipatalaWeb.Router do
   scope "/", EchipatalaWeb do
     pipe_through([:browser, :staff])
     get("/Staff/Dashboard", StaffController, :index)
+    get("/Staff/appointments", StaffController, :appointments)
 
     #--------------service controller --------
     get("/Service", ServiceController, :index)

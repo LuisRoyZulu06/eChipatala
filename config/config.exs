@@ -18,6 +18,17 @@ config :echipatala, EchipatalaWeb.Endpoint,
    pubsub_server: Echipatala.PubSub
   # pubsub: [name: Echipatala.PubSub, adapter: Phoenix.PubSub.PG2]
 
+  config :echipatala, Echipatala.Scheduler,
+  overlap: false,
+  timeout: 600_000,
+  timezone: "Africa/Cairo",
+  jobs: [
+    appointments: [
+           schedule: {:extended, "*/5"},
+           task: {Echipatala.Staff.Workers.AutoAppointments, :perform, []}
+         ]
+  ]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

@@ -10,6 +10,7 @@ defmodule Echipatala.Notifications.Email do
     field :sender_name, :string
     field :status, :string, default: "READY"
     field :subject, :string
+
     timestamps()
   end
 

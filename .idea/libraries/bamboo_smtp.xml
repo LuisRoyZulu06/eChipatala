@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="bamboo_smtp" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/bamboo_smtp/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/bamboo_smtp/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/bamboo_smtp/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/bamboo_smtp/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/bamboo_smtp/lib" />
+      <root url="file://$PROJECT_DIR$/deps/bamboo_smtp/lib" />
+    </SOURCES>
+  </library>
+</component>

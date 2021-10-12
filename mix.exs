@@ -40,8 +40,11 @@ defmodule Echipatala.MixProject do
       {:phoenix, "~> 1.6"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.4"},
+
       {:ecto_sql, "~> 3.7"},
+
       {:tds, "~> 2.1.1"},
+
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
@@ -57,6 +60,7 @@ defmodule Echipatala.MixProject do
       {:scrivener_ecto, "~> 2.7", override: true},
       {:elixlsx, "~> 0.4.2"},
       {:number, "~> 0.5.7"},
+      {:quantum, "~> 2.2.7"}
     ]
   end
 
