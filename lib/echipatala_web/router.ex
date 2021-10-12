@@ -93,10 +93,13 @@ defmodule EchipatalaWeb.Router do
     get("/Client/Dashboard", ClientController, :index)
 
     # ---------------------------Chat Management
-    # get "/Consult", ChatController, :consult
+    get "/Consult", ChatController, :consult
     #-- To check and verify
     get("/Client/institutions", ClientController, :institutions)
     get("/Client/institution", ClientController, :institution)
+
+    # ---------------------------Appointment Management
+    get "/Appointments", ClientController, :appointments
 
     # ====================self assessment======================
     get("/Self/Assessment", SelfAssessmentController, :index)

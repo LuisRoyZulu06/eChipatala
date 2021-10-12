@@ -13,8 +13,8 @@ defmodule EchipatalaWeb.ChatController do
     render(conn, "index.html")
   end
 
-  # def consult(conn, %{"id" => id}) do
-  #   select_staff = Accounts.get_institution_student(id)
-  #   render(conn, "consult.html", select_staff: select_staff)
-  # end
+  def consult(conn, _params) do
+    # select_staff = Accounts.get_institution_student(id)
+    render(conn, "consult.html")
+  end
 end
