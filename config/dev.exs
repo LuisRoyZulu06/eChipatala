@@ -2,15 +2,12 @@ use Mix.Config
 
 # Configure your database
 config :echipatala, Echipatala.Repo,
-<<<<<<< HEAD
   username: "SA",
   password: "Qwerty123",
   database: "echipatala_0",
-
   # username: "sa",
   # password: "password06",
   # database: "echipatala",
-
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
