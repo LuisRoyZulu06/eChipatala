@@ -100,10 +100,8 @@ defmodule Echipatala.Appointments do
   Returns an `%Ecto.Changeset{}` for tracking appointment changes.
 
   ## Examples
-
       iex> change_appointment(appointment)
       %Ecto.Changeset{data: %Appointment{}}
-
   """
   def change_appointment(%Appointment{} = appointment, attrs \\ %{}) do
     Appointment.changeset(appointment, attrs)

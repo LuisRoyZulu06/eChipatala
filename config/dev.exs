@@ -4,7 +4,7 @@ use Mix.Config
 config :echipatala, Echipatala.Repo,
   username: "SA",
   password: "Qwerty123",
-  database: "echipatala",
+  database: "echipatala_0",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
