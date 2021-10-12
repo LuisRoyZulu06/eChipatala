@@ -60,6 +60,7 @@ defmodule Echipatala.MixProject do
       {:scrivener_ecto, "~> 2.7", override: true},
       {:elixlsx, "~> 0.4.2"},
       {:number, "~> 0.5.7"},
+      {:quantum, "~> 2.2.7"}
     ]
   end
 

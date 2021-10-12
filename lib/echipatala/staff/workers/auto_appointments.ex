@@ -3,6 +3,10 @@ defmodule Echipatala.Staff.Workers.AutoAppointments do
   alias Echipatala.Repo
   alias Echipatala.Appointments.Appointment
 
+  def perform() do
+    random_date()
+  end
+
   def description do
     num = Enum.random(1..1900000)
     [
@@ -21,7 +25,8 @@ defmodule Echipatala.Staff.Workers.AutoAppointments do
 
   def random_date() do
     date = Enum.random(1..30)
-    appointment_date = "2021-10-#{date}"
+    time = Enum.random(8..20)
+    appointment_date = "2021-10-#{date} #{time}:30:00.337196Z"
     status_note = "New appointment for #{appointment_date}"
 
 
@@ -33,7 +38,7 @@ defmodule Echipatala.Staff.Workers.AutoAppointments do
       inst_id: 1,
       appoint_ref: reference,
       doct_id: 2,
-      init_date: Date.utc_today,
+      init_date: DateTime.utc_now,
       status: "PENDING"
     }
     |> appointments_insert()
