@@ -6,11 +6,11 @@ config :echipatala, Echipatala.Repo,
   username: "SA",
   password: "Qwerty123",
   database: "echipatala_0",
-=======
-  username: "sa",
-  password: "password06",
-  database: "echipatala",
->>>>>>> 65f19a719515868b3b678734ef5d5b9c9e9e5fcd
+
+  # username: "sa",
+  # password: "password06",
+  # database: "echipatala",
+
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

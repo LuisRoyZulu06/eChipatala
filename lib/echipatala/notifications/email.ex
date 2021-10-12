@@ -9,11 +9,11 @@ defmodule Echipatala.Notifications.Email do
     field :sender_email_address, :string
     field :sender_name, :string
     field :status, :string, default: "READY"
-<<<<<<< HEAD
-    field :subject, :string, default: "0"
-=======
+
+    # field :subject, :string, default: "0"
+
     field :subject, :string
->>>>>>> 2fea9b255e3005784dd2669f38d53f518fb267a2
+
 
     timestamps()
   end
