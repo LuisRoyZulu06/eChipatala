@@ -68,7 +68,7 @@
                                                                     <div class="panel-content">
                                                                         <div class="panel-container show">
                                                                             <div class="panel-content">
-                                                                                <h1 id="headerStyle">Health Covid 19 Symptoms</h6>
+                                                                                <h1 id="headerStyle">Covid 19 Symptoms as per Health Organizations and by Ministry of Health</h6>
                                                                                 <hr>
                                                                                 <div class="row">
                                                                                     <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
@@ -138,8 +138,11 @@
                                                                     <div class="panel-content">
                                                                         <div class="panel-container show">
                                                                             <div class="panel-content">
-                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.</h6>
-                                                                                <hr>
+                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.
+                                                                                    <span style="color: red; font-size: 30px; font-family: san-sherif">YES
+                                                                                        <h1>Please seek medical attention immediately.</h1>
+                                                                                    </span>
+                                                                                </h1>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -187,7 +190,7 @@
                                                                     <div class="panel-content">
                                                                         <div class="panel-container show">
                                                                             <div class="panel-content">
-                                                                                <h1 id="headerStyle">Health Covid 19 Symptoms</h6>
+                                                                                <h1 id="headerStyle">Cholera Symptoms as per Health Organizations and by Ministry of Health</h6>
                                                                                 <hr>
                                                                                 <div class="row">
                                                                                     <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
@@ -257,8 +260,11 @@
                                                                     <div class="panel-content">
                                                                         <div class="panel-container show">
                                                                             <div class="panel-content">
-                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.</h6>
-                                                                                <hr>
+                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.
+                                                                                    <span style="color: red; font-size: 30px; font-family: san-sherif">YES
+                                                                                        <h1>Please seek medical attention immediately.</h1>
+                                                                                    </span>
+                                                                                </h1>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -305,7 +311,7 @@
                                                                     <div class="panel-content">
                                                                         <div class="panel-container show">
                                                                             <div class="panel-content">
-                                                                                <h1 id="headerStyle">Health Covid 19 Symptoms</h6>
+                                                                                <h1 id="headerStyle">AIDS Symptoms as per Health Organizations and by Ministry of Health</h6>
                                                                                 <hr>
                                                                                 <div class="row">
                                                                                     <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
@@ -375,8 +381,11 @@
                                                                     <div class="panel-content">
                                                                         <div class="panel-container show">
                                                                             <div class="panel-content">
-                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.</h6>
-                                                                                <hr>
+                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.
+                                                                                    <span style="color: green; font-size: 30px; font-family: san-sherif">NO
+                                                                                        <h1>Please test for other possible illnesses</h1>
+                                                                                    </span>
+                                                                                </h1>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -423,7 +432,7 @@
                                                                     <div class="panel-content">
                                                                         <div class="panel-container show">
                                                                             <div class="panel-content">
-                                                                                <h1 id="headerStyle">Health Covid 19 Symptoms</h6>
+                                                                                <h1 id="headerStyle">Malaria Symptoms as per Health Organizations and by Ministry of Health</h6>
                                                                                 <hr>
                                                                                 <div class="row">
                                                                                     <ul style="color:black; font-size: 20px; text-decoration-style: bold;">
@@ -493,8 +502,11 @@
                                                                     <div class="panel-content">
                                                                         <div class="panel-container show">
                                                                             <div class="panel-content">
-                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.</h6>
-                                                                                <hr>
+                                                                                <h1 id="headerStyle">Possible Illness? Based on the Symptoms.
+                                                                                    <span style="color: red; font-size: 30px; font-family: san-sherif">YES
+                                                                                        <h1>Please seek medical attention immediately.</h1>
+                                                                                    </span>
+                                                                                </h1>
                                                                             </div>
                                                                         </div>
                                                                     </div>
