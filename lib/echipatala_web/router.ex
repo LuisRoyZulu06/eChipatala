@@ -79,9 +79,10 @@ defmodule EchipatalaWeb.Router do
     post "/Update/Institution/Details", InstitutionController, :update_institution_details
     get "/Institution/Statistics", InstitutionController, :institution_stats
 
+    # ---------------------------Notifications Management
+    get "/Email/Logs", NotificationsController, :email_logs
 
     # =====================Logs Controller===============
-
     get("Email/Logs", LogsController, :email_logs)
     post("/Email/Logs/Table", LogsController, :email_log_table)
     get "/User/Activity/Logs", LogsController, :user_logs
@@ -92,7 +93,7 @@ defmodule EchipatalaWeb.Router do
     get("/Client/Dashboard", ClientController, :index)
 
     # ---------------------------Chat Management
-    get "/Consult", ChatController, :consult
+    # get "/Consult", ChatController, :consult
     #-- To check and verify
     get("/Client/institutions", ClientController, :institutions)
     get("/Client/institution", ClientController, :institution)

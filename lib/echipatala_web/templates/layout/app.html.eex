@@ -75,7 +75,7 @@
           <aside class="page-sidebar">
             <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient" style="background-color:#122854">
               <div class="d-flex align-items-center container p-0" style="margin-top: -3em;">
-                <img alt="Logo" aria-roledescription="logo" width="240" src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>">
+                <img alt="Logo" aria-roledescription="logo" width="170" src="<%= Routes.static_path(@conn, "/images/logos/1.png") %>">
               </div>
             </div>
 
@@ -147,6 +147,31 @@
                         <span style="color: #d82b2a;">
                           <i class="fal fa-handshake"></i>
                           User Activity
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="#" title="LOGS" data-filter-tags="application intel">
+                    <i class="fal fa-bell"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">NOTIFICATIONS LOGS</span>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.notifications_path(@conn, :email_logs)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-envelope"></i>
+                          Email Logs
+                        </span>
+                      </a>
+                      
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="#">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-comments"></i>
+                          SMS Logs
                         </span>
                       </a>
                     </li>

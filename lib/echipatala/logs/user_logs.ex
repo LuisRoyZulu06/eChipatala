@@ -4,7 +4,7 @@ defmodule Echipatala.Logs.UserLogs do
 
   schema "tbl_user_logs" do
     field :activity, :string
-    field :user_id, :integer
+    field :user_id, :id
 
     timestamps()
   end

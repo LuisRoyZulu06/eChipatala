@@ -22,7 +22,11 @@ defmodule Echipatala.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
+<<<<<<< HEAD
     |> cast(attrs, [:name, :username, :institution_id, :email, :phone, :gender, :user_type, :user_role, :status, :password, :auto_password, :creator_id])
+=======
+    |> cast(attrs, [:name, :username, :email, :phone, :gender, :user_type, :user_role, :status, :password, :auto_password, :creator_id, :institution_id])
+>>>>>>> 65f19a719515868b3b678734ef5d5b9c9e9e5fcd
     |> validate_required([:name, :username, :email, :phone, :gender, :user_type, :user_role, :status, :password, :auto_password])
     |> validate_length(:password, min: 8, message: " should be atleast 8 characters long")
     |> validate_length(:name, min: 2, message: "should be between 3 characters long")

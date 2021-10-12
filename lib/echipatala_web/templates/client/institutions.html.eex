@@ -11,29 +11,50 @@
             </ol>
 
             <div class="subheader">
-                <h1 class="subheader-title">
-                    <i class='subheader-icon fal fa-chart-area'></i> Dashboard
-                </h1>
+                <a href="<%= Routes.client_path(@conn, :index) %>" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;">
+                    <i class="fal fa-reply"></i> Back
+                </a>
             </div>
 
             <div class="row">
-                <div class="panel-container show">
-                    <div class="panel-content">
-                        <div class="frame-wrap chile">
-                            <table class="table table-bordered table-hover m-0 ">
-                                <tbody>
-                                    <%= for inst <-@institutions do %>
-                                    <tr>
-                                        <td><a href="<%= Routes.client_path(@conn, :institution,  %{id: inst.id}) %>"><%= inst.name %></a></td>
-                                    </tr>
-                                    <% end %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <%= for inst <-@institutions do %>
+                    <div class="col-md-4">
+                        <a href="<%= Routes.client_path(@conn, :institution,  %{id: inst.id}) %>">
+                            <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover">
+                                <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <span class="">
+                                            <span class="rounded-circle profile-image d-block" style="background-image:url('/images/card-backgrounds/3.png'); background-size: cover;"></span>
+                                        </span>
 
+                                        <div class="info-card-text flex-1">
+                                            <a href="#" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
+                                                <%= inst.name %>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body p-0 collapse show">
+                                    <div class="p-3">
+                                        <a href="tel:<%= inst.tel %>" class="mt-1 d-block fs-sm fw-400 text-dark">
+                                            <i class="fal fa-mobile-alt text-muted mr-2"></i> <%= inst.tel %>
+                                        </a>
+
+                                        <a href="mailto:<%= inst.email %>" class="mt-1 d-block fs-sm fw-400 text-dark">
+                                            <i class="fal fa-envelope text-muted mr-2"></i> <%= inst.email %>
+                                        </a>
+
+                                        <address class="fs-sm fw-400 mt-4 text-muted">
+                                            <i class="fal fa-map-pin mr-2"></i> <%= inst.address %>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <% end %>  
+            </div>                      
         </div>
 
         <div class="col-md-2"></div>

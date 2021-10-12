@@ -17,7 +17,7 @@ defmodule Echipatala.Notifications do
       [%Email{}, ...]
 
   """
-  def list_tbl_email do
+  def list_emails do
     Repo.all(Email)
   end
 
