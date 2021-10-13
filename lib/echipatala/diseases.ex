@@ -7,6 +7,8 @@ defmodule Echipatala.Diseases do
   alias Echipatala.Repo
 
   alias Echipatala.Diseases.Disease
+  alias Echipatala.Diseases.Symptom
+  alias Echipatala.Diseases.DiseaseSymptom
 
   @doc """
   Returns the list of tbl_disease.
@@ -17,9 +19,205 @@ defmodule Echipatala.Diseases do
       [%Disease{}, ...]
 
   """
-  def list_tbl_disease do
+  def list_tbl_diseases do
     Repo.all(Disease)
   end
+
+
+  def get_disease_by_name(name) do
+    Disease
+    |>Repo.get_by(name: name)
+  end
+
+
+
+
+  def list_tbl_disease(search_params, page, size) do
+    Disease
+    # |> where([c], c.status != "DELETED" and c.user_type !=3)
+    |> handle_disease_filter(search_params)
+    |> order_by(desc: :inserted_at)
+    |> compose_disease_select()
+    |> Repo.paginate(page: page, page_size: size)
+  end
+
+  defp handle_disease_filter(query, params) do
+    Enum.reduce(params, query, fn
+      {"isearch", value}, query when byte_size(value) > 0 ->
+        disease_isearch_filter(query, sanitize_term(value))
+
+      {"name", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.name, ^sanitize_term(value)))
+
+      {"description", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.description, ^sanitize_term(value)))
+
+      # {"from", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("CAST(? AS DATE) >= ?", a.inserted_at, ^value))
+
+      # {"to", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("CAST(? AS DATE) <= ?", a.inserted_at, ^value))
+
+
+
+      {_, _}, query ->
+        # Not a where parameter
+        query
+    end)
+  end
+
+  defp disease_isearch_filter(query, search_term) do
+       where(
+         query,
+         [a],
+         fragment("lower(?) LIKE lower(?)", a.name, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.description, ^search_term)
+       )
+    end
+
+    defp sanitize_term(term), do: "%#{String.replace(term, "%", "\\%")}%"
+
+
+  defp compose_disease_select(query) do
+    query
+    |> select(
+      [t],
+      map(t, [
+        :id,
+        :name,
+        :description,
+        :maker_id,
+        :inserted_at,
+        :updated_at
+      ])
+    )
+  end
+
+
+
+
+
+
+
+
+
+
+
+  # ===============================================Symptoms ========================
+
+  def list_tbl_symptoms do
+    Repo.all(Symptom)
+  end
+
+
+  def get_symptom_by_name(name) do
+    Symptom
+    |>Repo.get_by(name: name)
+  end
+
+  def list_tbl_symptoms(search_params, page, size) do
+    Symptom
+    |> handle_symptom_filter(search_params)
+    |> order_by(desc: :inserted_at)
+    |> compose_symptom_select()
+    |> Repo.paginate(page: page, page_size: size)
+  end
+
+  defp handle_symptom_filter(query, params) do
+    Enum.reduce(params, query, fn
+      {"isearch", value}, query when byte_size(value) > 0 ->
+        symptom_isearch_filter(query, sanitize_term(value))
+
+      {"name", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.name, ^sanitize_term(value)))
+
+      {"category", value}, query when byte_size(value) > 0 ->
+        where(query, [a], fragment("lower(?) LIKE lower(?)", a.category, ^sanitize_term(value)))
+
+      # {"from", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("CAST(? AS DATE) >= ?", a.inserted_at, ^value))
+
+      # {"to", value}, query when byte_size(value) > 0 ->
+      #   where(query, [a], fragment("CAST(? AS DATE) <= ?", a.inserted_at, ^value))
+
+
+
+      {_, _}, query ->
+        # Not a where parameter
+        query
+    end)
+  end
+
+  defp symptom_isearch_filter(query, search_term) do
+       where(
+         query,
+         [a],
+         fragment("lower(?) LIKE lower(?)", a.name, ^search_term) or
+         fragment("lower(?) LIKE lower(?)", a.category, ^search_term)
+       )
+    end
+
+    defp sanitize_term(term), do: "%#{String.replace(term, "%", "\\%")}%"
+
+
+  defp compose_symptom_select(query) do
+    query
+    |> select(
+      [t],
+      map(t, [
+        :id,
+        :name,
+        :category,
+        :maker_id,
+        :inserted_at,
+        :updated_at
+      ])
+    )
+  end
+
+
+
+
+
+  # ==================================== Disease Symptoms=============================
+  # |> join(:left, [c], a in "tbl_company_accounts", on: c.id == a.company_id)
+  #   |> where([c], c.status != "DELETED" and c.is_sub_company == "no")
+  #   |> handle_filter(search_params)
+  #   |> order_by(desc: :inserted_at)
+  #   |> compose_client_select()
+  #   |> select_merge([_c, a], %{acc_num: a.acc_num})
+
+
+
+
+  def list_tbl_disease_symptoms do
+    Repo.all(DiseaseSymptom)
+  end
+
+  def get_disease_symptom_by_ids(params) do
+  IO.inspect params, label: "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    DiseaseSymptom
+    |> where([a], a.disease_id == ^params["disease_id"] and a.symptom_id == ^params["symptom_id"])
+    |> Repo.one()
+  end
+
+
+  def get_disease_symptom_by_name(name) do
+    DiseaseSymptom
+    |>Repo.get_by(name: name)
+  end
+
+
+  def list_tbl_disease_symptoms(search_params, page, size) do
+    DiseaseSymptom
+    |> join(:left, [a], b in "tbl_disease", on: a.disease_id == b.id)
+    |> join(:left, [a], c in "tbl_symptom", on: a.symptom_id == c.id)
+    |> order_by(desc: :inserted_at)
+    |> select([a], %{id: a.id, percentage: a.percentage})
+    |> select_merge([_c, b, c], %{disease_name: b.name, symptom_name: c.name})
+    |> Repo.paginate(page: page, page_size: size)
+  end
+
 
   @doc """
   Gets a single disease.

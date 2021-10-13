@@ -46,6 +46,10 @@ defmodule EchipatalaWeb.ClientController do
     )
   end
 
+  def appointments(conn, _params) do
+    render(conn, "appointments.html")
+  end
+
   def traverse_errors(errors) do
    for {key, {msg, _opts}} <- errors, do: "#{key} #{msg}"
   end

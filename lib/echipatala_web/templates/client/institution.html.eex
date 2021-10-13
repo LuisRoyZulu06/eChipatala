@@ -5,117 +5,101 @@
         <main id="js-page-content" role="main" class="page-content">
             <div class="subheader">
                 <h1 class="subheader-title">
-                  <i class='subheader-icon fal fa-globe'></i>
                   <%= @institution.name %>
                   <small>
-                    <%= @user.name %>
+                    Hello <%= @user.username %>, welcome to eChipatala.
                   </small>
+                    <a href="<%= Routes.client_path(@conn, :institutions)%>" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #800020; color: #fff; font-weight: bold;">
+                        <i class="fal fa-reply"></i> Back
+                    </a>
                 </h1>
-
-                <a href="#" onclick="history.back(-1)" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #800020; color: #fff; font-weight: bold;">
-                    <i class="fal fa-reply"></i> Back
-                </a>
-
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="panel-1" class="panel">
-                        <div class="panel-container show">
-                            <div class="panel-content">
-                                <div class="panel-content">
-                                    <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
-                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab-services" role="tab">Services</a></li>
-                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-appointments" role="tab">My Appointments</a></li>
-                                    </ul>
-                                    <div class="tab-content p-3">
-                                        <div class="tab-pane fade show active" id="tab-services" role="tabpanel">
-                                            <div class="panel-container show">
-                                                <div class="panel-content">
-                                                    <div class="frame-wrap chile">
-                                                        <table class="table table-bordered table-hover m-0 ">
-                                                            <thead class="thead-themed">
-                                                                <tr>
-                                                                    <th class="table2">Service</th>
-                                                                    <th class="table2">Service Description</th>
-                                                                    <th class="table2">Consultation Fee</th>
-                                                                    <th class="table2">Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <%= for service <-@services do %>
-                                                                <tr>
-                                                                    <td scope="row"><%= service.name %></td>
-                                                                    <td><%= service.descript %></td>
-                                                                    <td><%= service.consult_fee %></td>
-                                                                    <td>
-                                                                        <button class="btn bg-fusion-100 waves-effect waves-themed btn-xs" data-toggle="dropdown">Options</button>
-                                                                        <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
-                                                                            <a href="<%= Routes.service_path(@conn, :sub_services, %{id: service.id}) %>" class="dropdown-item text-info">
-                                                                                <i class="fal fa-edit"></i>
-                                                                                Sub Services
-                                                                            </a>
-                                                                            <a href="<%= Routes.service_path(@conn, :sub_services, %{id: service.id}) %>" class="dropdown-item text-info">
-                                                                                <i class="fal fa-edit"></i>
-                                                                                Consult
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <% end %>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="tab-pane fade show" id="tab-appointments" role="tabpanel">
-                                            <div class="panel-container show">
-                                                <div class="panel-content">
-                                                    <div class="frame-wrap chile">
-                                                        <table class="table table-bordered table-hover m-0 ">
-                                                            <thead class="thead-themed">
-                                                                <tr>
-                                                                    <th class="table2">Reference</th>
-                                                                    <th class="table2">Doctor</th>
-                                                                    <th class="table2">Description</th>
-                                                                    <th class="table2">Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <%= for ap <-@appointments do %>
-                                                                <tr>
-                                                                    <td scope="row"><%= ap.reference %></td>
-                                                                    <td><%= ap.doct_id %></td>
-                                                                    <td><%= ap.descript %></td>
-                                                                    <td>
-                                                                        <button class="btn bg-fusion-100 waves-effect waves-themed btn-xs" data-toggle="dropdown">Options</button>
-                                                                        <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
-                                                                            <a href="<%= Routes.service_path(@conn, :sub_services, %{id: ap.id}) %>" class="dropdown-item text-info">
-                                                                                <i class="fal fa-edit"></i>
-                                                                                Chat
-                                                                            </a>
-                                                                            <a href="<%= Routes.service_path(@conn, :sub_services, %{id: ap.id}) %>" class="dropdown-item text-info">
-                                                                                <i class="fal fa-edit"></i>
-                                                                                Details
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <% end %>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
+            <ul class="nav nav-tabs nav-tabs-clean px-3 px-sm-5" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active bg-transparent fs-lg fw-400" data-toggle="tab" href="#tab-all" role="tab">
+                        <%= @institution.name %> Services
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <%# <a class="nav-link bg-transparent fs-lg fw-400" data-toggle="tab" href="#tab-images" role="tab"> %>
+                    <a class="nav-link bg-transparent fs-lg fw-400" href="<%= Routes.chat_path(@conn, :consult)%>">
+                        Consultations
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex px-3 px-sm-5 py-4">
+                <!-- Left for Space above -->
+            </div>
+
+            <div class="px-3 px-sm-5 pb-4">
+                <div class="tab-content">
+                    <!-- Services -->
+                    <div class="tab-pane show active" id="tab-all" role="tabpanel" aria-labelledby="tab-all">
+                        <div class="card">
+                            <%= for service <-@services do %>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item py-4 px-4">
+                                        <a href="javascript:void(0)" class="fs-lg fw-500">
+                                            <%= service.name %>
+                                        </a>
+                                        <div class="fs-xs mt-1">
+                                            <a href="javascript:void(0)" class="text-success">
+                                                <%= service.descript %>
+                                            </a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="mt-2">
+                                            K <%= service.consult_fee %>
+                                        </div>
+                                    </li>
+                                </ul>
+                            <% end %>
                         </div>
+
+                        <ul class="pagination my-4">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                </a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">4</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">5</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">6</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">»</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
+
+                    <!-- Consultation 
+                    <div class="tab-pane" id="tab-images" role="tabpanel" aria-labelledby="tab-images">
+                    </div>
+                    -->
                 </div>
+
+
+
+                
             </div>
         </main>
     </div>
