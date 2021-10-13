@@ -4,7 +4,7 @@ defmodule Echipatala.Diseases.Symptom do
 
   schema "tbl_symptom" do
     field :category, :string
-    field :maker_id, :string
+    field :maker_id, :integer
     field :name, :string
 
     timestamps()

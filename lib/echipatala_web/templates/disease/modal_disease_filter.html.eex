@@ -1,0 +1,64 @@
+<!-- Filter Modal -->
+<div class="modal fade" id="diseasefilter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Filter System Users</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <form id="sytemuserSearchForm">
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="first_name">Firstname.</label>
+                                <input type="text" name="first_name" id="filter_first_name" placeholder="First Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="last_name">Firstname.</label>
+                                <input type="text" name="last_name" id="filter_last_name" placeholder="Last Name" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="username">Username.</label>
+                                <input type="text" name="username" id="filter_username" placeholder="Username " class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="email">Email.</label>
+                                <input type="text" name="email" id="filter_email" placeholder="Email Address" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="from">Start Date </label>
+                                <input type="date" name="from" id="filter_from" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="to">End Date</label>
+                                <input type="date" name="to" id="filter_to" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info" id="btn_disease_filter">FIlter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
