@@ -34,6 +34,17 @@
                 <!-- end inbox title -->
                 <!-- inbox button shortcut -->
                 <div class="d-flex flex-wrap align-items-center pl-3 pr-1 py-2 px-sm-4 px-lg-5 border-faded border-top-0 border-left-0 border-right-0">
+                    <div id="quick_buttons" style="display: none;">
+                        <button id="quick_delete" type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Delete">
+                            <i class="fal fa-trash" aria-hidden="true"></i>
+                        </button>
+                        <button id="quick_unread" type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Mark as unread">
+                            <i class="fal fa-envelope" aria-hidden="true"></i>
+                        </button>
+                        <button id="quick_read" type="button" class="btn" data-toggle="tooltip" data-placement="top" title="Mark as read">
+                            <i class="fal fa-envelope-open" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     <div class="text-muted mr-1 mr-lg-3 ml-auto">
                         1 - 50 <span class="hidden-lg-down"> of 135 </span>
                     </div>
@@ -60,8 +71,8 @@
                                     <a href="#" title="starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg color-warning-500 order-3 order-lg-2"><i class="fas fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Melissa Ayre</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Re: New security codes (2)</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Melissa Ayre</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Re: New security codes (2)</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">8:31PM</div>
@@ -76,8 +87,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Adison Le</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Welcome to the new portal, here is what you need to do</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Adison Le</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Welcome to the new portal, here is what you need to do</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">6:22PM</div>
@@ -92,8 +103,8 @@
                                     <a href="#" title="starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg color-warning-500 order-3 order-lg-2"><i class="fas fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Oliver Kopyuv</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Transformer Combustion Defuser is ready</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Oliver Kopyuv</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Transformer Combustion Defuser is ready</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">5:12PM</div>
@@ -108,8 +119,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Dr. John Cook PhD</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">PWS facts for patient #3245</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Dr. John Cook PhD</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >PWS facts for patient #3245</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">4:31PM</div>
@@ -124,8 +135,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Sarah McBrook</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Are you coming to the after party?</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Sarah McBrook</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Are you coming to the after party?</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">3:43PM</div>
@@ -140,8 +151,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Lisa Hatchensen</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">The results for bloodwork</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Lisa Hatchensen</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >The results for bloodwork</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">2:00PM</div>
@@ -156,8 +167,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Anothony Bezyeth</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Questions regarding accesskey</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Anothony Bezyeth</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Questions regarding accesskey</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">1:35PM</div>
@@ -172,8 +183,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Wrapbootstrap</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Your registration is complete</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Wrapbootstrap</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Your registration is complete</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">12:59PM</div>
@@ -188,8 +199,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Oliver Kopyuv</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Transformer Combustion Defuser is ready</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Oliver Kopyuv</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Transformer Combustion Defuser is ready</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">12:12PM</div>
@@ -204,8 +215,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Dr. John Cook PhD</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">PWS facts for patient #3245</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Dr. John Cook PhD</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >PWS facts for patient #3245</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Yesterday</div>
@@ -220,8 +231,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Sarah McBrook</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Are you coming to the after party?</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Sarah McBrook</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Are you coming to the after party?</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Yesterday</div>
@@ -236,8 +247,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Lisa Hatchensen</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">The results for bloodwork</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Lisa Hatchensen</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >The results for bloodwork</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Yesterday</div>
@@ -252,8 +263,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Anothony Bezyeth</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Questions regarding accesskey</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Anothony Bezyeth</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Questions regarding accesskey</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Mar 12</div>
@@ -268,8 +279,8 @@
                                     <a href="#" title="starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg color-warning-500 order-3 order-lg-2"><i class="fas fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Bloodworks Inc.</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Your results are here</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Bloodworks Inc.</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Your results are here</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Mar 3</div>
@@ -284,8 +295,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Oliver Kopyuv</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Transformer Combustion Defuser is ready</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Oliver Kopyuv</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Transformer Combustion Defuser is ready</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Feb 28</div>
@@ -300,8 +311,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Dr. John Cook PhD</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">PWS facts for patient #3245</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Dr. John Cook PhD</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >PWS facts for patient #3245</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Feb 18</div>
@@ -316,8 +327,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Sarah McBrook</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Are you coming to the after party?</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Sarah McBrook</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Are you coming to the after party?</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Feb 12</div>
@@ -332,8 +343,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Lisa Hatchensen</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">The results for bloodwork</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Lisa Hatchensen</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >The results for bloodwork</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Feb 8</div>
@@ -348,8 +359,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Anothony Bezyeth</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Questions regarding accesskey</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Anothony Bezyeth</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Questions regarding accesskey</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Feb 5</div>
@@ -364,8 +375,8 @@
                                     <a href="#" title="Not starred" class="d-flex align-items-center py-1 ml-2 mt-4 mt-lg-0 ml-lg-0 mr-lg-4 fs-lg text-muted order-3 order-lg-2"><i class="fal fa-star"></i></a>
                                     <div class="d-flex flex-row flex-wrap flex-1 align-items-stretch align-self-stretch order-2 order-lg-3">
                                         <div class="row w-100">
-                                            <a href="page_inbox_read.html" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto">Password reset</a>
-                                            <a href="page_inbox_read.html" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto">Your password was changed</a>
+                                            <a href="#" class="name d-flex width-sm align-items-center pt-1 pb-0 py-lg-1 col-12 col-lg-auto chat_select" >Password reset</a>
+                                            <a href="#" class="name d-flex align-items-center pt-0 pb-1 py-lg-1 flex-1 col-12 col-lg-auto chat_select" >Your password was changed</a>
                                         </div>
                                     </div>
                                     <div class="fs-sm text-muted ml-auto hide-on-hover-parent order-4 position-on-mobile-absolute pos-top pos-right mt-2 mr-3 mr-sm-4 mt-lg-0 mr-lg-0">Jan 1</div>
@@ -461,3 +472,102 @@
         </div> <!-- end compose message -->
     </div>
 </main>
+
+<div class="modal" id="chat_tab" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Chat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
+            <div class="media media-chat"> <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                <div class="media-body">
+                    <p>Hi</p>
+                    <p>How are you ...???</p>
+                    <p>What are you doing tomorrow?<br> Can we come up a bar?</p>
+                    <p class="meta"><time datetime="2018">23:58</time></p>
+                </div>
+            </div>
+            <div class="media media-meta-day">Today</div>
+            <div class="media media-chat media-chat-reverse">
+                <div class="media-body">
+                    <p>Hiii, I'm good.</p>
+                    <p>How are you doing?</p>
+                    <p>Long time no see! Tomorrow office. will be free on sunday.</p>
+                    <p class="meta"><time datetime="2018">00:06</time></p>
+                </div>
+            </div>
+            <div class="media media-chat"> <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                <div class="media-body">
+                    <p>Okay</p>
+                    <p>We will go on sunday? </p>
+                    <p class="meta"><time datetime="2018">00:07</time></p>
+                </div>
+            </div>
+            <div class="media media-chat media-chat-reverse">
+                <div class="media-body">
+                    <p>That's awesome!</p>
+                    <p>I will meet you Sandon Square sharp at 10 AM</p>
+                    <p>Is that okay?</p>
+                    <p class="meta"><time datetime="2018">00:09</time></p>
+                </div>
+            </div>
+            <div class="media media-chat"> <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                <div class="media-body">
+                    <p>Okay i will meet you on Sandon Square </p>
+                    <p class="meta"><time datetime="2018">00:10</time></p>
+                </div>
+            </div>
+            <div class="media media-chat media-chat-reverse">
+                <div class="media-body">
+                    <p>Do you have pictures of Matley Marriage?</p>
+                    <p class="meta"><time datetime="2018">00:10</time></p>
+                </div>
+            </div>
+            <div class="media media-chat"> <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                <div class="media-body">
+                    <p>Sorry I don't have. i changed my phone.</p>
+                    <p class="meta"><time datetime="2018">00:12</time></p>
+                </div>
+            </div>
+            <div class="media media-chat media-chat-reverse">
+                <div class="media-body">
+                    <p>Okay then see you on sunday!!</p>
+                    <p class="meta"><time datetime="2018">00:12</time></p>
+                </div>
+            </div>
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+            </div>
+        </div>
+      </div>
+
+        <div class="publisher bt-1 border-light">
+            <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+            <input class="publisher-input" type="text" placeholder="Write something">
+            <span class="publisher-btn file-group">
+                <i class="fal fa-paperclip file-browser"></i>
+                <input type="file">
+            </span>
+            <a class="publisher-btn" href="#" data-abc="true">
+                <i class="fal fa-smile"></i>
+            </a>
+            <a class="publisher-btn text-info" href="#" data-abc="true">
+                <i class="fal fa-paper-plane"></i>
+            </a>
+        </div>
+<%#
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> %>
+    </div>
+  </div>
+</div>
