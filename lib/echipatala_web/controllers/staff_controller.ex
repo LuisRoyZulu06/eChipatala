@@ -30,7 +30,7 @@ defmodule EchipatalaWeb.StaffController do
     render(conn, "dashboard.html")
   end
 
-  # ================= UPDATE APPOINTMENT ==================
+# ================= UPDATE APPOINTMENT ==================
   def appointments(conn, %{"update_appointment" => request}) do
     IO.inspect(conn, label: "======================================")
     user = conn.assigns.user
@@ -57,6 +57,11 @@ defmodule EchipatalaWeb.StaffController do
     |> render("index.html", result: data,
       total: totaling
       )
+  end
+
+
+  def patients(conn, _params) do
+    render(conn, "patients_index.html")
   end
 
 

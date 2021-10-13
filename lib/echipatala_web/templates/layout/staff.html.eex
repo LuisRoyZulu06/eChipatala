@@ -110,7 +110,7 @@
                 </li>
 
                 <li>
-                  <a href="<%= Routes.staff_path(@conn, :index)%>" title="HOME" data-filter-tags="application intel">
+                  <a href="<%= Routes.staff_path(@conn, :patients)%>" title="HOME" data-filter-tags="application intel">
                     <i class="fal fa-user-md"></i>
                     <span class="nav-link-text" data-i18n="nav.application_intel">PATIENT ENTRY</span>
                   </a>

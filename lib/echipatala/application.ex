@@ -10,7 +10,7 @@ defmodule Echipatala.Application do
     children = [
       # Start the Ecto repository
       Echipatala.Repo,
-      Echipatala.Scheduler,
+      # Echipatala.Scheduler,
       # Start the endpoint when the application starts
       EchipatalaWeb.Endpoint,
       {Phoenix.PubSub, [name: Echipatala.PubSub, adapter: Phoenix.PubSub.PG2]}
