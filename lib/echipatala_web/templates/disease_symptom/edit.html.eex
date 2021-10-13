@@ -1,0 +1,5 @@
+<h1>Edit Symptom</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.symptom_path(@conn, :update, @symptom)) %>
+
+<span><%= link "Back", to: Routes.symptom_path(@conn, :index) %></span>

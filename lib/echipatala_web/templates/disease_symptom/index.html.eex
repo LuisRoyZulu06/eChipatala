@@ -1,0 +1,132 @@
+<main id="js-page-content" role="main" class="page-content">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12 col-lg-offset-2">
+                    <div class="form-group">
+                        <%= if get_flash(@conn, :info) do %>
+                            <div class="alert alert-success alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                            <%= get_flash(@conn, :info) %>
+                            </div>
+                        <% end %>
+                        <%= if get_flash(@conn, :error) do %>
+                            <div class="alert alert-danger alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+                                Opps! <%= get_flash(@conn, :error) %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-user-circle'></i> Manage  disease symptoms
+                    <br>
+                    <small>
+                        To add a disease symptom to system, click button below.
+                    </small>
+                    <a href="javascript:void(0);" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;" data-toggle="modal" data-target="#addUser">
+                        Add disease_symptom
+                    </a>
+                </h1>
+
+                <div class="info-card-text">
+                    <%= "#{(@conn.assigns.user.username)}"%> | eChipatala
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="panel-1" class="panel">
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                            <form class="form-horizontal" action="<%=Routes.disease_symptom_path(@conn, :create_disease_symptom)%>" method="post">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Disease</label>
+                                            <div class="input-group">
+                                                <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                                                <select class="custom-select form-control-sm" name="disease_id" required="required">
+                                                    <option value selected disabled>Select Disease</option>
+                                                    <%= for disease <-@diseases do %>
+                                                    <option value="<%= disease.id%>">
+                                                        <%= disease.name%>
+                                                    </option>
+                                                    <% end %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Symptom</label>
+                                            <div class="input-group">
+                                                <select class="custom-select form-control-sm" name="symptom_id" required="required">
+                                                    <option value selected disabled>Select Symptom</option>
+                                                    <%= for symptom <-@symptoms do %>
+                                                    <option value="<%= symptom.id%>">
+                                                        <%= symptom.name%>
+                                                    </option>
+                                                    <% end %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label" style="font-weight: bold;">Percentage</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fal fa-percent"></i></span>
+                                                </div>
+                                                <input type="text" name="percentage" placeholder="percentage" class="form-control"  required>
+                                            </div>
+                                            <span id="availability"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group" style="margin-top: 2em;">
+                                            <button class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #174A69; color: #fff; font-weight: bold;">Map Disease to Symptom</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="panel-1" class="panel">
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <!-- datatable start -->
+                            <input type="hidden" id="csrf" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                            <input type="hidden" id="user_id" name="user_id" value="<%= @user.id%>">
+                            <table id="tbl_disease_symptom_mngt" class="table table-bordered table-hover table-striped w-100">
+                                <thead class="p-3 bg-fusion-100 rounded overflow-hidden position-relative text-white mb-g">
+                                    <tr>
+                                        <th>Disease</th>
+                                        <th>Syptom</th>
+                                        <th>Percentage</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+</main>

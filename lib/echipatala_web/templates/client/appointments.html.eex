@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+        <main id="js-page-content" role="main" class="page-content">
+            <ol class="breadcrumb page-breadcrumb">
+                <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+            </ol>
+            
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-calendar'></i> Appointments
+                    <small>
+                        <a type="button" href="<%= Routes.client_path(@conn, :index)%>" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #9a5325; color: #fff; font-weight: bold;">
+                            <i class="fal fa-reply"></i> Back
+                        </a>
+
+                        <button type="button" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #800020; color: #fff; font-weight: bold;" data-toggle="modal" data-target="#req-app">
+                            <i class="fal fa-calendar"></i> Request Appointment
+                        </button>
+                    </small>
+                </h1>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="panel-1" class="panel">
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                                <div id="calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="col-md-1"></div>
+</div>
+
+<!------ REQUEST APPOINMENT  -->
+<div class="modal fade" id="req-app" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">
+                <i class="fal fa-times"></i>
+                Close window
+              </span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" action="#" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: bold;">Institution</label>
+                            <div class="input-group">
+                                <select class="custom-select form-control select_admin_type" name="institution">
+                                    <option value selected disabled>Select Institution</option>
+                                    <option value="Institution Name">Institution Name</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Requested Date</label>
+                            <div class="input-group">
+                                <input type="date" name="req-date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-pills waves-effect waves-themed text-whit" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-pills waves-effect waves-themed text-white" style="background-color: #FFAD5D; color: #C02629; font-weight: bold;">Request Appointment</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

@@ -93,10 +93,13 @@ defmodule EchipatalaWeb.Router do
     get("/Client/Dashboard", ClientController, :index)
 
     # ---------------------------Chat Management
-    # get "/Consult", ChatController, :consult
+    get "/Consult", ChatController, :consult
     #-- To check and verify
     get("/Client/institutions", ClientController, :institutions)
     get("/Client/institution", ClientController, :institution)
+
+    # ---------------------------Appointment Management
+    get "/Appointments", ClientController, :appointments
 
     # ====================self assessment======================
     get("/Self/Assessment", SelfAssessmentController, :index)
@@ -117,6 +120,24 @@ defmodule EchipatalaWeb.Router do
     get("/Service", ServiceController, :index)
     post("/Service/create", ServiceController, :create)
     get("/Service/subs", ServiceController, :sub_services)
+
+
+  # -----------------------------------Disease Controller----------------
+    get("/Disease/Management", DiseaseController, :index)
+    post("/Disease/Management/table", DiseaseController, :disease)
+    post("/Add/Disease", DiseaseController, :create_disease)
+
+
+  # -----------------------------------Disease Controller----------------
+    get("/Symptom/Management", SymptomController, :index)
+    post("/Symptom/Management/table", SymptomController, :symptom)
+    post("/Add/Symptom", SymptomController, :create_symptom)
+
+
+  # -----------------------------------Disease Symptom Controller----------------
+    get("/Disease/Symptom/Management", DiseaseSymptomController, :index)
+    post("/Disease/Symptom/Management/table", DiseaseSymptomController, :disease_symptom)
+    post("/Add/Disease/Symptom", DiseaseSymptomController, :create_disease_symptom)
 
     # ---------------------------Chat Management
     get "/Messages", ChatController, :index

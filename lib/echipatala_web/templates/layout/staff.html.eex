@@ -14,7 +14,6 @@
       <meta name="apple-mobile-web-app-capable" content="yes">
       <!-- Remove Tap Highlight on Windows Phone IE -->
       <meta name="msapplication-tap-highlight" content="no">
-
       <!-- base css -->
       <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/loader.css") %>">
       <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/vendors.bundle.css") %>">
@@ -30,6 +29,7 @@
       <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/datagrid/datatables/datatables.bundle.css") %>">
       <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/page-invoice.css") %>">
       <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/default.css") %>" />
+      <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/chat.css") %>" />
       <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/formplugins/select2/select2.bundle.css") %>">
       <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/fullcalendar/fullcalendar.bundle.css") %>">
       <link rel="stylesheet" media="screen, print" href="<%= Routes.static_path(@conn, "/css/miscellaneous/lightgallery/lightgallery.bundle.css") %>">
@@ -121,6 +121,42 @@
                     <i class="fal fa-user-md"></i>
                     <span class="nav-link-text" data-i18n="nav.application_intel">OUR SERVICES</span>
                   </a>
+                </li>
+
+                <li>
+                  <a href="#" title="LOGS" data-filter-tags="application intel">
+                    <i class="fal fa-hospital"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">HOSPITAL MANAGEMENT</span>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.disease_path(@conn, :index)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-ambulance"></i>
+                          Manage Diseases
+                        </span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.symptom_path(@conn, :index)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-heartbeat"></i>
+                          Manage Symptoms
+                        </span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.disease_symptom_path(@conn, :index)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-plus-square"></i>
+                          Manage Disease Symptoms
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
 
@@ -246,11 +282,16 @@
     <script src="<%= Routes.static_path(@conn, "/js/miscellaneous/lightgallery/lightgallery.bundle.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/phoenix_ujs/ujs.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/jquery.blockUI.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/appointments.js") %>"></script>
 
 
     <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/appointments.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/disease.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/symptom.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/disease_symptom.js") %>"></script>
 
-    <!-------------------------------------------------------------------------Datatables -->
+
+    <!------ Datatables ------>
     <script>
       $(document).ready(function()
         {
@@ -494,7 +535,25 @@
         });
     </script>
 
-    <!-----------------------------------------------------------------------------Graph -->
+    <script>
+      $(document).ready(function()
+      {
+          $('#staff-dash').dataTable(
+          {
+              responsive: true,
+              pageLength: 15,
+              order: [
+                  [2, 'desc']
+              ],
+              rowGroup:
+              {
+                  dataSrc: 2
+              }
+          });
+      });
+    </script>
+
+    <!------ Graph ------>
     <script>
       /* dashboard */
       var areaChart = function()
@@ -615,7 +674,7 @@
       });
     </script>
 
-    <!---------------------------------------------------------------------------FormWizard -->
+    <!------ FormWizard ------>
     <script>
         $(document).ready(function()
         {
@@ -676,7 +735,7 @@
         });
     </script>
 
-    <!---------------------------------------------------------------------------Select 2---->
+    <!------ Select ------>
     <script>
       $(document).ready(function()
       {
@@ -800,7 +859,7 @@
       });
     </script>
 
-      <!------------- Error ScreenShot ----------->
+    <!------ Error ScreenShot ------>
     <script>
         $(document).ready(function()
         {
