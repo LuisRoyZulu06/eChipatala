@@ -283,7 +283,8 @@
     <script src="<%= Routes.static_path(@conn, "/js/phoenix_ujs/ujs.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/jquery.blockUI.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/appointments.js") %>"></script>
-
+    <script src="<%= Routes.static_path(@conn, "/js/miscellaneous/jqvmap/jqvmap.bundle.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/flot/flot.bundle.js") %>"></script>
 
     <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/appointments.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/disease.js") %>"></script>
@@ -859,40 +860,252 @@
       });
     </script>
 
-    <!------ Error ScreenShot ------>
+    <!------ Pie Chart ------>
     <script>
-        $(document).ready(function()
-        {
-            var $initScope = $('#js-lightgallery');
-            if ($initScope.length)
-            {
-                $initScope.justifiedGallery(
-                {
-                    border: -1,
-                    rowHeight: 150,
-                    margins: 8,
-                    waitThumbnailsLoad: true,
-                    randomize: false,
-                }).on('jg.complete', function()
-                {
-                    $initScope.lightGallery(
-                    {
-                        thumbnail: true,
-                        animateThumb: true,
-                        showThumbByDefault: true,
-                    });
-                });
-            };
-            $initScope.on('onAfterOpen.lg', function(event)
-            {
-                $('body').addClass("overflow-hidden");
-            });
-            $initScope.on('onCloseAfter.lg', function(event)
-            {
-                $('body').removeClass("overflow-hidden");
-            });
-        });
+      $(document).ready(function()
+      {
+          //$('#js-page-content').smartPanel(); 
 
+          //
+          //
+          var dataSetPie = [
+          {
+              label: "Asia",
+              data: 4119630000,
+              color: myapp_get_color.primary_500
+          },
+          {
+              label: "Latin America",
+              data: 590950000,
+              color: myapp_get_color.info_500
+          },
+          {
+              label: "Africa",
+              data: 1012960000,
+              color: myapp_get_color.warning_500
+          },
+          {
+              label: "Oceania",
+              data: 95100000,
+              color: myapp_get_color.danger_500
+          },
+          {
+              label: "Europe",
+              data: 727080000,
+              color: myapp_get_color.success_500
+          },
+          {
+              label: "North America",
+              data: 344120000,
+              color: myapp_get_color.fusion_400
+          }];
+
+
+          $.plot($("#flotPie"), dataSetPie,
+          {
+              series:
+              {
+                  pie:
+                  {
+                      innerRadius: 0.5,
+                      show: true,
+                      radius: 1,
+                      label:
+                      {
+                          show: true,
+                          radius: 2 / 3,
+                          threshold: 0.1
+                      }
+                  }
+              },
+              legend:
+              {
+                  show: false
+              }
+          });
+
+
+          $.plot('#flotBar1', [
+          {
+              data: [
+                  [1, 0],
+                  [2, 0],
+                  [3, 0],
+                  [4, 1],
+                  [5, 3],
+                  [6, 3],
+                  [7, 10],
+                  [8, 11],
+                  [9, 10],
+                  [10, 9],
+                  [11, 12],
+                  [12, 8],
+                  [13, 10],
+                  [14, 6],
+                  [15, 3]
+              ],
+              bars:
+              {
+                  show: true,
+                  lineWidth: 0,
+                  fillColor: myapp_get_color.fusion_50,
+                  barWidth: .3,
+                  order: 'left'
+              }
+          },
+          {
+              data: [
+                  [1, 0],
+                  [2, 0],
+                  [3, 1],
+                  [4, 2],
+                  [5, 2],
+                  [6, 5],
+                  [7, 8],
+                  [8, 12],
+                  [9, 10],
+                  [10, 11],
+                  [11, 3]
+              ],
+              bars:
+              {
+                  show: true,
+                  lineWidth: 0,
+                  fillColor: myapp_get_color.success_500,
+                  barWidth: .3,
+                  align: 'right'
+              }
+          }],
+          {
+              grid:
+              {
+                  borderWidth: 0,
+              },
+              yaxis:
+              {
+                  min: 0,
+                  max: 15,
+                  tickColor: '#F0F0F0',
+                  ticks: [
+                      [0, ''],
+                      [5, '$5000'],
+                      [10, '$25000'],
+                      [15, '$45000']
+                  ],
+                  font:
+                  {
+                      color: '#444',
+                      size: 10
+                  }
+              },
+              xaxis:
+              {
+                  mode: 'categories',
+                  tickColor: '#F0F0F0',
+                  ticks: [
+                      [0, '3am'],
+                      [1, '4am'],
+                      [2, '5am'],
+                      [3, '6am'],
+                      [4, '7am'],
+                      [5, '8am'],
+                      [6, '9am'],
+                      [7, '10am'],
+                      [8, '11am'],
+                      [9, '12nn'],
+                      [10, '1pm'],
+                      [11, '2pm'],
+                      [12, '3pm'],
+                      [13, '4pm'],
+                      [14, '5pm']
+                  ],
+                  font:
+                  {
+                      color: '#999',
+                      size: 9
+                  }
+              }
+          });
+      });
+
+        /* flot area */
+                var flotArea = $.plot($('#flot-area'), [
+                {
+                    data: dataSet1,
+                    label: 'New Customer',
+                    color: myapp_get_color.success_200
+                },
+                {
+                    data: dataSet2,
+                    label: 'Returning Customer',
+                    color: myapp_get_color.info_200
+                }],
+                {
+                    series:
+                    {
+                        lines:
+                        {
+                            show: true,
+                            lineWidth: 2,
+                            fill: true,
+                            fillColor:
+                            {
+                                colors: [
+                                {
+                                    opacity: 0
+                                },
+                                {
+                                    opacity: 0.5
+                                }]
+                            }
+                        },
+                        shadowSize: 0
+                    },
+                    points:
+                    {
+                        show: true,
+                    },
+                    legend:
+                    {
+                        noColumns: 1,
+                        position: 'nw'
+                    },
+                    grid:
+                    {
+                        hoverable: true,
+                        clickable: true,
+                        borderColor: '#ddd',
+                        tickColor: '#ddd',
+                        aboveData: true,
+                        borderWidth: 0,
+                        labelMargin: 5,
+                        backgroundColor: 'transparent'
+                    },
+                    yaxis:
+                    {
+                        tickLength: 1,
+                        min: 0,
+                        max: 15,
+                        color: '#eee',
+                        font:
+                        {
+                            size: 0,
+                            color: '#999'
+                        }
+                    },
+                    xaxis:
+                    {
+                        tickLength: 1,
+                        color: '#eee',
+                        font:
+                        {
+                            size: 10,
+                            color: '#999'
+                        }
+                    }
+
+                });
+                /* flot area -- end */
     </script>
     </div>
   </body>
