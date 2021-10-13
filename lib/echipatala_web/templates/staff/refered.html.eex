@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="panel-content" id="report_table">
-                        <table class="table table-bordered table-hover compact w-100">
+                        <table id="default_one"  class="table table-bordered table-hover compact w-100">
                             <thead class="bg-info-800">
                             <tr>
                                 <th>ID</th>

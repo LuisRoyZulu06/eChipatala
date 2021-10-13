@@ -5,7 +5,7 @@ defmodule EchipatalaWeb.StaffController do
   alias Echipatala.Emails.Email
   alias EchipatalaWeb.Plugs.EnforcePasswordPolicy
   alias Echipatala.Staff.Services.Appointments
-  @limit 20
+  @limit 1000
   @page 1
 
   plug(
