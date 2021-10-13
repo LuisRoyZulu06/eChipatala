@@ -175,25 +175,8 @@
           <label for="menu_open" class="menu-open-button ">
               <span class="app-shortcut-icon d-block"></span>
           </label>
-          <a href="#" class="menu-item btn" data-placement="left" title="STATISTICS">
-              <i class="fal fa-chart-area"></i>
-          </a>
-
-
-          <a href="#" class="menu-item btn" data-placement="left" title="SCHOOL">
-              <i class="fal fa-building"></i>
-          </a>
-
-          <a href="#" class="menu-item btn" data-placement="left" title="DOMT">
-              <i class="fal fa-file"></i>
-          </a>
-
-          <a href="#" class="menu-item btn" data-placement="left" title="ASYCUDA">
-            <i class="fal fa-globe"></i>
-          </a>
-
-          <a href="#" class="menu-item btn" data-placement="left" title="HOME">
-              <i class="fal fa-home"></i>
+          <a href="<%= Routes.chat_path(@conn, :consult)%>" class="menu-item btn" data-placement="left" title="Lets Talk">
+              <i class="fal fa-comments"></i>
           </a>
       </nav>
 
