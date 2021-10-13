@@ -3,8 +3,9 @@ defmodule Echipatala.Diseases.Disease do
   import Ecto.Changeset
 
   schema "tbl_disease" do
-    field :maker_id, :string
+    field :maker_id, :integer
     field :name, :string
+    field :description, :string
 
     timestamps()
   end
@@ -12,7 +13,7 @@ defmodule Echipatala.Diseases.Disease do
   @doc false
   def changeset(disease, attrs) do
     disease
-    |> cast(attrs, [:name, :maker_id])
+    |> cast(attrs, [:name, :description, :maker_id])
     |> validate_required([:name, :maker_id])
   end
 end

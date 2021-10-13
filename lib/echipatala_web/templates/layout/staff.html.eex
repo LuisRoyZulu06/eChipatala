@@ -121,6 +121,42 @@
                     <span class="nav-link-text" data-i18n="nav.application_intel">OUR SERVICES</span>
                   </a>
                 </li>
+
+                <li>
+                  <a href="#" title="LOGS" data-filter-tags="application intel">
+                    <i class="fal fa-hospital"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">HOSPITAL MANAGEMENT</span>
+                  </a>
+
+                  <ul>
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.disease_path(@conn, :index)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-ambulance"></i>
+                          Manage Diseases
+                        </span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.symptom_path(@conn, :index)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-heartbeat"></i>
+                          Manage Symptoms
+                        </span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.disease_symptom_path(@conn, :index)%>">
+                        <span style="color: #d82b2a;">
+                          <i class="fal fa-plus-square"></i>
+                          Manage Disease Symptoms
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
               </ul>
 
               <div class="filter-message js-filter-message bg-success-600"></div>
@@ -247,6 +283,11 @@
     <script src="<%= Routes.static_path(@conn, "/js/jquery.blockUI.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/appointments.js") %>"></script>
 
+
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/appointments.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/disease.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/symptom.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/module_js/staff/disease_symptom.js") %>"></script>
 
 
     <!------ Datatables ------>
