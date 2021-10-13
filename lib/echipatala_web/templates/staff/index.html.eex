@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <main id="js-page-content" role="main" class="page-content">
     <div class="row">
         <div class="col-md-12">
@@ -20,7 +26,7 @@
                     </div>
                     <div>
                         <label class="fs-sm mb-0 mt-2 mt-md-0">Complete Appointments</label>
-                        <h4 class="font-weight-bold mb-0"><%=  %></h4>
+                        <h4 class="font-weight-bold mb-0"><%= @total[:complete] %></h4>
                     </div>
                 </div>
 
@@ -32,7 +38,7 @@
                     </div>
                     <div>
                         <label class="fs-sm mb-0 mt-2 mt-md-0">Pending Appointments</label>
-                        <h4 class="font-weight-bold mb-0"><%=  %></h4>
+                        <h4 class="font-weight-bold mb-0"><%= @total[:pending] %></h4>
                     </div>
                 </div>
 
@@ -49,7 +55,7 @@
                     </div>
                     <div>
                         <label class="fs-sm mb-0 mt-2 mt-md-0">Declined Appointments</label>
-                        <h4 class="font-weight-bold mb-0"><%=  %></h4>
+                        <h4 class="font-weight-bold mb-0"><%= @total[:declined] %></h4>
                     </div>
                 </div>
 
@@ -61,54 +67,67 @@
                     </div>
                     <div>
                         <label class="fs-sm mb-0 mt-2 mt-md-0">Total Appointments</label>
-                        <h4 class="font-weight-bold mb-0"><%=  %></h4>
+                        <h4 class="font-weight-bold mb-0"><%= @total[:total] %></h4>
                     </div>
                 </div>
             </div>
 
-            <div id="panel-4" class="panel">
+
+
+            <div id="panel-6" class="panel">
                 <div class="panel-container show">
-                    <div class="panel-hdr">
-                        <h2>
-                            List Appointments<span class="fw-300"><i></i></span>
-                        </h2>
-                        <div class="panel-toolbar">
-                            <div class="frame-wrap">
-                                <button class="btn btn-xs btn-info btn-pills" data-toggle="modal" data-target="#filter"> Filter Entries</button>
-                                <button class="btn btn-xs btn-primary btn-pills" data-toggle="modal" data-target="#asycuda_excel_export_filter"> Export Excel</button>
-                                <button class="btn btn-xs btn-secondary btn-pills" id="reload_table">Reload Entries</button>
+                    <div class="panel-content">
+                        <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab-today" role="tab">Todays' Pending</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-pending" role="tab">Pending</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-completed" role="tab">Completed</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-refered" role="tab">Refered</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-declined" role="tab">Declined</a></li>
+                        </ul>
+
+                        <div class="tab-content p-3">
+                            <!-------------------------- Today -->
+                            <div class="tab-pane fade show active" id="tab-today" role="tabpanel" aria-labelledby="tab-today">
+                                <%= render "today.html", assigns %>
+                            </div>
+
+                            <!-------------------------- Pending -->
+                            <div class="tab-pane fade show" id="tab-pending" role="tabpanel" aria-labelledby="tab-Pending">
+                                <%= render "pending.html", assigns %>
+                            </div>
+
+                            <!-------------------------- Refered -->
+                            <div class="tab-pane fade show" id="tab-refered" role="tabpanel" aria-labelledby="tab-refered">
+                                <%= render "refered.html", assigns %>
+                            </div>
+                            <!-------------------------- Completed -->
+                            <div class="tab-pane fade show" id="tab-completed" role="tabpanel" aria-labelledby="tab-completed">
+                                <%= render "completed.html", assigns %>
+                            </div>
+
+                            <!-------------------------- Declined -->
+                            <div class="tab-pane fade show" id="tab-declined" role="tabpanel" aria-labelledby="tab-declined">
+                                <%= render "declined.html", assigns %>
                             </div>
                         </div>
                     </div>
-
-                    <div class="panel-content" id="report_table">
-                        <table class="table table-bordered table-hover compact w-100">
-                            <thead class="bg-info-800">
-                            <tr>
-                                <th></th>
-                                <th>Appointment ID</th>
-                                <th>Appointment Ref</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Status Note</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <%= for item <- @result do %>
-                                    <tr>
-                                        <td><%= item.id %></td>
-                                        <td><%= item.appoint_ref %></td>
-                                        <td><%= item.descript %></td>
-                                        <td><%= item.status %></td>
-                                        <td><%= item.status_note %></td>
-                                    </tr>
-                                <% end %>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
+
+
+
+
         </div>
     </div>
 </main>
+
+
+<script src="<%= Routes.static_path(@conn, "/js/jquery-1.11.2.min.js") %>"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<%= render("modals.html", assigns) %>
+
+
+
+
+</script>

@@ -5,6 +5,8 @@ defmodule EchipatalaWeb.StaffController do
   alias Echipatala.Emails.Email
   alias EchipatalaWeb.Plugs.EnforcePasswordPolicy
   alias Echipatala.Staff.Services.Appointments
+  @limit 20
+  @page 1
 
   plug(
     EchipatalaWeb.Plugs.RequireAuth
@@ -21,13 +23,6 @@ defmodule EchipatalaWeb.StaffController do
   #   ]
   # )
 
-  def index(conn, %{"load_appointments" => _request}) do
-    IO.inspect(conn, label: "======================================")
-    user = conn.assigns.user
-    data = Appointments.list_appointments_per_institution(user)
-    conn
-    |> json(%{status: true, data: data, message: "returned all"})
-  end
 
 # ==================== LOAD DASHBOARD ====================
 
@@ -35,12 +30,33 @@ defmodule EchipatalaWeb.StaffController do
     render(conn, "dashboard.html")
   end
 
+  # ================= UPDATE APPOINTMENT ==================
+  def appointments(conn, %{"update_appointment" => request}) do
+    IO.inspect(conn, label: "======================================")
+    user = conn.assigns.user
+    case Appointments.updating_appointment(request) do
+      {:ok, _} ->
+        conn
+        |> json(%{status: true, data: [], message: "Update Successful"})
+      {:error, _} ->
+        conn
+        |> json(%{status: false, data: [], message: "An Error occured!"})
+    end
+  end
+
 # ================= LOAD APPOINTMENT PAGE =================
   def appointments(conn, _params) do
+    criteria = [
+      paginate: %{page: @page, per_page: @limit}
+      ]
+
     user = conn.assigns.user
-    data = Appointments.list_appointments_per_institution(user)
+    data = Appointments.list_appointments_per_institution(user, criteria)
+    totaling = Appointments.get_totaling()
     conn
-    |> render("index.html", result: data)
+    |> render("index.html", result: data,
+      total: totaling
+      )
   end
 
 

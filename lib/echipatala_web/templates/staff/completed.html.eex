@@ -1,0 +1,73 @@
+
+	<div id="panel-6" class="panel">
+		<div class="panel-container show">
+			<div class="panel-content">
+				<div id="panel-4" class="panel">
+                <div class="panel-container show">
+                    <div class="panel-hdr">
+                        <h2>
+                            Completed Appointments<span class="fw-300"><i></i></span>
+                        </h2>
+                        <div class="panel-toolbar">
+                            <div class="frame-wrap">
+                                <button class="btn btn-xs btn-info btn-pills" data-toggle="modal" data-target="#filter"> Filter Entries</button>
+                                <button class="btn btn-xs btn-primary btn-pills" data-toggle="modal" data-target="#asycuda_excel_export_filter"> Export Excel</button>
+                                <button class="btn btn-xs btn-secondary btn-pills" id="reload_table">Reload Entries</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-content" id="report_table">
+                        <table class="table table-bordered table-hover compact w-100">
+                            <thead class="bg-info-800">
+                            <tr>
+                                <th>ID</th>
+                                <th>Appointment Ref</th>
+                                <th>Client</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <%= for item <- @result[:complete] do %>
+                                    <tr>
+                                        <td><%= item.id %></td>
+                                        <td><%= item.appoint_ref %></td>
+                                        <td><%= item.client_name %></td>
+                                        <td><%= item.status %></td>
+                                        <td>
+                                        <button class="btn btn-secondary btn-xs" data-toggle="dropdown" style="margin-top:0px !important; padding-top: 0px !important;">Options</button>
+                                            <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
+                                                <a href="#"
+                                                    data-toggle="modal"
+                                                    data-target="#appointment_details"
+                                                    data-id="<%= item.id %>"
+                                                    data-appointment_ref="<%= item.appoint_ref %>"
+                                                    data-status="<%= item.status %>"
+                                                    data-status_note="<%= item.status_note %>"
+                                                    data-appoint_ref="<%= item.appoint_ref %>"
+                                                    data-appointment_date="<%= item.appointment_date %>"
+                                                    data-descript="<%= item.descript %>"
+                                                    data-initiated_date="<%= item.initiated_date %>"
+                                                    data-client_name="<%= item.client_name %>"
+                                                    data-initiator="<%= item.initiator %>"
+                                                    class="dropdown-item text-success domt_dropped_details">Details
+                                                </a>
+
+
+
+
+                                            </div>
+
+
+                                        </td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+			</div>
+		</div>
+	</div>

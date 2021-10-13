@@ -259,7 +259,7 @@
                 responsive: true
             });
 
-            $('.js-thead-colors a').ion('click', function()
+            $('.js-thead-colors a').on('click', function()
             {
                 var theadColor = $(this).attr("data-bg");
                 console.log(theadColor);
@@ -605,7 +605,7 @@
                   }
               }
           };
-          new Chart($("#areaChart > canvas").get(0).getContext("2d"), config);
+          <%# new Chart($("#areaChart > canvas").get(0).getContext("2d"), config); %>
       }
 
       /* initialize dashboard */
