@@ -1,0 +1,653 @@
+sudo purge intellij-idea-ultimate
+sudo remove intellij-idea-ultimate
+git push
+iex -S mix phx.server
+git pull
+git commit -m "Initial Commits"
+git add .
+mix ecto.migrate
+mix ecto.gen.migration pharmacy
+mix deps.clean --all && mix deps.get && mix deps.compile && iex -S mix phx.server
+mix archive.install hex phx_new
+mix archive.uninstall phx_new
+upgrade
+update
+cd Documents/WORK/zicta_hacthon/eChipatala/
+clear
+ping mail.find.co.zm
+cd smartpay/
+cd Probase/
+cd ..
+mix deps.clean --all && mix deps.get && mix deps.compile
+mix deps.clean --all && mix deps.compile && mix deps.compile
+mix deps.get && mix deps.compile
+mix deps.comapile
+mix deps.get
+git pu
+mix ecto.setup
+mix ecto.rollback --all
+cd
+git commit -m "Initial commits"
+ping 192.248.165.187
+sudo ufw app list
+ssh root@192.248.165.187
+git push --force
+mix compile
+openssl req -new -x509 -nodes -sha256 -days 365 -key host.key -out host.cert
+chmod 400 host.key
+openssl genrsa 2048 > host.key
+openssl x509 -outform der -in private.pem -out private.crt
+openssl rsa -in private.pem -out public.pem -pubout
+openssl genrsa -out private.pem 1024
+cd certs/
+mkdir certs
+ls
+lsls
+openssl x509 -outform der -in private-key.pem -out private-key.crt
+openssl rsa -in private-key.pem -out public-key.pem -pubout
+openssl genrsa -out private-key.pem 1024
+telnet localhost 2525
+ssh-keygen
+cd Desktop/
+sudo apt-get install -q -y ssmtp mailutils
+apt-get install -q -y ssmtp mailutils
+telnet 192.248.165.187 5432
+telnet 192.248.165.187 567
+telnet 192.248.165.187 443
+telnet 192.248.165.187 80
+telnet 192.248.165.187 3000
+telnet 192.248.165.187 25
+git push -u origin master
+cd Documents/WORK/Find/find/
+iex
+cd Documents/WORK/Probase/smartpay/
+sudo apt install vlc
+sudo ufw status verbose
+reboot
+iexx
+mix compile && iex -S mix phx.server
+MIX_ENV=prod mix release
+MIX_ENV prod
+git remote add origin https://github.com/BesaBoldwin/services.git
+git init
+git commit -m "Initial commit"
+git remote add origin https://github.com/BesaBoldwin/find.git
+git branch -M mainclear
+git add ..
+git branch -M main
+git add README.md
+telnet 192.248.165.187 4000
+ping 192.248.165.187 25
+ping smtp-relay.find.co.zm
+telnet 192.248.165.187 2050
+ping https://smtp-relay.find.co.zm
+mix ecto.gen.migration test_services
+ssh-keygen -m PEM -t ed25519 -C "caprover"
+cd keys/
+mkdir keys
+cd Documents/
+.ssh/
+ssh-keygen -t ed25519 -C "find_depoyment"
+ssh-keygen -t ed25519 -C "<comment>"
+ssh-keygen -m PEM -t rsa -b 4096 -C "caprover" -f ./key -q -N ""
+ssh -V
+ssh -v
+mix deps.clean --all
+cd Documents/WORK/Probase/fcb/smartpay/
+cd assets && npm install && node node_modules/webpack/bin/webpack.js --mode development
+cd eChipatala/
+git clone https://github.com/LuisRoyZulu06/eChipatala.git
+cd zicta_hacthon/
+mkdir zicta_hacthon
+mix ecto.gen.migration alter_company
+clea
+sudo apt-get install intellij-idea-ultimate
+update --fix-missing
+sudo apt-get update
+sudo apt-add-repository ppa:mmk2410/intellij-idea
+sudo apt-key add archive.key
+wget https://deb.opera.com/archive.key
+./aptsources-cleanup.pyz --help
+sudo ./aptsources-cleanup.pyz
+sudo ./aptsources-cleanup
+chmod a+x aptsources-cleanup.pyz
+cd Downloads/
+sudo apt install python3-apt python3-regex
+sudo apt autoremove
+sudo apt purge libnfs13
+sudo apt list --installed | grep nfs
+sudo apt list --installed | grep need
+sudo apt list --installed | grep itune
+sudo apt list --installed | grep itunes
+sudo apt update
+npm install -D webpack-cli
+sudo apt upgrade
+sudo apt list --installed | grep soup
+sudo apt list --installed | grep idea
+sudo apt list --installed | grep intellij
+sudo nautilus
+wine winecfg
+wine msiexec /i wine-gecko-2.47.1-x86.msi
+wget http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.msi
+wine --version
+sudo apt install --install-recommends winehq-stable
+sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+sudo -H gpg -o /etc/apt/trusted.gpg.d/winehq.key.gpg --dearmor winehq.key
+wget -nc https://dl.winehq.org/wine-builds/winehq.key
+dpkg --print-foreign-architectures
+dpkg --print-architecture
+sudo apt-get autoremove
+sudo apt-get clean
+sudo apt-get --purge remove wine
+sudo apt list --installed | grep wine
+sudo apt purge wine-stable-i386
+sudo apt purge wine-development
+sudo apt purge libwine-development
+sudo apt purge fonts-wine
+sudo apt purge wine-stable
+sudo apt purge wine-staging
+sudo apt purge wine-stable-amd64
+sudo apt purge wine
+sudo apt list --installed | grep windows
+sudo apt list --installed
+sudo apt-get list --installed | grep wine
+rm -f $HOME/.config/menus/applications-merged/wine*
+rm -rf $HOME/.wine
+sudo apt-get remove wine
+sudo apt-get purge wine
+sudo apt-get purge wine* ; sudo dpkg --purge wine*
+sudo wine winecfg
+wine --help
+wine
+rm $HOME/.local/share/desktop-directories/wine*
+rm -r $HOME/.local/share/applications/wine
+rm $HOME/.config/menus/applications-merged/wine*
+sudo apt-get autoclean
+sudo apt-get remove --purge wine
+sudo dpkg --add-architecture i386
+wine -v
+mix phx.gen.live Accounts User users name:string age:integer
+cd test/
+rm -f .git/index.lock
+MIX_ENV=prod mix release && _build/prod/rel/find/bin/find start_iex
+mix ecto.gen.migration alter_email
+mix ecto.gen.migration alter_emails
+cd find/
+cd Find/
+cd ../..
+npm install @popperjs/core --save
+cd assets/
+npm install popper.js --save
+npm install bootstrap jquery popper.js --save
+npm install bootstrap jquery popper.js --prefix assets
+npm i
+cd Documents/WORK/Probase/fcb/
+mix phx.routes
+mix ecto.gen.migration tokens
+git checkout
+mix ecto.rollback
+mix ecto.gen.migration napsa_company_attributes
+mix ecto.gen.migration zra_tpins
+mix ecto.get.migration zra_tpins
+git checkout fab_smartpay
+git clone https://gitlab.probasegroup.com/LuisZulu/smartpay.git
+mix deps.get mix deps.compile
+sudo snap install intellij-idea-ultimate --classic
+sudo snap install intellij-idea-ultimate
+sudo apt-get purge intellij-idea-ultimate
+sudo apt-get remove intellij-idea-ultimate
+sudo apt-get remove idea
+purge intellij-idea-ultimate
+umake -r ide idea-ultimate
+umake -r ide idea
+snap   remove intellij-idea-ultimate
+sudo  remove intellij-idea-ultimate
+cd fab/
+mkdir fab
+mix phx.new services
+mix ecto.gen.migration alter_inventory
+git checkout fcb_upgrade
+cd fcb/
+cd Documents/WORK/Probase/
+mkdir fcb
+npm audit fix --force
+npm audit fix
+npm install
+npm update
+npm I
+cd assets && rm -rf node_modules/phoenix_live_view
+mix deps.update phoenix_live_view
+MIX_ENV=prod mix phx.server
+cd cd /../..
+arecordmidi
+mix ecto.gen.migration inventory_alt
+cd assets
+uograde
+cd Find/find/
+wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+cd airtel-wallet/
+mix ecto.gen.migration smsview
+git clone https://gitlab.probasegroup.com/LuisZulu/airtel-wallet.git
+mix deps.compile
+elixir -v
+sudo reboot
+mix phx.new test --live
+mix phx.new find --live
+mix phx.new hello
+mix archive.install hex phx_new 1.5 --force
+mix archive.install hex phx_new 1.4.8 --force
+mix archive install hex phx_new --force
+mix phoenix.new hello
+mix local.hex --force
+mix archive
+mix archive install hex phx_new
+cd Documents/WORK/Find/projects/find/
+npm -v
+node -v
+sudo apt-get install inotify-tools
+sudo apt-get install nodejs npm
+mix local.hex
+elixir
+sudo apt-get install elixir
+sudo apt-get install esl-erlang
+wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
+sudo apt autoclean && sudo apt autoremove
+sudo apt remove elixir
+npm install && node node_modules/webpack/bin/webpack.js --mode development
+fish -v
+sudo wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
+cd projects/
+sudo add-apt-repository ppa:webupd8team/y-ppa-manager
+sudo update-pepperflashplugin-nonfree --install
+sudo apt install -y pepperflashplugin-nonfree
+sudo apt install -y chromium-browser
+mix ecto.gen.migration notify
+ping 192.248.165.187p
+cs
+cd projects/find/
+mix ecto.gen.migration alter_orders
+openssl pkcs12 -in certificate.p12 -noout -info
+openssl pkcs12 -inkey key.pem -in certificate.pem -export -out certificate.p12
+openssl x509 -text -noout -in certificate.pem
+openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 6350 -out certificate.pem
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 3650 -subj '/CN=nkwaila.co.zm'
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -subj '/CN=nkwaila.co.zm'
+mix ecto.gen.migration alter_tpin_mappings
+mix ecto.gen.migration alter_mappings
+sudo  apt-get clean
+sudo apt-get install libpq==12.4-0ubuntu0.20.04.1
+apt-get install libpq==12.4-0ubuntu0.20.04.1
+git remote add origin https://gitlab.probasegroup.com/boldwin/smartpay.git
+git config --global user.email "boldwinbesa@gmail.com"
+git config --global user.name "Boldwin"
+sudo apt-get purge fish
+sudo apt-get remove --auto-remove fish
+sudo apt-get remove  fish
+/.local/share/omf/themes/fishbone/fish_right_prompt.fish
+ie
+cleart
+cd WORK/
+mix ecto.gen.migration alter_vendors
+mix ecto.gen.migrations alter_vendors
+mix ecto.migrations alter_vendors
+_build/prod/rel/find/bin/find start_iex
+build/prod/rel/find/bin/find start_iex
+mix phx.gen.context Admin.Email Email emails status:boolean message:text type:string to:string from:string status_code:string
+MIX_ENV=prod iex -S mix phx.server
+sudo apt-get install libunwind8
+mix test
+mix ecto.create
+mix phx.new smartpay --live
+mix deps.clean
+smart_pay
+cd smart_pay/
+mix phx.new smart_pay --live
+mix deps.compile --all
+mix phx.server
+npm run dev
+npx browserslist@latest --update-db
+webpack --help
+sudo apt install webpack
+mix do archive.build, archive.install
+mix deps.precompile --all
+mix deps.precompile
+cd session/
+cd templates/
+cd smartPAY_web/
+cd lib/
+cd /assets
+git commit -m "Boldwin adjusted the mix.ex file. Updated the phoenix and pubsub deps"
+sudo lsof -i -P -n | grep LISTEN
+mxi deps.clean --all
+git checkout stanbic_1
+git checkout stanbic
+npm
+sqlcmd -S localhost -U SA
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+source ~/.bashrc
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+sudo apt-get install unixodbc-dev
+sudo apt-get install mssql-tools
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+sudo apt install unixodbc
+sudo apt-get install -y libodbc1
+sudo apt install msodbcsql17
+echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main" | sudo tee /etc/apt/sources.list.d/mssql-release.list
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-get install mssql-tools unixodbc-dev
+sudo apt-get remove mssql-tools
+udo apt-get install mssql-tools unixodbc-dev
+sudo apt-get remove mssql-sever
+sudo cd /var/opt/mssql/
+cd /var/opt/mssql/
+cd /var/opt/mssql/data
+curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+sudo apt install curl
+sudo apt-get install -y mssql-server
+sudo wget -qO- wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list
+sudo ACCEPT_EULA=Y apt install mssql-tools unixodbc-dev
+sudo mv prod.list /etc/apt/sources.list.d/mssql-release.list
+wget https://packages.microsoft.com/config/ubuntu/19.10/prod.list
+sudo systemctl status mssql-server
+sudo /opt/mssql/bin/mssql-conf setup
+sudo apt install mssql-server
+sudo wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list
+sudo wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+Read more: https://www.osradar.com/microsoft-sql-server-ubuntu-debian/#ixzz737xU1gjP
+sudo apt install software-properties-common
+sqlcmd -S 10.3.2.4 -U SA -P "Qwerty123"
+docker ps -a
+sudo docker exec -it sql1 "bash"
+sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Qwerty123" \
+   -p 1433:1433 --name sql1 -h sql1 \
+   -d mcr.microsoft.com/mssql/server:2019-latest
+sudo docker pull mcr.microsoft.com/mssql/server:2019-latest
+docker start portainer
+curl https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list | sudo tee /etc/apt/sources.list.d/mssql-server.list
+curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list | sudo tee /etc/apt/sources.list.d/mssql-server.list
+sudo apt-get install fish
+sudo apt-add-repository ppa:fish-shell/release-2
+sudo add-apt-repository wget -qO- "https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list"
+sudo add-apt-repository wget -qO- https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2019.list
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+git commit -m "Inital Commit"
+mix deps.clean mime --build
+mix deps.clean --build mime
+mix phx.gen.context Admin.Reviews Review reviews peoples_id:references:peoples rate:decimal description:string status:boolean
+mix phx.gen.context Admin.Media Photo photos image:text peoples_id:references:peoples
+mix phx.gen.context Admin.People People peoples names age:integer gender nrc phone_number address email
+mix deps.clean ueberauth
+mix deps.clean mogrify
+mix deps.clean sleeplocks
+mix deps.compile sleeplocks
+mix deps.update sleeplocks
+[15~
+[1;5A
+mix ecto.gen.migration child_prod_attr_values
+mix ecto.gen.migration child_prod_attr_value
+mix ecto.gen.migration child_cate_alt
+mix ect.gen.migration child_cate_alt
+mix ecto.gen.migration alter_prod_opt_val
+mix ecto.gen.migration alter_users
+git submodule add -f --branch uat https://gitlab.probasegroup.com/boldwin/find.git/ priv/static/admin/new/bootstrap-datepicker
+git submodule add -f --branch uat https://gitlab.probasegroup.com/boldwin/find.git/ /priv/static/admin/new/
+git submodule add -f --branch uat https://gitlab.probasegroup.com/boldwin/find.git/ /priv/static/admin/new/bootstrap-datepicker
+mix ecto.gen.migration attributes_review
+mix ecto.gen.migration attributes_alters
+mix ecto.gen.migration attributes_alter
+git clone https://github.com/uxsolutions/bootstrap-datepicker.git
+https://github.com/uxsolutions/bootstrap-datepicker.git
+mix ecto.gen.migration products_alter
+mix phx.gen.json Product.Apis APIsProduct products_apis
+mix phx.gen.json Catalog.Apis APIsProduct products_apis
+mix phx.gen.json Catalog.Apis Product products_apis
+mix phx.gen.json Catalog.Apis Product products
+mix ecto.gen.migration products_alt
+mix ecto.gen.migration prod_alt
+sudo systemctl restart apache2
+sudo apt install php-imagick
+sudo apt install imagemagick
+sudo apt install php php-common gcc
+try Handler:init(Req, HandlerOpts) of
+mix ecto.gen.migration make_alteration
+mix phx.gen.context Applications.Vendors VendorsApplications vendors_application business_name address phone_number email description:text
+git commit -m "Initial Commit"
+mix phx.gen.secret
+git remote add origin https://github.com/BesaBoldwin/model_angency.git
+git config --global user.email "boldwinbesa@hotmail.com"
+mix phx.gen.json Catalog.Apis Api_User api_users fisrt_name:string last_name:string gender:string hashed_password:string firebase_token:text email:string --no-schema --no-migration
+mix phx.gen.json Catalog.Apis Api_User api_users fisrt_name:string last_name:string gender:string hashed_password:string firebase_token:text email:string — no-schema
+mix phx.gen.json Catalog.Apis User users fisrt_name:string last_name:string gender:string hashed_password:string firebase_token:text email:string — no-schema
+mix phx.gen.context APIs Api api_auth public_key:string secrete_key:text
+mix ecto.gen.migration alter_user
+export TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYXBpIn0.TSy8yZnXb_Oj9IszfLOIX_VVXTjWmX4-beNQq5dGplU"
+curl https://postgrest.find.co.zm/all_cities?province_id=eq.1
+mix ecto.gen.migration alter_products
+mix ecto.gen.migration alter_categories
+mix ecto.gen.migration alters
+mix ecto.get.migration alters
+mix phx.get.migration alters
+curl https://192.248.165.187:3100/categories -X POST \ -H "Authorization: Barear $TOKEN" \-H "Content-Type: application/json"
+export TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZmluZCJ9.ZsbDsKcmiG7c8PjN0utIZZkqQCcsqmqJjwETN9BYCc4"
+mix phx.digest
+mix credo --all
+mix credo
+ENV MIX_ENV=prod mix phx.server
+ENV MIX_ENV=prod mix.exs
+ENV MIX_ENV=prod iex -S mix phx.server
+sudo apt install pgadmin4
+sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/focal pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
+curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add -
+reboot | echo "qwerty12"
+convert starget\ filled\ form.docx -> filled_starget_form.pdf using writer_pdf_Export
+convert starget\ filled\ form.docx -> /home/boldwin/Documents/filled_starget_form.pdf using writer_pdf_Export
+lowriter --convert-to pdf *.docx
+iex -S mix
+mix ecto.gen.migration add_oban_jobs_table
+cd Documents/WORK/Find/Dev/find/
+git checkout uat
+git checkout boldwin
+cd model_agency/
+cd JollyZone/
+exit
+mix phx.gen.schema Blog.Review reviews name email customer_id:integer review_rating:integer products_id:references:products review_text:text
+mix phx.gen.schema Blog.Review reviews name email customer_id:inetger review_rating:integer products_id:references:products review_text:text
+mix ecto.drop
+mix ecto.reset
+sudo tar zxf postgrest-v7.0.1-freebsd.tar.xz
+gzip -V
+which gzip
+tar zxf postgrest-v7.0.1-freebsd.tar.xz
+cd postgrest/
+sudo apt install postgrest.cabal
+sudo apt install postgrest
+pkg install hs-postgrest
+postgrest --help
+sudo stack install --allow-different-user --local-bin-path /usr/local/bin
+stack build --install-ghc
+sudo apt install haskell-stack
+cd postgrest
+git clone https://github.com/begriffs/postgrest.git
+cd /
+sudo apt-get install libpq-dev
+glances
+clecar
+glance
+mix phx.gen.auth Accounts User users
+mix phx.new model_agency --live
+cd Documents/WORK/JollyZone/
+erlang --version
+erlang -v
+cd home/
+mix ecto.stup
+git pusll
+iex -S mix phx.ser
+sudo apt install postgresql-client-common
+psql --help
+psql --version
+git clone https://gitlab.probasegroup.com/boldwin/find.git
+cd ~/Documents/WORK/Find/Dev/
+reset
+nano ~/MEGAsync/vpn/zicb_vpn.sh
+snx -d
+vpn_zicb
+sudo ufw allow ssh
+sudo systemctl status ssh
+sudo apt install openssh-server
+ssh oracle@172.16.3.36
+nano ~/.config/fish/functions/fish_prompt.fish
+ssh probase@10.0.0.1
+ssh pi@192.168.0.100
+ssh-keygen -f "/home/novax/.ssh/known_hosts" -R "192.168.0.100"
+./balenaEtcher-1.5.116-x64.AppImage
+mix -S iex
+brew_elx
+vpn_napsa
+docker run -it --rm \
+--name n8n \
+-p 5678:5678 \
+-v ~/.n8n:/home/node/.n8n \
+n8nio/n8n
+./VNC-Viewer-6.20.529-Linux-x64
+ifconfig
+ssh pi@192.168.69.1
+if
+ssh pi@10.59.59.65
+anydesk
+ssh pi@192.168.1.2
+ls | grep VNC
+chmod +x VNC-Viewer-6.20.529-Linux-x64
+ls | grep vnc
+ls grep | VNC
+ssh pi@169.254.45.173
+nano ~/MEGAsync/vpn/napsa_vpn.sh
+nmap -sP 192.168.1.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'
+nmap -sP 10.42.0.1/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'
+ssh 10.42.0.1
+ssh raspberrypi.local 22
+arp -n | awk '/b8:27:eb/ {print $1}'
+ssh raspberrypi.local
+ssh 10.42.0.1 22
+ssh pi@10.42.0.1 22
+ssh pi@10.42.0.1
+cat /var/lib/misc/dnsmasq.leases
+ssh pi@172.16.10.231
+ping raspberrypi
+arp -na | grep -i b8:27:eb
+ssh pi@192.168.1.1
+ssh 192.168.1.1
+svr_ops
+sudo apt install ./imager_1.6.1_amd64.deb
+git status
+git remote add origin https://gitlab.probasegroup.com/probase-dependency-library/zicb_proxy.git
+cd zicb_proxy/
+mix new zicb_proxy --sup
+git remote add origin https://gitlab.probasegroup.com/probase-dependency-library/zicb.git
+git remote add https://gitlab.probasegroup.com/probase-dependency-library/zicb.git
+mix credo explain
+mix new zicb --sup
+pwd
+cd Documents/WORK/AP
+reboo
+sudo gedit /etc/rc.local
+postman
+code
+sudo chmod +x rc.local
+chmod +x rc.local
+cd /etc
+sudo gedit
+sudo nano /etc/rc.local
+cd grapesjs/
+git clone https://github.com/artf/grapesjs.git
+npm i grapesjs
+npm i -g grapesjs
+git commit -m "Update"
+mix docs
+ssh probase@10.0.0.5
+iex -s MIX
+sudo update-alternatives --config java
+ssh probase@10.10.1.57
+git commit -m "Platform Fixes"
+bre
+git checkout northmarket
+git commit -m "Dev changes"
+scp probase@10.10.1.57:/home/probase/reportserver.ta.gz ~/Documents/
+git clone https://gitlab.probasegroup.com/btmms/bus_terminal_system.git
+cd Documents/WORK/TMP/
+git checkout master
+git branch
+git branches
+git checkout development
+scp probase@10.10.1.57:/home/probase/btmms_backup.zip ~/Documents/
+scp probase@10.10.1.57/home/probase/btmms_backup.zip ~/Documents/
+scp probase@10.10.1.57/home/probase/btmms_backup ~/Documents/
+git reset --hard
+docker run --name market -p 4000:4000 market:latest
+docker run --name promethus -p 4000:4000 market:latest
+docker build -t market .
+ssh root@45.61.53.230
+git submodule update
+git submodule status
+git submodule add -f --branch master https://gitlab.probasegroup.com/PhilipChani/bus_terminal_system.git /home/novax/Documents/WORK/APPLICATIONS/bus_terminal_system
+sudo git submodule add -f --branch master https://gitlab.probasegroup.com/PhilipChani/bus_terminal_system.git /bus_terminal_system
+git submodule add -f --branch master https://gitlab.probasegroup.com/PhilipChani/bus_terminal_system.git /bus_terminal_system
+git submodule add --branch master https://gitlab.probasegroup.com/PhilipChani/bus_terminal_system.git /bus_terminal_system -f
+git submodule add --branch master https://gitlab.probasegroup.com/PhilipChani/bus_terminal_system.git /bus_terminal_system
+git submodule init
+git rm --force /bus_terminal_system
+git commit -m "Branch Split"
+cargo build
+source ~/.bashrc
+rustc --version
+. ~/.bashrc
+nano ~/.bashrc
+nano ~/.profile
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo dpkg -i ~/google-earth.deb
+wget -O ~/google-earth.deb https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb
+traceroute 41.175.8.192
+ping 41.175.8.192
+telnet 41.175.8.192 8080
+./blender
+cd blender-2.92.0-linux64/
+cd /opt/
+sudo tar vxf blender-2.92.0-linux64.tar.xz -C /opt
+nano ~/MEGAsync/servers/ops_server.sh
+scp root@ops.probasegroup.com:/root/fund15042021.bak /home/novax/Desktop/
+mix release
+docker build -t find .
+curl --request POST \
+  --url api.flutterwave.com/v3/charges?type=card \
+  --header 'content-type: application/json' \
+  --data '{
+        "client": "W+C+Mi//JFO5/JIbjMu1a/V8bI4vI2wYwNN3VyLb+GiPGpNhjEGakpXboR6O2utcezwqtjpIHlDmPh93Kb0LkbTWuYvDw3fTMnlLu+uUE5UU1YQElo/nHE/BIwM4pNStcPrEYN0ecfBdn7kaJo+QKFz1lm7/HGfeJzK0O37eoCy4PJb+ZIhhoIOgoHWUVvz7IlqgE4OImagpJn4NtNeaOKHIxWBQJLUI3mBOuw5VMVk3GXAb8SZh39oW/VfeEUOVyCMxBC3ZsTVLcd5m599qh78RrcVMky1ZYxNUJCLgTQp0i0uyF5hqAQJ2dFGYBtdWKu0eaZqCkn4VjkiH1jWkrxWAKdD7HmIwhhprJ20V5qGWjX66MFYpzxdMKMQl/f1ncCfgq/jA7J2VjfyUr0zHM9LcCZ7wUiPjVCG0ejpCyvMYBZxz2x+exEd2O8tU7UR0UkJclieLjjXGsaF+Q2PVv+NzARz9MHIBzPQy5zPZKhxfJkbjX/wTVzZzaGFLxcUiXIqeXkA8znR0wpNZvXKUSwpVCA+hCAOd+9Nkofd/6fOnl2ZFkvCkTW+gF5wgSKUs9/MWcJG4Xr9lu74pEFYtqLWFSy4lPJNBDzuBvaIrfOp8bHvEch96XT3lHhBc49g1ntoFZ2Unp8tbUg99BLRj3I9LCPqN4aP4M73jXAgSLWeqgXnHYWeCsbcN5Go3ZzjQ8ng3ElKBHxcHx08t5trn1f5DkoVNoEKv/pJRniOLvONtMSrG/9jcm9LpDUKbo+NVPswax+e+r95YHsvJw8yb4dt1ZTonO+nUzs/xIYCLoYntlyl2dT58lw=="}'
+curl --request POST \
+  --url https://api.flutterwave.com/v3/charges?type=card \
+  --header 'content-type: application/json' \
+  --data '{
+        "client": "W+C+Mi//JFO5/JIbjMu1a/V8bI4vI2wYwNN3VyLb+GiPGpNhjEGakpXboR6O2utcezwqtjpIHlDmPh93Kb0LkbTWuYvDw3fTMnlLu+uUE5UU1YQElo/nHE/BIwM4pNStcPrEYN0ecfBdn7kaJo+QKFz1lm7/HGfeJzK0O37eoCy4PJb+ZIhhoIOgoHWUVvz7IlqgE4OImagpJn4NtNeaOKHIxWBQJLUI3mBOuw5VMVk3GXAb8SZh39oW/VfeEUOVyCMxBC3ZsTVLcd5m599qh78RrcVMky1ZYxNUJCLgTQp0i0uyF5hqAQJ2dFGYBtdWKu0eaZqCkn4VjkiH1jWkrxWAKdD7HmIwhhprJ20V5qGWjX66MFYpzxdMKMQl/f1ncCfgq/jA7J2VjfyUr0zHM9LcCZ7wUiPjVCG0ejpCyvMYBZxz2x+exEd2O8tU7UR0UkJclieLjjXGsaF+Q2PVv+NzARz9MHIBzPQy5zPZKhxfJkbjX/wTVzZzaGFLxcUiXIqeXkA8znR0wpNZvXKUSwpVCA+hCAOd+9Nkofd/6fOnl2ZFkvCkTW+gF5wgSKUs9/MWcJG4Xr9lu74pEFYtqLWFSy4lPJNBDzuBvaIrfOp8bHvEch96XT3lHhBc49g1ntoFZ2Unp8tbUg99BLRj3I9LCPqN4aP4M73jXAgSLWeqgXnHYWeCsbcN5Go3ZzjQ8ng3ElKBHxcHx08t5trn1f5DkoVNoEKv/pJRniOLvONtMSrG/9jcm9LpDUKbo+NVPswax+e+r95YHsvJw8yb4dt1ZTonO+nUzs/xIYCLoYntlyl2dT58lw=="}'
+murder 8080
+cd  assets/ && npm install
+git commit -m "Trip Cancelation"
+git clone https://gitlab.probasegroup.com/PhilipChani/lusaka_city_council.git
+mix phx.new lusaka_city_council --live
+cd Documents/WORK/APPLICATIONS/
+ping probasesms.com
+git clone https://gitlab.probasegroup.com/probase-dependency-library/flutterwave_doc.git
+sls
+l
+ssh oracle@172.16.6.36
+iex -s mix
+git clone https://gitlab.probasegroup.com/probase-dependency-library/flutter_wave.git
+mix new flutter_wave --sup
+cd Dependencies/
+flutter precache
+export PATH="$PATH:`pwd`/flutter/bin"
+sudo tar vxf flutter_linux_2.0.4-stable.tar.xz -C /opt
+mix tests
+mix phx.new ex_chain --no-html --no-ecto
+cd blockchain/
+mkdir blockchain
+cd Documents/
