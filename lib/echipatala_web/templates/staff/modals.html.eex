@@ -1,0 +1,213 @@
+<!--DETAILS-->
+
+<div class="modal fade" id="appointment_details" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 80% !important;">
+    <div class="modal-content">
+        <div class="modal-header panel-hdr">
+        </div>
+
+        <div class="modal-body">
+        <!--------------------- Summery -->
+          <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div id="panel-1" class="panel">
+                          <div class="panel-container show">
+                              <div class="panel-content">
+                                  <div class="panel-container show">
+                                      <div class="panel-content">
+                                          <h6 id="headerStyle">Appoinment Details</h6>
+                                              <hr>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted" for="simpleinput-disabled">NAME.:</label>
+                                                          <input type="text" name="name" id="name" disabled class="form-control">
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted" for="simpleinput-disabled">REF:</label>
+                                                          <input type="text" name="e" id="ref_id" disabled class="form-control">
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted">STATUS:</label>
+                                                          <input type="text" name="status" id="status" disabled class="form-control">
+                                                      </div>
+                                                  </div>
+                                              </div><hr>
+
+
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted" for="simpleinput-disabled">DESCRIPTION.:</label>
+                                                          <textarea type="text" name="descript" id="descript" disabled class="form-control"></textarea>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted" for="simpleinput-disabled">INITIATOR:</label>
+                                                          <input type="text" name="initiator" id="initiator" disabled class="form-control">
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted">ID:</label>
+                                                          <input type="text" name="app_id" id="app_id" disabled class="form-control">
+                                                      </div>
+                                                  </div>
+                                              </div><hr>
+
+
+
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted" for="simpleinput-disabled">STATUS NOTES:</label>
+                                                          <textarea type="text" name="status_note" id="status_note" disabled  class="form-control"></textarea>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted" for="simpleinput-disabled">INIT Date:</label>
+                                                          <input type="text" name="intit_date" id="intit_date" disabled  class="form-control">
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                      <div class="form-group">
+                                                          <label class="form-label text-muted" for="simpleinput-disabled">APPOINTMENT DATE</label>
+                                                          <input type="text" name="date_1" id="date_1" disabled  class="form-control">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <a type="submit" class="btn btn-danger text-white" href="" data-dismiss="modal">Close</a>
+                                              </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+<!--UPDATING MODAL-->
+
+<div class="modal fade" id="update_appointment_details" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="max-width: 80% !important;">
+    <div class="modal-content">
+        <div class="modal-header panel-hdr">
+        </div>
+
+        <div class="modal-body">
+        <!--------------------- Summery -->
+          <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div id="panel-1" class="panel">
+                          <div class="panel-container show">
+                              <div class="panel-content">
+                                  <div class="panel-container show">
+                                        <form>
+                                            <div class="panel-content">
+                                                <h6 id="headerStyle">Edit Appointment</h6>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted" for="simpleinput-disabled">NAME.:</label>
+                                                                <input type="text" name="name" id="name" disabled class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted" for="simpleinput-disabled">REF:</label>
+                                                                <input type="text" name="e" id="ref_id" disabled class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted">STATUS:</label>
+                                                                <select type="text" name="status_update" id="status_update" required="required" class="form-control">
+                                                                        <option value=""></option>
+                                                                        <option value="PENDING">PENDING</option>
+                                                                        <option value="COMPLETE">COMPLETE</option>
+                                                                        <option value="REFERED">REFERED</option>
+                                                                        <option value="DECLINED">DECLINED</option>
+                                                                        <option value="DROPPED">DROPPED</option>
+                                                                    </select>
+                                                            </div>
+                                                        </div>
+                                                    </div><hr>
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted" for="simpleinput-disabled">DESCRIPTION.:</label>
+                                                                <textarea type="text" name="descript" id="descript" disabled class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted" for="simpleinput-disabled">INITIATOR:</label>
+                                                                <input type="text" name="initiator" id="initiator" disabled class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted">ID:</label>
+                                                                <input type="text" name="app_id_update" id="app_id_update" disabled class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div><hr>
+
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted" for="simpleinput-disabled">STATUS NOTES:</label>
+                                                                <textarea type="text" name="status_note_update" id="status_note_update" required="required" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted" for="simpleinput-disabled">INIT Date:</label>
+                                                                <input type="text" name="intit_date" id="intit_date" disabled  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label text-muted" for="simpleinput-disabled">APPOINTMENT DATE</label>
+                                                                <input type="text" name="date_1" id="date_1" disabled  class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a type="submit" class="btn btn-danger text-white" href="" data-dismiss="modal">Close</a>
+                                                        <a type="button" class="btn btn-success text-white" href="#" id="save_update_appointment" >Update</a>
+                                                    </div>
+                                            </div>
+                                        </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+
+        </div>
+      </div>
+  </div>
+</div>

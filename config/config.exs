@@ -24,7 +24,7 @@ config :echipatala, EchipatalaWeb.Endpoint,
   timezone: "Africa/Cairo",
   jobs: [
     appointments: [
-           schedule: {:extended, "*/5"},
+           schedule: {:extended, "*/2"},
            task: {Echipatala.Staff.Workers.AutoAppointments, :perform, []}
          ]
   ]

@@ -29,12 +29,13 @@ defmodule Echipatala.Staff.Workers.AutoAppointments do
     appointment_date = "2021-10-#{date} #{time}:30:00.337196Z"
     status_note = "New appointment for #{appointment_date}"
 
+    client = Enum.random(clients())
 
     %{status_note: status_note,
       appointment_date: appointment_date,
       descript: description,
-      client_id: 5,
-      initiator_id: 5,
+      client_id: client.id,
+      initiator_id: client.id,
       inst_id: 1,
       appoint_ref: reference,
       doct_id: 2,
@@ -49,6 +50,10 @@ defmodule Echipatala.Staff.Workers.AutoAppointments do
     %Appointment{}
     |> Appointment.changeset(request)
     |> Repo.insert()
+  end
+
+  def clients() do
+    Repo.all(from a in "tbl_user", where: a.user_type == 3, select: %{id: a.id} )
   end
 
 end

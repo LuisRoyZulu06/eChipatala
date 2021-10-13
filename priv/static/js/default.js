@@ -1,3 +1,51 @@
+$(function () {
+    // Quick Button Methods
+    $('input[type=checkbox]').on('change', function(){
+        if($(this).is(':checked')) {
+            $( "#quick_buttons" ).css( "display", "block" );
+        } else {
+            if($('input:checkbox:checked').length == 0){
+                $( "#quick_buttons" ).css( "display", "none" );
+            }
+            // var numberOfChecked = $('input:checkbox:checked').length;
+            // var totalCheckboxes = $('input:checkbox').length;
+            // var numberNotChecked = totalCheckboxes - numberOfChecked;
+        }
+    });
+
+    //Quick buttons event handlers
+    $("#quick_delete").on("click", function(){
+        // alert("Some selected items will be deleted!");
+        $( "input:checkbox:checked" ).parents("li:first").css( "display", "none" ); 
+        $( "input:checkbox:checked" ).prop("checked", false);
+
+        if($('input:checkbox:checked').length == 0)  $( "#quick_buttons" ).css( "display", "none" );  
+    });
+
+    $("#quick_unread").on("click", function(){
+        // alert("Some selected items will be marked as unread!");
+        $( "input:checkbox:checked" ).parents("li:first").removeClass( "read");
+        $( "input:checkbox:checked" ).parents("li:first").addClass( "unread");
+        $( "input:checkbox:checked" ).prop("checked", false);
+
+        if($('input:checkbox:checked').length == 0)  $( "#quick_buttons" ).css( "display", "none" );        
+    });
+
+    $("#quick_read").on("click", function(){
+        // alert("Some selected items will be marked as read!");
+        $( "input:checkbox:checked" ).parents("li:first").removeClass( "unread");
+        $( "input:checkbox:checked" ).parents("li:first").addClass( "read");
+        $( "input:checkbox:checked" ).prop("checked", false);
+
+        if($('input:checkbox:checked').length == 0)  $( "#quick_buttons" ).css( "display", "none" );
+    });
+
+    //Chat tab
+    $('.chat_select').on('click', function(){
+        $('#chat_tab').modal('show'); 
+    });
+})
+
 function getFormData(form){
     var unindexed_array = form.serializeArray();
     var indexed_array = {};

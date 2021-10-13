@@ -77,7 +77,7 @@
             <div class="row">
                 <!-- Patients Monitoring -->
                 <div class="col-md-6">
-                    <div id="panel-1" class="panel">                        
+                    <div id="panel-1" class="panel">
                         <div class="panel-container show">
                             <div class="panel-content">
                                 <!-- datatable start -->
