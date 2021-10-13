@@ -101,6 +101,9 @@ defmodule EchipatalaWeb.Router do
     # ---------------------------Appointment Management
     get "/Appointments", ClientController, :appointments
 
+    # ---------------------------Pharmacy Management
+    get "/Pharmacy/List", PharmacyController, :index
+
     # ====================self assessment======================
     get("/Self/Assessment", SelfAssessmentController, :index)
     post "/Self/Assessment", SelfAssessmentController, :assess
