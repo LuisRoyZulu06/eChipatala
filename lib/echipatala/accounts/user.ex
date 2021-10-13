@@ -14,7 +14,7 @@ defmodule Echipatala.Accounts.User do
     field :user_role, :string
     field :user_type, :integer
     field :username, :string
-    # field :institution_id, :id
+    field :institution_id, :id
 
     timestamps()
   end
@@ -22,7 +22,7 @@ defmodule Echipatala.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :username, :email, :phone, :gender, :user_type, :user_role, :status, :password, :auto_password, :creator_id])
+    |> cast(attrs, [:name, :username, :email, :phone, :gender, :user_type, :user_role, :status, :password, :auto_password, :creator_id, :institution_id])
 
     # |> cast(attrs, [:name, :username, :email, :phone, :gender, :user_type, :user_role, :status, :password, :auto_password, :creator_id, :institution_id])
     |> validate_required([:name, :username, :email, :phone, :gender, :user_type, :user_role, :status, :password, :auto_password])
