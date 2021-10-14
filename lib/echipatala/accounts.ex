@@ -43,6 +43,13 @@ defmodule Echipatala.Accounts do
   end
 
 
+  def get_user_pharmacy(id) do
+    User
+    |> where([e], e.institution_id == ^id and e.user_role == "STAFF")
+    |> Repo.all()
+  end
+
+
   # def get_institution_student(id) do
   #   User
   #   |> where([e], e.id == ^id)

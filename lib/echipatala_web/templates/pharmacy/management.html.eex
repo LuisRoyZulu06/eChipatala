@@ -1,0 +1,154 @@
+
+
+
+
+
+
+<main id="js-page-content" role="main" class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="subheader">
+                <h1 class="subheader-title">
+                    <i class='subheader-icon fal fa-chart-area'></i>
+                    <span class='fw-300'>Pharmacy</span>
+
+                    <small>
+                        Pharmacy Center.
+                    </small>
+                </h1>
+
+                <div class="d-flex mr-4">
+                    <div class="mr-2">
+                    <span class="peity-donut" data-peity="{ &quot;fill&quot;: [&quot;#967bbd&quot;, &quot;#ccbfdf&quot;],  &quot;innerRadius&quot;: 14, &quot;radius&quot;: 20 }">
+                      <%=  %>/<%=  %>
+                    </span>
+                    </div>
+                    <div>
+                        <label class="fs-sm mb-0 mt-2 mt-md-0">Total Pharmacies</label>
+                        <h4 class="font-weight-bold mb-0"><%=  %></h4>
+                    </div>
+                </div>
+            </div>
+<!---------------- Subheader -->
+            <div class="subheader">
+                <h1 class="subheader-title">
+
+                    <div class="panel-toolbar"><br><br>
+                        <button type="button" class="btn btn-info btn-sm btn-pills waves-effect waves-themed" data-toggle="modal" data-target="#add-institution">
+                            Register Institution
+                        </button>
+                    </div>
+                </h1>
+
+
+                <div class="subheader-block">
+                    <i class='subheader-icon fal fa-user'></i>
+                    Hello <%= "#{String.capitalize(@conn.assigns.user.username)}"%>, welcome to eChipatala.
+                </div>
+            </div>
+
+
+	<div id="panel-6" class="panel">
+		<div class="panel-container show">
+			<div class="panel-content">
+				<div id="panel-4" class="panel">
+                <div class="panel-container show">
+                    <div class="panel-hdr">
+                        <h2>
+                            Pharmacies<span class="fw-300"><i></i></span>
+                        </h2>
+                        <div class="panel-toolbar">
+                            <div class="frame-wrap">
+                                <button class="btn btn-xs btn-info btn-pills" data-toggle="modal" data-target="#filter"> Filter Entries</button>
+                                <button class="btn btn-xs btn-primary btn-pills" data-toggle="modal" data-target="#asycuda_excel_export_filter"> Export Excel</button>
+                                <button class="btn btn-xs btn-secondary btn-pills" id="reload_table">Reload Entries</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-content" id="report_table">
+                        <table id="dt-basic-example" class="table table-bordered table-hover compact w-100">
+                            <thead class="bg-info-800">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>Tel</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <%= for item <- @result do %>
+                                    <tr>
+                                        <td><%= item.id %></td>
+                                        <td><%= item.name %></td>
+                                        <td><%= item.address %></td>
+                                        <td><%= item.email %></td>
+                                        <td><%= item.tel %></td>
+                                        <td>
+                                        <button class="btn btn-secondary btn-xs" data-toggle="dropdown" style="margin-top:0px !important; padding-top: 0px !important;">Options</button>
+                                            <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
+                                                <a href="#"
+                                                    data-toggle="modal"
+                                                    data-target="#appointment_details"
+                                                    data-id="<%= item.id %>"
+                                                    data-name="<%= item.name %>"
+                                                    data-address="<%= item.address %>"
+                                                    data-emeail="<%= item.email %>"
+                                                    data-tel="<%= item.tel %>"
+                                                    class="dropdown-item text-success domt_dropped_details">Details
+                                                </a>
+                                                <a href="#"
+                                                    data-toggle="modal"
+                                                    data-target="#update_appointment_details"
+                                                    data-id="<%= item.id %>"
+                                                    data-name="<%= item.name %>"
+                                                    data-address="<%= item.address %>"
+                                                    data-emeail="<%= item.email %>"
+                                                    data-tel="<%= item.tel %>"
+                                                    class="dropdown-item text-success approval_tray"
+                                                    >Update
+                                                </a>
+
+                                                <a href="#" data-id="'+ row.id+'"
+                                                    class="dropdown-item text-danger drop_payment"
+                                                    data-toggle="modal"
+                                                    data-target="#drop_domt_modal"
+                                                    >Drop Entry
+                                                </a>
+
+                                            </div>
+
+
+                                        </td>
+                                    </tr>
+                                <% end %>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+</main>
+
+
+<script src="<%= Routes.static_path(@conn, "/js/jquery-1.11.2.min.js") %>"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+<%= render("modals.html", assigns) %>

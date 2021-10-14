@@ -64,6 +64,10 @@ defmodule EchipatalaWeb.Router do
     pipe_through([:browser, :app])
     get "/Dashboard", UserController, :dashboard
 
+    get "/Pharmacy", PharmacyController, :management
+    post "/Pharmacy/create", PharmacyController, :create
+
+
     # ---------------------------User Management
     post "/Create/User", UserController, :create_institution_user
     get("/system/users", UserController, :system_users)
