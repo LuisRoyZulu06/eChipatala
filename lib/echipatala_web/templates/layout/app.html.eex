@@ -98,13 +98,13 @@
                 <li>
                   <a href="<%= Routes.institution_path(@conn, :institution_management)%>" title="INSTITUTION MANAGEMENT" data-filter-tags="application intel">
                     <i class="fal fa-hospital"></i>
-                    <span class="nav-link-text" data-i18n="nav.application_intel">INSTITUTION MANAGEMENT</span>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">HOSPITAL MANAGEMENT</span>
                   </a>
                 </li>
 
                 <li>
                   <a href="<%= Routes.pharmacy_path(@conn, :management)%>" title="INSTITUTION MANAGEMENT" data-filter-tags="application intel">
-                    <i class="fal fa-hospital"></i>
+                    <i class="fal fa-wheelchair"></i>
                     <span class="nav-link-text" data-i18n="nav.application_intel">PHARMACY MANAGEMENT</span>
                   </a>
                 </li>

@@ -12,7 +12,7 @@
                   </small>
                 </h1>
 
-                <a href="#" onclick="history.back(-1)" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #800020; color: #fff; font-weight: bold;">
+                <a href="<%= Routes.client_path(@conn, :index)%>" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #800020; color: #fff; font-weight: bold;">
                     <i class="fal fa-reply"></i> Back
                 </a>
 

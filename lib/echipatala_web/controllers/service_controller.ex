@@ -17,7 +17,7 @@ defmodule EchipatalaWeb.ServiceController do
         |> redirect(to: Routes.service_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "index.html", changeset: changeset)
     end
   end
 
