@@ -1,0 +1,72 @@
+<!-- Edit Institution Details-->
+<div class="tab-pane fade" id="tab-eid" role="tabpanel" aria-labelledby="tab-eid">
+    <form action="<%= Routes.pharmacy_path(@conn, :update)%>" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fal fa-book"></i></span>
+                        </div>
+                        <input type="text" name="update_pharmacy[name]" value="<%= @institution_details.name%>" class="form-control form-control-md">
+                        <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
+                        <input type="hidden" name="id" value="<%= @institution_details.id%>">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tel</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fal fa-phone"></i></span>
+                        </div>
+                        <input type="text" name="update_pharmacy[tel]" value="<%= @institution_details.tel%>" class="form-control form-control-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Address</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fal fa-building"></i></span>
+                        </div>
+                        <input type="text" name="update_pharmacy[postal]" value="<%= @institution_details.address%>" class="form-control form-control-md">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fal fa-envelope"></i></span>
+                        </div>
+                        <input type="text" name="update_pharmacy[email]" value="<%= @institution_details.email%>" class="form-control form-control-md">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="form-label">Logo</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fal fa-music"></i></span>
+                        </div>
+                        <input type="file" name="update_pharmacy[logo]" class="form-control form-control-md">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <br />
+                <div class="form-group">
+                    <button type="submit" class="btn bg-info-600">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

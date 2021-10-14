@@ -2,9 +2,9 @@ use Mix.Config
 
 # Configure your database
 config :echipatala, Echipatala.Repo,
-  username: "sa",
-  password: "password06",
-  database: "echipatala",
+  username: "SA",
+  password: "Qwerty123",
+  database: "echipatala_0",
   # username: "sa",
   # password: "password06",
   # database: "echipatala",

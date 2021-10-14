@@ -1,0 +1,181 @@
+<main id="js-page-content" role="main" class="page-content">
+	<div class="row">
+		<div class="col-md-1"></div>
+
+		<div class="col-md-10">
+		    <!--------- Flash -->
+		    <div class="row">
+		        <div class="col-md-12 col-lg-offset-2">
+		            <div class="form-group">
+		                <%= if get_flash(@conn, :info) do %>
+		                    <div class="alert alert-info alert-styled-left">
+		                    <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+		                    <%= get_flash(@conn, :info) %>
+		                    </div>
+		                <% end %>
+		                <%= if get_flash(@conn, :error) do %>
+		                    <div class="alert alert-danger alert-styled-left">
+		                    <button type="button" class="close" data-dismiss="alert">&times; <span class="sr-only">Close</span></button>
+		                    Opps! <%= get_flash(@conn, :error) %>
+		                    </div>
+		                <% end %>
+		            </div>
+		        </div>
+		    </div>
+
+		    <!---------------------------------------------------------------- Header -->
+		    <ol class="breadcrumb page-breadcrumb">
+		        <li class="position-absolute pos-top pos-left d-none d-sm-block">
+		            <span class="js-get-date"></span>
+
+					<div class="container">
+						<img width="50" src="<%= Echipatala.LogoUploader.url({@institution_details.logo, @institution_details})%>">
+					</div>
+
+					<table class="table table-clean">
+						<tbody>
+
+						<tr>
+							<th>Registered Health Personnel: </th>
+						</tr>
+						</tbody>
+	            	</table>
+
+                    <a href="<%= Routes.institution_path(@conn, :institution_management)%>" class="btn btn-sm btn-pills waves-effect waves-themed btn-info">
+                       <i class="fal fa-reply"></i> Back
+                    </a>
+
+                    <a href="#" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;">
+                       <i class="fa fa-area-chart"></i> Report Center
+                    </a>
+
+                    <a href="#" class="btn btn-sm btn-pills waves-effect waves-themed" style="background-color: #18346c; color: #ffffff;" data-toggle="modal" data-target="#add-user">
+                       <i class="fal fa-user-md"></i>
+                        Add user
+                    </a>
+		        </li>
+
+		        <li class="position-absolute pos-top pos-right d-none d-sm-block">
+		            <h1 class="subheader-title">
+		                <i class='subheader-icon fal fa-hospital'></i> <strong style="text-transform: uppercase;"> <%= @institution_details.name %> </strong>
+		                <small>
+		                	<p>
+		                		<i class="fal fa-phone"></i>
+		                		<%= @institution_details.tel %>
+		                	</p>
+
+		                	<p>
+		                		<i class="fal fa-envelope"></i>
+		                		<%= @institution_details.email %>
+		                	</p>
+
+		                	<p>
+		                		<i class="fal fa-map-pin"></i>
+		                		<%= @institution_details.address %>
+		                	</p>
+		                </small>
+		            </h1>
+		        </li>
+		    </ol>
+
+			<!---------------------------------------------------------------- Main Content -->
+			<div class="container-fluid" style="margin-top: 15em;">
+
+                <div id="panel-6" class="panel">
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <ul class="nav nav-tabs nav-tabs-clean" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tab-rhp" role="tab">Pharmacy Personnels</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab-eid" role="tab">Edit Pharmacy Details</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content p-3">
+                                <!-- Registered Users-->
+                                <div class="tab-pane fade show active" id="tab-rhp" role="tabpanel" aria-labelledby="tab-rhp">
+                                    <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                                        <thead class="p-3 bg-info-900 rounded overflow-hidden position-relative text-white mb-g">
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Gender</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%= for staff_details <-@staff_details do %>
+                                                <tr>
+                                                    <td><%= staff_details.username %></td>
+                                                    <td><%= staff_details.phone %></td>
+                                                    <td><%= staff_details.email %></td>
+                                                    <td><%= staff_details.gender %></td>
+                                                    <td>
+                                                    <button class="btn bg-fusion-100 waves-effect waves-themed btn-xs" data-toggle="dropdown">Options</button>
+                                                    <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
+                                                        <a class="dropdown-item text-info"
+                                                            data-toggle="modal"
+                                                            data-target="#edit-staff-details"
+                                                            data-id="<%= staff_details.id %>"
+                                                            data-name="<%= staff_details.name %>"
+                                                            data-username="<%= staff_details.username %>"
+                                                            data-phone="<%= staff_details.phone %>"
+                                                            data-email="<%= staff_details.email %>"
+                                                            data-gender="<%= staff_details.gender %>"
+                                                            data-institution_id="<%= staff_details.institution_id %>"
+                                                            >
+                                                            <i class="fal fa-edit"></i>
+                                                            Edit
+                                                        </a>
+
+                                                        <a class="dropdown-item text-info"
+                                                            data-toggle="modal"
+                                                            data-target="#staff-details"
+                                                            data-id="<%= staff_details.id %>"
+                                                            data-name="<%= staff_details.name %>"
+                                                            data-username="<%= staff_details.username %>"
+                                                            data-phone="<%= staff_details.phone %>"
+                                                            data-email="<%= staff_details.email %>"
+                                                            data-gender="<%= staff_details.gender %>"
+                                                            data-inserted_at="<%= staff_details.inserted_at %>"
+                                                            >
+                                                            <i class="fal fa-info"></i>
+                                                            Details
+                                                        </a>
+
+                                                        <a class="dropdown-item text-info"
+                                                            data-toggle="modal"
+                                                            data-target="#deactivate-student"
+                                                            data-id="<%= staff_details.id %>"
+                                                            data-institution_id="<%= staff_details.institution_id %>"
+                                                            >
+                                                            <i class="fal fa-trash"></i>
+                                                            Deactivate
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Edit Institution Details-->
+                                <%= render "tab_details.html", assigns %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+			</div>
+		</div>
+
+		<div class="col-md-1"></div>
+	</div>
+</main>
+
+<%= render "user_modal.html", assigns %>

@@ -103,6 +103,13 @@
                 </li>
 
                 <li>
+                  <a href="<%= Routes.pharmacy_path(@conn, :management)%>" title="INSTITUTION MANAGEMENT" data-filter-tags="application intel">
+                    <i class="fal fa-hospital"></i>
+                    <span class="nav-link-text" data-i18n="nav.application_intel">PHARMACY MANAGEMENT</span>
+                  </a>
+                </li>
+
+                <li>
                   <a href="#" title="LOGS" data-filter-tags="application intel">
                     <i class="fal fa-users"></i>
                     <span class="nav-link-text" data-i18n="nav.application_intel">USER MANAGEMENT</span>
