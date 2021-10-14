@@ -90,26 +90,8 @@
                                         <td>
                                         <button class="btn btn-secondary btn-xs" data-toggle="dropdown" style="margin-top:0px !important; padding-top: 0px !important;">Options</button>
                                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-right position-absolute pos-top">
-                                                <a href="#"
-                                                    data-toggle="modal"
-                                                    data-target="#appointment_details"
-                                                    data-id="<%= item.id %>"
-                                                    data-name="<%= item.name %>"
-                                                    data-address="<%= item.address %>"
-                                                    data-emeail="<%= item.email %>"
-                                                    data-tel="<%= item.tel %>"
+                                                <a href="<%= Routes.pharmacy_path(@conn, :details, item) %>"
                                                     class="dropdown-item text-success domt_dropped_details">Details
-                                                </a>
-                                                <a href="#"
-                                                    data-toggle="modal"
-                                                    data-target="#update_appointment_details"
-                                                    data-id="<%= item.id %>"
-                                                    data-name="<%= item.name %>"
-                                                    data-address="<%= item.address %>"
-                                                    data-emeail="<%= item.email %>"
-                                                    data-tel="<%= item.tel %>"
-                                                    class="dropdown-item text-success approval_tray"
-                                                    >Update
                                                 </a>
 
                                                 <a href="#" data-id="'+ row.id+'"

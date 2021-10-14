@@ -704,6 +704,41 @@ defmodule EchipatalaWeb.UserController do
     render(conn, "students/student_mgt.html", student_details: student_details, institution_details: institution_details)
   end
 
+  def create_institution_user(conn, %{"create_pharmacy_user" => params}) do
+    IO.inspect "=====PARAMS====="
+    IO.inspect params
+
+    case Accounts.get_user_by(params["username"]) do
+      nil ->
+        pwd = random_string(8)
+        params = Map.put(params, "password", pwd)
+        Ecto.Multi.new()
+        |> Ecto.Multi.insert(:user, User.changeset(%User{}, params))
+        |> Repo.transaction()
+        |> case do
+          {:ok, user} ->
+            Email.send_alert(pwd, params["username"], params["email"])
+
+            conn
+            |> put_flash(:info, "User created Successfully")
+            |> redirect(to: "#{redirect_to_back(conn)}?id=#{params["institution_id"]}")
+            # |> redirect(to: Routes.user_path(conn, :staff_mgt, id: params["institution_id"]))
+
+          {:error, _} ->
+            conn
+            |> put_flash(:error, "Failed to create user.")
+            |> redirect(to: "#{redirect_to_back(conn)}?id=#{params["institution_id"]}")
+            # |> redirect(to: Routes.user_path(conn, :profile_users, id: params["company_id"]))
+        end
+
+      _user ->
+        conn
+        |> put_flash(:error, "User with Username #{params["username"]} already exists.")
+        |> redirect(to: "#{redirect_to_back(conn)}?id=#{params["institution_id"]}")
+        # |> redirect(to: Routes.user_path(conn, :profile_users, id: params["company_id"]))
+    end
+  end
+
   def create_institution_user(conn, params) do
     IO.inspect "=====PARAMS====="
     IO.inspect params
