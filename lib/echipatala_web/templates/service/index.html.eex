@@ -129,7 +129,7 @@
 
 <!--------------------------------------------------- AddServiceModal ------------------------------------->
 <div class="modal fade" id="add-institution" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Add Service</h5>
@@ -143,10 +143,10 @@
             <div class="modal-body">
                 <form action="<%= Routes.service_path(@conn, :create)%>" method="POST" enctype="multipart/form-data">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <div class="form-group">
                         <label class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control form-control-md" placeholder="Institution Name" required>
+                        <input type="text" name="name" class="form-control form-control-md" placeholder="Service Name" required>
                         <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token()%>">
                         <input type="hidden" name="maker_id" value="<%= "#{(@conn.assigns.user.id)}"%>">
                         <input type="hidden" name="inst_id" value="<%= "#{(@conn.assigns.user.institution_id)}"%>">
@@ -162,9 +162,7 @@
                         </select>
                         <div class="help-block">Select institution type.</div>
                     </div>
-                  </div>
 
-                  <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Consultation Fee</label>
                         <input type="text" name="consult_fee" class="form-control form-control-md" placeholder="Consultation Fee" required>
@@ -173,7 +171,8 @@
 
                     <div class="form-group">
                         <label class="form-label">Descript</label>
-                        <input type="text" name="descript" class="form-control form-control-md" placeholder="Description" required>
+                        <textarea row="5 name="descript" class="form-control form-control-md" placeholder="Description" required>
+                        </textarea>
                         <div class="help-block">Short Service Description.</div>
                     </div>
 

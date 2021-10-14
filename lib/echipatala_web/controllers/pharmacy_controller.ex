@@ -4,7 +4,8 @@ defmodule EchipatalaWeb.PharmacyController do
   alias Echipatala.{Pharmacy, Accounts}
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    pharmacy_list = Pharmacy.list_pharmacies()
+    render(conn, "index.html", pharmacy_list: pharmacy_list)
   end
 
   def create(conn, %{"create_pharmacy" => request}) do
