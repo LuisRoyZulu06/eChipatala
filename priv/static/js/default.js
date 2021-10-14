@@ -40,9 +40,27 @@ $(function () {
         if($('input:checkbox:checked').length == 0)  $( "#quick_buttons" ).css( "display", "none" );
     });
 
-    //Chat tab
+    //Admin chat tab
     $('.chat_select').on('click', function(){
         $('#chat_tab').modal('show'); 
+    });
+
+    //Client/Patient chat tab
+    $("#client_chat_form").on("submit", function(e){
+        e.preventDefault();
+        var title = $('#title').val()
+        var message = $('#client_chat_textarea').val()
+        var text_container = '<div class="media media-chat"> <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">'
+        var dt = new Date();
+        var time = dt.getHours().toString().padStart(2, '0') + ":" + dt.getMinutes().toString().padStart(2, '0');
+        var timer = '<p class="meta"><time datetime="2021">' + time + '</time></p>';
+        var chat_wrapper = text_container + '<div class="media-body new_text"><p style="font-weight: bold;">' + title +'</p><p>' + message +'</p>' + timer + '</div></div>';    
+        $("#chat_container").append(chat_wrapper);
+        // $("#scroll").animate({ scrollTop: $('#scroll').prop("scrollHeight")}, 1000);
+        $('.scroll').scrollTop($('.scroll')[0].scrollHeight - $('.scroll')[0].clientHeight);
+        // $(".new_text").triggerHandler( "focus" );
+        $('#title').val('');
+        $('#client_chat_textarea').val('');
     });
 })
 
