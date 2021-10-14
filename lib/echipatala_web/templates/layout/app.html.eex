@@ -116,33 +116,9 @@
                           System Users
                         </span>
                       </a>
-
-                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.user_path(@conn, :client_users)%>">
-                        <span style="color: #d82b2a;">
-                          <i class="fal fa-user"></i>
-                          Client Users
-                        </span>
-                      </a>
                     </li>
-                  </ul>
-                </li>
 
-
-                                <li>
-                  <a href="#" title="LOGS" data-filter-tags="application intel">
-                    <i class="fal fa-table"></i>
-                    <span class="nav-link-text" data-i18n="nav.application_intel">LOGS</span>
-                  </a>
-
-                  <ul>
                     <li>
-                      <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.logs_path(@conn, :email_logs)%>">
-                        <span id="">
-                          <i class="fal fa-envelope"></i>
-                          Email Logs
-                        </span>
-                      </a>
-
                       <a class="dropdown-item fw-500 pt-3 pb-3" href="<%= Routes.logs_path(@conn, :user_logs)%>">
                         <span style="color: #d82b2a;">
                           <i class="fal fa-handshake"></i>
@@ -285,14 +261,13 @@
     <script src="<%= Routes.static_path(@conn, "/js/formplugins/select2/select2.bundle.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/notifications/sweetalert2/sweetalert2.bundle.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/default.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/statistics/flot/flot.bundle.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/zra.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/admin/napsa.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/admin/nhima.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/admin/zra.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/nhima.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/admin/fees.js") %>"></script>
-
-
     <script src="<%= Routes.static_path(@conn, "/js/module_js/msg_logs.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/module_js/role_admin.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/dependency/moment/moment.js") %>"></script>
@@ -304,6 +279,8 @@
     <script src="<%= Routes.static_path(@conn, "/js/miscellaneous/lightgallery/lightgallery.bundle.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/phoenix_ujs/ujs.js") %>"></script>
     <script src="<%= Routes.static_path(@conn, "/js/jquery.blockUI.js") %>"></script>
+
+
 
     <!-------------------------------------------------------------------------Datatables -->
     <script>
@@ -566,123 +543,133 @@
 
     <!-----------------------------------------------------------------------------Graph -->
     <script>
-      /* dashboard */
-      var areaChart = function()
+      /* flot toggle example */
+      var flot_toggle = function()
       {
-          var config = {
-              type: 'line',
-              data:
+
+          var data = [
+          {
+              label: "Target Profit",
+              data: dataTargetProfit,
+              color: myapp_get_color.info_400,
+              bars:
               {
-                  labels: ["January", "February", "March", "April", "May", "June", "July"],
-                  datasets: [
+                  show: true,
+                  align: "center",
+                  barWidth: 30 * 30 * 60 * 1000 * 80,
+                  lineWidth: 0,
+                  /*fillColor: {
+                    colors: [myapp_get_color.primary_500, myapp_get_color.primary_900]
+                  },*/
+                  fillColor:
                   {
-                      label: "ZRA Transactions",
-                      backgroundColor: 'rgba(136,106,181, 0.2)',
-                      borderColor: myapp_get_color.primary_500,
-                      pointBackgroundColor: myapp_get_color.primary_700,
-                      pointBorderColor: 'rgba(0, 0, 0, 0)',
-                      pointBorderWidth: 1,
-                      borderWidth: 1,
-                      pointRadius: 3,
-                      pointHoverRadius: 4,
-                      data: [
-                          45,
-                          75,
-                          26,
-                          23,
-                          60, 48, 9
-                      ],
-                      fill: true
-                  },
-                  {
-                      label: "eNAPSA Transactions",
-                      backgroundColor: 'rgba(29,201,183, 0.2)',
-                      borderColor: myapp_get_color.success_500,
-                      pointBackgroundColor: myapp_get_color.success_700,
-                      pointBorderColor: 'rgba(0, 0, 0, 0)',
-                      pointBorderWidth: 1,
-                      borderWidth: 1,
-                      pointRadius: 3,
-                      pointHoverRadius: 4,
-                      data: [-10,
-                          16,
-                          72,
-                          93,
-                          29, 74,
-                          64
-                      ],
-                      fill: true
-                  }]
-              },
-              options:
-              {
-                  responsive: true,
-                  title:
-                  {
-                      display: false,
-                      text: 'Area Chart'
-                  },
-                  tooltips:
-                  {
-                      mode: 'index',
-                      intersect: false,
-                  },
-                  hover:
-                  {
-                      mode: 'nearest',
-                      intersect: true
-                  },
-                  scales:
-                  {
-                      xAxes: [
+                      colors: [
                       {
-                          display: true,
-                          scaleLabel:
-                          {
-                              display: false,
-                              labelString: '6 months forecast'
-                          },
-                          gridLines:
-                          {
-                              display: true,
-                              color: "#f2f2f2"
-                          },
-                          ticks:
-                          {
-                              beginAtZero: true,
-                              fontSize: 11
-                          }
-                      }],
-                      yAxes: [
+                          opacity: 0.9
+                      },
                       {
-                          display: true,
-                          scaleLabel:
-                          {
-                              display: false,
-                              labelString: 'Profit margin (approx)'
-                          },
-                          gridLines:
-                          {
-                              display: true,
-                              color: "#f2f2f2"
-                          },
-                          ticks:
-                          {
-                              beginAtZero: true,
-                              fontSize: 11
-                          }
+                          opacity: 0.1
                       }]
                   }
+              },
+              highlightColor: 'rgba(255,255,255,0.3)',
+              shadowSize: 0
+          },
+          {
+              label: "Actual Profit",
+              data: dataProfit,
+              color: myapp_get_color.warning_500,
+              lines:
+              {
+                  show: true,
+                  lineWidth: 2
+              },
+              shadowSize: 0,
+              points:
+              {
+                  show: true
               }
-          };
-          new Chart($("#areaChart > canvas").get(0).getContext("2d"), config);
-      }
+          },
+          {
+              label: "User Signups",
+              data: dataSignups,
+              color: myapp_get_color.success_500,
+              lines:
+              {
+                  show: true,
+                  lineWidth: 2
+              },
+              shadowSize: 0,
+              points:
+              {
+                  show: true
+              }
+          }]
 
-      /* initialize dashboard */
-      $(document).ready(function()
-      {
-        areaChart();
-      });
+          var options = {
+              grid:
+              {
+                  hoverable: true,
+                  clickable: true,
+                  tickColor: '#f2f2f2',
+                  borderWidth: 1,
+                  borderColor: '#f2f2f2'
+              },
+              tooltip: true,
+              tooltipOpts:
+              {
+                  cssClass: 'tooltip-inner',
+                  defaultTheme: false
+              },
+              xaxis:
+              {
+                  mode: "time"
+              },
+              yaxes:
+              {
+                  tickFormatter: function(val, axis)
+                  {
+                      return "$" + val;
+                  },
+                  max: 1200
+              }
+
+          };
+
+          var plot2 = null;
+
+          function plotNow()
+          {
+              var d = [];
+              $("#js-checkbox-toggles").find(':checkbox').each(function()
+              {
+                  if ($(this).is(':checked'))
+                  {
+                      d.push(data[$(this).attr("name").substr(4, 1)]);
+                  }
+              });
+              if (d.length > 0)
+              {
+                  if (plot2)
+                  {
+                      plot2.setData(d);
+                      plot2.draw();
+                  }
+                  else
+                  {
+                      plot2 = $.plot($("#flot-toggles"), d, options);
+                  }
+              }
+
+          };
+
+          $("#js-checkbox-toggles").find(':checkbox').on('change', function()
+          {
+              plotNow();
+          });
+          plotNow()
+      }
+      flot_toggle();
     </script>
 
     <!---------------------------------------------------------------------------FormWizard -->
@@ -870,7 +857,7 @@
       });
     </script>
 
-      <!------------- Error ScreenShot ----------->
+    <!------------- Error ScreenShot ----------->
     <script>
         $(document).ready(function()
         {
