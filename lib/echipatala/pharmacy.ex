@@ -6,7 +6,7 @@ defmodule Echipatala.Pharmacy do
   import Ecto.Query, warn: false
   alias Echipatala.Repo
 
-  alias Echipatala.Pharmacy.PharmacySchema
+  alias Echipatala.Pharmacy.{PharmacySchema, Stock}
 
 
   def list_pharmacies,  do: Repo.all(PharmacySchema)
@@ -40,4 +40,33 @@ defmodule Echipatala.Pharmacy do
   def change_pharmacy(%PharmacySchema{} = institution_details, attrs \\ %{}) do
     PharmacySchema.changeset(institution_details, attrs)
   end
+
+#   ================================= STOCK ===========================
+
+  def list_stock(user) do
+    Repo.all(from a in Stock, where: a.pharmacy_id == type(^user.pharmacy_id, :integer))
+  end
+
+  def create_stock(attrs \\ %{}) do
+    %Stock{}
+    |> Stock.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def update_stock(%Stock{} = stock, attrs) do
+    stock
+    |> Stock.changeset(attrs)
+    |> Repo.update()
+  end
+
+
+  def delete_stock(%Stock{} = stock) do
+    Repo.delete(stock)
+  end
+
+
+
+
+
+
 end

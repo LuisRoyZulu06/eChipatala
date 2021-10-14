@@ -26,6 +26,10 @@ defmodule EchipatalaWeb.Router do
     plug(:put_layout, {EchipatalaWeb.LayoutView, :app})
   end
 
+  pipeline :pharmacy do
+    plug(:put_layout, {EchipatalaWeb.LayoutView, :pharmacy})
+  end
+
   pipeline :staff do
     plug(:put_layout, {EchipatalaWeb.LayoutView, :staff})
   end
@@ -59,6 +63,19 @@ defmodule EchipatalaWeb.Router do
     post("/Password/Reset", UserController, :forgot_password_reset)
     get "/Help/Center", RespondenceController, :help_center
   end
+#   ============================= PHARMACY ===============
+  scope "/", EchipatalaWeb do
+    pipe_through([:browser, :pharmacy])
+    get "/Pharmacy/dashboard", PharmacyOpsController, :dashboard
+    get "/Pharmacy/stock", PharmacyOpsController, :stock
+    get "/Pharmacy/orders", PharmacyOpsController, :orders
+    get "/Pharmacy/inventory", PharmacyOpsController, :inventory
+    post "/Pharmacy/create/stock", PharmacyOpsController, :create_stock
+
+
+  end
+
+
 
   scope "/", EchipatalaWeb do
     pipe_through([:browser, :app])

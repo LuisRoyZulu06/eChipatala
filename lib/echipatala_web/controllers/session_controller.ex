@@ -56,6 +56,13 @@ defmodule EchipatalaWeb.SessionController do
                   |> put_session(:current_user, user.id)
                   |> put_session(:session_timeout_at, session_timeout_at())
                   |> redirect(to: Routes.client_path(conn, :index))
+
+                  # --------------------- PHARMACY
+                user.user_type == 4 ->
+                  conn
+                  |> put_session(:current_user, user.id)
+                  |> put_session(:session_timeout_at, session_timeout_at())
+                  |> redirect(to: Routes.pharmacy_ops_path(conn, :dashboard))
               end
 
               true ->
